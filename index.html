@@ -64,6 +64,7 @@
 
         const REGISTRATION_LINK = "https://forms.gle/s9JqTXUA6ykS9yEL9";
 
+        // --- 圖標組件 ---
         const Icon = ({ name, size = 24, className = "" }) => {
             const iconRef = useRef(null);
             useEffect(() => {
@@ -74,6 +75,7 @@
             return <i data-lucide={name} style={{ width: size, height: size }} className={className}></i>;
         };
 
+        // 1. 導覽列 (Navbar)
         const Navbar = () => {
             const [isScrolled, setIsScrolled] = useState(false);
             const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -122,6 +124,7 @@
             );
         };
 
+        // 2. 首屏 (Hero Section)
         const Hero = () => {
             const handleApply = () => window.open(REGISTRATION_LINK, '_blank');
             return (
@@ -132,8 +135,13 @@
                         </video>
                     </div>
                     <div className="relative z-10 max-w-6xl mx-auto px-6 text-center text-white fade-in-up">
-                        <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-5 py-2 rounded-full text-sm font-bold mb-8 border border-white/20 tracking-widest">
-                            <Icon name="calendar" size={16} /> 2026/06/28 - 07/02
+                        <div className="flex flex-col md:flex-row items-center justify-center gap-3 mb-8">
+                            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-5 py-2 rounded-full text-sm font-bold border border-white/20 tracking-widest text-white">
+                                <Icon name="calendar" size={16} /> 2026/06/28 - 07/02
+                            </div>
+                            <div className="inline-flex items-center gap-2 bg-blue-500/40 backdrop-blur-md px-5 py-2 rounded-full text-sm font-bold border border-blue-400/30 tracking-widest text-blue-50">
+                                <Icon name="users" size={16} /> 18-24 歲（大學生優先）
+                            </div>
                         </div>
                         <h1 className="flex flex-col gap-4 mb-10 tracking-tight text-center">
                             <span className="text-4xl md:text-7xl font-black block">2026 泰拉學校：地之校</span>
@@ -141,7 +149,7 @@
                                 早稻田大學 × 台日跨國設計行動
                             </span>
                         </h1>
-                        <p className="text-lg md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto font-medium leading-relaxed">
+                        <p className="text-lg md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto font-medium leading-relaxed text-center">
                             連結土地與科技。這不只是一場課程，是一場在宜蘭田野中，透過 AI 賦能與設計思考，找回五感直覺的跨國生命實踐。
                         </p>
                         <div className="flex flex-col md:flex-row items-center justify-center gap-6">
@@ -157,6 +165,7 @@
             );
         };
 
+        // 3. 行動整合區塊 (Integrated Activity Focus & Framework)
         const IntegratedSection = () => {
             const steps = [
                 { title: "分組合作", icon: "users-2" },
@@ -181,15 +190,16 @@
             ];
 
             return (
-                <section id="行動整合" className="py-24 bg-white relative overflow-hidden text-center">
-                    <div className="max-w-7xl mx-auto px-6 mb-32">
-                        <div className="inline-block bg-green-50 text-green-800 px-6 py-2 rounded-full font-black tracking-widest mb-10 border border-green-100 uppercase text-sm">
+                <section id="行動整合" className="py-24 bg-white relative overflow-hidden text-center text-stone-900">
+                    {/* 活動主軸部分 */}
+                    <div className="max-w-7xl mx-auto px-6 mb-32 text-center text-stone-900">
+                        <div className="inline-block bg-green-50 text-green-800 px-6 py-2 rounded-full font-black tracking-widest mb-10 border border-green-100 uppercase text-sm text-center">
                             ACTIVITY FOCUS
                         </div>
                         <div className="mb-16">
-                            <span className="block text-xl md:text-2xl font-bold text-stone-500 mb-4 tracking-[0.2em]">活動主軸</span>
+                            <span className="block text-xl md:text-2xl font-bold text-stone-400 mb-4 tracking-[0.2em]">活動主軸</span>
                             <h2 className="text-4xl md:text-6xl font-black text-stone-900 tracking-tight">
-                                <span className="text-green-700">城鄉共創．永續食農</span>
+                                <span className="text-green-700 text-center">城鄉共創．永續食農</span>
                             </h2>
                         </div>
                         <div className="max-w-5xl mx-auto mb-20 text-xl md:text-2xl text-stone-600 leading-relaxed font-medium">
@@ -207,14 +217,15 @@
                         </div>
                     </div>
 
+                    {/* 感官啟動區塊 */}
                     <div id="感官啟動" className="bg-emerald-900 text-white py-32 -mx-6 px-6 relative">
                         <div className="absolute inset-0 opacity-10 bg-grain"></div>
-                        <div className="max-w-7xl mx-auto relative z-10">
-                            <div className="inline-block bg-white/10 text-emerald-300 px-6 py-2 rounded-full font-black tracking-widest mb-6 border border-white/10 uppercase text-xs">
+                        <div className="max-w-7xl mx-auto relative z-10 text-center">
+                            <div className="inline-block bg-white/10 text-emerald-300 px-6 py-2 rounded-full font-black tracking-widest mb-6 border border-white/10 uppercase text-xs text-center">
                                 SENSORY ACTIVATION
                             </div>
-                            <h2 className="text-4xl md:text-6xl font-black mb-8 tracking-tight">感官啟動：不只是學習</h2>
-                            <p className="text-emerald-100/70 max-w-2xl mx-auto text-lg md:text-xl mb-20 leading-relaxed">
+                            <h2 className="text-4xl md:text-6xl font-black mb-8 tracking-tight text-white text-center">感官啟動：不只是學習</h2>
+                            <p className="text-emerald-100/70 max-w-2xl mx-auto text-lg md:text-xl mb-20 leading-relaxed text-center">
                                 打開五感，讓學習從「大腦」回到「全身」。在真實的泥土與風聲中，看見問題，也找回自己。
                             </p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
@@ -231,9 +242,10 @@
                         </div>
                     </div>
 
-                    <div className="bg-stone-50 py-32 -mx-6 px-6">
+                    {/* 協作框架部分 */}
+                    <div className="bg-stone-50 py-32 -mx-6 px-6 text-center">
                         <div className="max-w-7xl mx-auto">
-                            <div className="inline-block bg-stone-200 text-stone-600 px-6 py-2 rounded-full font-black tracking-widest mb-6 border border-stone-300 uppercase text-xs">
+                            <div className="inline-block bg-stone-200 text-stone-600 px-6 py-2 rounded-full font-black tracking-widest mb-6 border border-stone-300 uppercase text-xs text-center">
                                 COLLABORATION FRAMEWORK
                             </div>
                             <h2 className="text-3xl md:text-5xl font-black text-stone-800 mb-6 tracking-tight text-center md:leading-tight">
@@ -259,6 +271,7 @@
             );
         };
 
+        // 4. 三大行動場域
         const FieldLabs = () => {
             const [expanded, setExpanded] = useState(null);
             const fields = [
@@ -270,7 +283,7 @@
                 <section id="行動場域" className="py-32 bg-white">
                     <div className="max-w-7xl mx-auto px-6 text-center md:text-left">
                         <h2 className="text-3xl md:text-5xl font-black text-stone-800 mb-16 tracking-tight">三大行動場域：深入土地</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-left">
                             {fields.map((field) => (
                                 <div key={field.id} onClick={() => setExpanded(field)} className="group cursor-pointer relative overflow-hidden rounded-[2.5rem] h-[500px] shadow-xl border border-stone-100">
                                     <img src={field.image} alt={field.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
@@ -289,9 +302,9 @@
                     {expanded && (
                         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-stone-900/85 backdrop-blur-md" onClick={() => setExpanded(null)}>
                             <div className="relative w-full max-w-4xl bg-white rounded-[3rem] overflow-hidden shadow-2xl flex flex-col md:flex-row" onClick={e => e.stopPropagation()}>
-                                <button className="absolute top-8 right-8 z-10 w-12 h-12 bg-stone-100 hover:bg-stone-200 rounded-full flex items-center justify-center transition-colors" onClick={() => setExpanded(null)}><Icon name="x" /></button>
+                                <button className="absolute top-8 right-8 z-10 w-12 h-12 bg-stone-100 hover:bg-stone-200 rounded-full flex items-center justify-center transition-colors text-stone-800" onClick={() => setExpanded(null)}><Icon name="x" /></button>
                                 <div className="md:w-1/2 h-80 md:h-[600px]"><img src={expanded.image} className="w-full h-full object-cover" /></div>
-                                <div className="md:w-1/2 p-10 md:p-16 flex flex-col justify-center">
+                                <div className="md:w-1/2 p-10 md:p-16 flex flex-col justify-center text-left text-stone-900">
                                     <span className="text-orange-500 font-black tracking-widest text-xs uppercase mb-4">{expanded.name}</span>
                                     <h3 className="text-4xl font-black text-stone-900 mb-8">{expanded.title}</h3>
                                     <p className="text-stone-600 leading-relaxed text-lg mb-10 font-medium">{expanded.desc}</p>
@@ -304,6 +317,7 @@
             );
         };
 
+        // 5. 導師顧問團
         const Mentors = () => {
             const [selected, setSelected] = useState(null);
             const mentors = [
@@ -318,16 +332,16 @@
                 { name: "劉晉宏 老師", title: "長榮大學 / 草根意識工作室", img: "https://i.ibb.co/ccJn87gD/image.png", quote: "重新建立人與食物的親密感。", fullBio: "劉晉宏老師長期投入食農教育、都市農耕、農村再生與地方創生實踐，為草根意識工作室核心推動者。" },
                 { name: "徐柏峯 老師", title: "敏捷專家學會", img: "https://i.ibb.co/67N6PBpS/image.png", quote: "走入現場才能洞察真實痛點，持續迭代才能淬鍊最優解法。", fullBio: "徐柏峯老師長期專注於敏捷方法、Scrum 流程與創新專案引導。協助團隊在複雜問題中快速迭代。" },
                 { name: "魏名聰 老師", title: "中華少年成長基金會 / 青年永續峰會", img: "https://i.ibb.co/LdhvxJT9/image.png", quote: "好的專案需要紮實的落地結構。", fullBio: "魏名聰老師長期活躍於社會創新與青年永續議題，具備深厚的專案管理與 Pay for Success (PFS) 績效支付合約設計經驗。" },
-                { name: "李樂翌 老師", title: "五感覺察・內在權威", img: "https://i.ibb.co/1fDmdBZG/image.png", quote: "聽見土地，先聽見自己。", fullBio: "李樂翌老師長期投入五感覺察、身體感知、自我探索與內在權威的陪伴式引導。" }
+                { name: "李樂翌 老師", title: "五感覺察・內在權威", img: "https://i.ibb.co/1fDmdBZG/image.png", quote: "聽見土地，先聽見自己。", fullBio: "李樂翌老師長期投入五感覺察、身體感知、自我探索與內在權威的陪伴式引導。在地之校中，李老師將帶領學員重新連結五感與土地。" }
             ];
             return (
-                <section id="導師團" className="py-32 bg-stone-50 text-center">
+                <section id="導師團" className="py-32 bg-stone-50 text-center text-stone-900">
                     <div className="max-w-7xl mx-auto px-6">
-                        <div className="inline-block bg-stone-200 text-stone-600 px-6 py-2 rounded-full font-black tracking-widest mb-6 border border-stone-300 uppercase text-xs">
+                        <div className="inline-block bg-stone-200 text-stone-600 px-6 py-2 rounded-full font-black tracking-widest mb-6 border border-stone-300 uppercase text-xs text-center">
                             EXPERT ADVISORS
                         </div>
                         <h2 className="text-3xl md:text-5xl font-black text-stone-800 mb-24 tracking-tight text-center md:leading-tight">跨域領航：與專家同行</h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center max-w-6xl mx-auto">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center max-w-6xl mx-auto text-stone-900">
                             {mentors.map((m, i) => (
                                 <div key={i} onClick={() => setSelected(m)} className="bg-white p-8 rounded-3xl shadow-sm border border-stone-100 hover:shadow-2xl transition-all cursor-pointer group flex flex-col items-center">
                                     <div className="w-36 h-36 mb-8 rounded-full overflow-hidden ring-8 ring-stone-50 shadow-inner transition-transform group-hover:scale-105 bg-stone-200 flex items-center justify-center relative">
@@ -339,7 +353,6 @@
                                                 e.target.style.display = 'none';
                                             }}
                                         />
-                                        {/* 人形圖案已移除，僅保留背景色 */}
                                     </div>
                                     <h4 className="text-2xl font-black text-stone-800 mb-2 tracking-tight">{m.name}</h4>
                                     <p className="text-orange-600 text-xs font-black tracking-widest mb-6 uppercase h-10 flex items-center justify-center leading-tight px-4">{m.title}</p>
@@ -351,19 +364,19 @@
 
                     {selected && (
                         <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-md" onClick={() => setSelected(null)}>
-                            <div className="relative w-full max-w-2xl bg-white rounded-[3rem] p-10 md:p-16 shadow-2xl text-left" onClick={e => e.stopPropagation()}>
-                                <button className="absolute top-8 right-8 w-12 h-12 bg-stone-100 hover:bg-stone-200 rounded-full flex items-center justify-center transition-colors" onClick={() => setSelected(null)}><Icon name="x" /></button>
+                            <div className="relative w-full max-w-2xl bg-white rounded-[3rem] p-10 md:p-16 shadow-2xl text-left text-stone-900" onClick={e => e.stopPropagation()}>
+                                <button className="absolute top-8 right-8 w-12 h-12 bg-stone-100 hover:bg-stone-200 rounded-full flex items-center justify-center transition-colors text-stone-800" onClick={() => setSelected(null)}><Icon name="x" /></button>
                                 <div className="flex flex-col md:flex-row items-center gap-10 mb-12">
-                                    <div className="w-40 h-40 rounded-full overflow-hidden flex-shrink-0 shadow-xl ring-4 ring-stone-50 bg-stone-100 flex items-center justify-center relative">
+                                    <div className="w-40 h-40 rounded-full overflow-hidden flex-shrink-0 shadow-xl ring-4 ring-stone-50 bg-stone-100 flex items-center justify-center relative text-stone-900">
                                         <img src={selected.img} className="w-full h-full object-cover relative z-10" alt={selected.name} onError={(e) => e.target.style.display='none'} />
                                     </div>
-                                    <div className="text-center md:text-left">
+                                    <div className="text-center md:text-left text-stone-900">
                                         <span className="text-orange-500 font-black text-xs uppercase mb-2 block tracking-widest">專業導師團隊</span>
                                         <h3 className="text-4xl font-black text-stone-900 mb-3">{selected.name}</h3>
                                         <p className="text-stone-500 font-bold text-lg leading-snug">{selected.title}</p>
                                     </div>
                                 </div>
-                                <p className="text-stone-800 font-black text-2xl italic leading-relaxed border-l-8 border-orange-500 pl-8 py-2 mb-10">{selected.quote}</p>
+                                <p className="text-stone-800 font-black text-2xl italic leading-relaxed border-l-8 border-orange-500 pl-8 py-2 mb-10 text-stone-900">{selected.quote}</p>
                                 <p className="text-stone-600 leading-relaxed text-lg font-medium mb-12">{selected.fullBio}</p>
                                 <button onClick={() => setSelected(null)} className="text-stone-400 hover:text-stone-600 font-black transition-all text-sm underline underline-offset-8 uppercase tracking-widest">返回導師列表</button>
                             </div>
@@ -373,6 +386,7 @@
             );
         };
 
+        // 6. 五日行程
         const Journey = () => {
             const days = [
                 { day: "Day 1", title: "賦能與選題", desc: "台日青年永續論壇，pay for success 與 AI 應用，食農教育圓桌對談，open space 議題認領。", location: "政治大學羅家倫講堂" },
@@ -384,22 +398,22 @@
             return (
                 <section id="五日行程" className="py-32 bg-white relative">
                     <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row gap-20">
-                        <div className="lg:w-1/3">
+                        <div className="lg:w-1/3 text-center md:text-left text-stone-900">
                             <div className="sticky top-40">
-                                <h2 className="text-4xl md:text-6xl font-black text-stone-800 mb-8 tracking-tight text-center md:text-left md:leading-tight">5 日行程表：<br/>視覺化路徑</h2>
-                                <div className="inline-flex items-center gap-2 bg-stone-100 px-6 py-3 rounded-2xl text-stone-700 font-black mb-8 border border-stone-200 tracking-widest shadow-sm"><Icon name="calendar" className="text-orange-500" /> 06/28 - 07/02</div>
-                                <p className="text-stone-600 text-xl font-medium leading-relaxed">一場從內在覺察到外在創新的旅程。我們將地圖轉化為行動。</p>
+                                <h2 className="text-4xl md:text-6xl font-black text-stone-800 mb-8 tracking-tight md:leading-tight text-center md:text-left">5 日行程表：<br/>視覺化路徑</h2>
+                                <div className="inline-flex items-center gap-2 bg-stone-100 px-6 py-3 rounded-2xl text-stone-700 font-black mb-8 border border-stone-200 tracking-widest shadow-sm text-center"><Icon name="calendar" className="text-orange-500" /> 06/28 - 07/02</div>
+                                <p className="text-stone-600 text-xl font-medium leading-relaxed text-center md:text-left">一場從內在覺察到外在創新的旅程。我們將地圖轉化為行動。</p>
                             </div>
                         </div>
-                        <div className="lg:w-2/3 border-l-4 border-stone-50 pl-10 md:pl-16 py-6">
+                        <div className="lg:w-2/3 border-l-4 border-stone-50 pl-10 md:pl-16 py-6 text-left">
                             {days.map((item, idx) => (
                                 <div key={idx} className="mb-24 relative last:mb-0">
                                     <div className="absolute -left-[54px] md:-left-[78px] top-0 w-6 h-6 rounded-full bg-orange-500 ring-[12px] ring-orange-500/10 shadow-lg border-4 border-white" />
-                                    <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-8 mb-6">
+                                    <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-8 mb-6 text-left text-stone-900">
                                         <span className="text-orange-500 font-black text-3xl tracking-tighter">{item.day}</span>
                                         <h3 className="text-3xl font-black text-stone-900 tracking-tight">{item.title}</h3>
                                     </div>
-                                    <div className="bg-stone-50 p-10 rounded-[2.5rem] border border-stone-100 hover:shadow-sm transition-all">
+                                    <div className="bg-stone-50 p-10 rounded-[2.5rem] border border-stone-100 hover:shadow-sm transition-all text-left">
                                         <p className="text-stone-700 text-xl mb-8 leading-relaxed font-medium">{item.desc}</p>
                                         <div className="flex items-center text-stone-400 text-sm font-bold tracking-widest uppercase"><Icon name="map-pin" size={18} className="mr-3 text-orange-500" />{item.location}</div>
                                     </div>
@@ -414,23 +428,32 @@
         const Conversion = () => {
             const handleApply = () => window.open(REGISTRATION_LINK, '_blank');
             return (
-                <section className="py-32 px-6 bg-stone-50 text-center">
-                    <div className="max-w-6xl mx-auto relative overflow-hidden bg-emerald-900 rounded-[4rem] p-12 md:p-24 shadow-2xl">
-                        <h2 className="text-4xl md:text-7xl font-black text-white mb-8 tracking-tight">開啟你的跨國創新之旅</h2>
-                        <div className="flex justify-center mb-12"><div className="bg-white/10 backdrop-blur-md px-8 py-3 rounded-full text-emerald-200 border border-white/10 flex items-center gap-3 font-black tracking-widest shadow-lg"><Icon name="calendar" className="text-orange-400" size={20} /> 2026/06/28 - 07/02</div></div>
+                <section className="py-32 px-6 bg-stone-50 text-center text-white">
+                    <div className="max-w-6xl mx-auto relative overflow-hidden bg-emerald-900 rounded-[4rem] p-12 md:p-24 shadow-2xl text-center">
+                        <h2 className="text-4xl md:text-7xl font-black text-white mb-8 tracking-tight text-center">開啟你的跨國創新之旅</h2>
+                        
+                        <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-12">
+                            <div className="bg-white/10 backdrop-blur-md px-8 py-3 rounded-full text-emerald-200 border border-white/10 flex items-center gap-3 font-black tracking-widest shadow-lg text-center">
+                                <Icon name="calendar" className="text-orange-400" size={20} /> 2026/06/28 - 07/02
+                            </div>
+                            <div className="bg-blue-600/30 backdrop-blur-md px-8 py-3 rounded-full text-blue-200 border border-blue-400/20 flex items-center gap-3 font-black tracking-widest shadow-lg text-center">
+                                <Icon name="users" className="text-blue-300" size={20} /> 招生對象：18-24 歲（大學生優先）
+                            </div>
+                        </div>
+
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
                             <div className="bg-white rounded-[2.5rem] p-12 flex flex-col items-center shadow-2xl transform hover:-translate-y-2 transition-all">
                                 <span className="text-stone-400 text-xs font-black tracking-[0.3em] uppercase mb-4 text-center">每人定價</span>
-                                <div className="text-5xl font-black text-stone-900 mb-6 tracking-tighter text-center">$10,000 <span className="text-xl font-bold opacity-30">TWD</span></div>
+                                <div className="text-5xl font-black text-stone-900 mb-6 tracking-tighter text-center">$10,000 <span className="text-xl font-bold opacity-30 text-center text-stone-500">TWD</span></div>
                             </div>
                             <div className="bg-orange-500 rounded-[2.5rem] p-12 flex flex-col items-center shadow-2xl shadow-orange-500/30 border-8 border-orange-400 relative transform hover:-translate-y-2 transition-all">
-                                <div className="absolute -top-6 bg-white text-orange-600 px-6 py-2 rounded-full text-sm font-black shadow-xl tracking-widest uppercase">限時優惠</div>
+                                <div className="absolute -top-6 bg-white text-orange-600 px-6 py-2 rounded-full text-sm font-black shadow-xl tracking-widest uppercase text-center">限時優惠</div>
                                 <span className="text-white/80 text-xs font-black tracking-[0.3em] uppercase mb-4 text-center">兩人同行 / 早鳥優惠</span>
-                                <div className="text-5xl font-black text-white mb-6 tracking-tighter text-center">$8,500 <span className="text-xl font-bold opacity-50">TWD</span></div>
+                                <div className="text-5xl font-black text-white mb-6 tracking-tighter text-center">$8,500 <span className="text-xl font-bold opacity-50 text-center">TWD</span></div>
                                 <p className="text-orange-100 text-xs font-black tracking-widest uppercase text-center">★ 早鳥截止：4 月底 ★</p>
                             </div>
                         </div>
-                        <button onClick={handleApply} className="bg-white text-emerald-900 px-16 py-7 rounded-full text-2xl font-black transition-all shadow-2xl hover:bg-orange-500 hover:text-white transform hover:scale-105 active:scale-95 text-center block mx-auto">立即申請加入</button>
+                        <button onClick={handleApply} className="bg-white text-emerald-900 px-16 py-7 rounded-full text-2xl font-black transition-all shadow-2xl hover:bg-orange-500 hover:text-white transform hover:scale-105 active:scale-95 mx-auto block text-center">立即申請加入</button>
                     </div>
                 </section>
             );
@@ -438,21 +461,23 @@
 
         const Footer = () => {
             return (
-                <footer className="py-24 bg-stone-900 text-stone-400 px-6 border-t border-stone-800">
+                <footer className="py-24 bg-stone-900 text-stone-400 px-6 border-t border-stone-800 text-left">
                     <div className="max-w-7xl mx-auto">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-16 text-center md:text-left">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-16 text-center md:text-left text-stone-300">
                             <div className="col-span-1 md:col-span-2">
                                 <p className="text-base font-medium text-stone-500 max-w-md leading-relaxed uppercase tracking-widest mb-4">TARA SCHOOL 2026</p>
-                                <p className="text-base font-medium text-stone-500 max-w-md leading-relaxed mx-auto md:mx-0">致力於連結土地、科技與設計思維。我們相信真實的改變始於現場，透過跨國協作產出具備企業價值的解決方案。</p>
+                                <p className="text-base font-medium text-stone-500 max-w-md leading-relaxed mx-auto md:mx-0 text-center md:text-left">致力於連結土地、科技與設計思維。我們相信真實的改變始於現場，透過跨國協作產出具備企業價值的解決方案。</p>
                                 <div className="mt-10 flex gap-6 justify-center md:justify-start"><a href="https://www.facebook.com/1221feda?locale=zh_TW" target="_blank" className="w-12 h-12 bg-stone-800 rounded-2xl flex items-center justify-center hover:bg-blue-600 transition-all shadow-inner"><Icon name="facebook" size={24} className="text-white" /></a></div>
                             </div>
                             <div>
-                                <h5 className="text-white font-black mb-8 flex items-center gap-3 justify-center md:justify-start uppercase text-sm tracking-widest"><span className="w-6 h-px bg-orange-500"></span> 主辦單位</h5>
-                                <a href="https://www.facebook.com/1221feda?locale=zh_TW" target="_blank" className="text-base font-bold text-stone-300 hover:text-orange-400 transition-colors">1221未來教育發展協會</a>
+                                <h5 className="text-white font-black mb-8 flex items-center gap-3 justify-center md:justify-start uppercase text-sm tracking-widest text-center md:text-left"><span className="w-6 h-px bg-orange-500"></span> 主辦單位</h5>
+                                <div className="text-center md:text-left">
+                                    <a href="https://www.facebook.com/1221feda?locale=zh_TW" target="_blank" className="text-base font-bold text-stone-300 hover:text-orange-400 transition-colors">1221未來教育發展協會</a>
+                                </div>
                             </div>
                             <div>
-                                <h5 className="text-white font-black mb-8 flex items-center gap-3 justify-center md:justify-start uppercase text-sm tracking-widest"><span className="w-6 h-px bg-orange-500"></span> 協辦單位</h5>
-                                <ul className="text-base space-y-4 font-bold text-stone-500">
+                                <h5 className="text-white font-black mb-8 flex items-center gap-3 justify-center md:justify-start uppercase text-sm tracking-widest text-center md:text-left"><span className="w-6 h-px bg-orange-500"></span> 協辦單位</h5>
+                                <ul className="text-base space-y-4 font-bold text-stone-500 text-center md:text-left">
                                     <li className="hover:text-stone-300 transition-colors">佛光大學永續發展辦公室</li>
                                     <li className="hover:text-stone-300 transition-colors">政治大學日本研究學位學程</li>
                                     <li className="hover:text-stone-300 transition-colors">清華大學立德領導人才培育計畫</li>
@@ -460,9 +485,9 @@
                                 </ul>
                             </div>
                         </div>
-                        <div className="pt-10 border-t border-stone-800/50 flex flex-col md:flex-row justify-between items-center text-[11px] font-black uppercase tracking-[0.3em]">
-                            <div className="flex gap-12"><a href="#" className="hover:text-orange-500 transition-colors text-stone-600">常見問題</a><a href="#" className="hover:text-orange-500 transition-colors text-stone-600">聯絡我們</a><a href="#" className="hover:text-orange-500 transition-colors text-stone-600">隱私權政策</a></div>
-                            <div className="italic text-stone-700 font-bold mt-8 md:mt-0 opacity-60 text-center md:text-right">© 2026. 2026/06/28 - 07/02</div>
+                        <div className="pt-10 border-t border-stone-800/50 flex flex-col md:flex-row justify-between items-center text-[11px] font-black uppercase tracking-[0.3em] text-center">
+                            <div className="flex gap-12 mb-8 md:mb-0 text-center"><a href="#" className="hover:text-orange-500 transition-colors">常見問題</a><a href="#" className="hover:text-orange-500 transition-colors">聯絡我們</a><a href="#" className="hover:text-orange-500 transition-colors">隱私權政策</a></div>
+                            <div className="italic text-stone-700 font-bold mt-8 md:mt-0 opacity-60 text-center md:text-right text-center">© 2026. 2026/06/28 - 07/02</div>
                         </div>
                     </div>
                 </footer>
@@ -474,7 +499,7 @@
                 if (window.lucide) window.lucide.createIcons();
             }, []);
             return (
-                <div className="min-h-screen selection:bg-orange-200 selection:text-orange-900">
+                <div className="min-h-screen selection:bg-orange-200 selection:text-orange-900 bg-stone-50">
                     <Navbar />
                     <main>
                         <Hero />
