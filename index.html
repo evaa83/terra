@@ -4,6 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2026 泰拉學校：地之校｜台日跨國行動 × AI 食農設計</title>
+    
+    <!-- 設置網站圖示 (Favicon) -->
+    <link rel="icon" href="https://i.ibb.co/ZzxC3BVn/icon.png" type="image/png">
+    
+    <!-- SEO & AI Optimization -->
+    <meta name="description" content="2026 泰拉學校「地之校」與早稻田大學合作，針對18-24歲青年，結合設計思考、AI賦能與宜蘭實地踏查，推動城鄉共創與永續食農解決方案。">
+    <meta name="keywords" content="泰拉學校, 地之校, 早稻田大學, 食農教育, 永續發展, AI農業, 設計思考, 社會設計, 國際交流, 宜蘭踏查, 蔡妤珮, 賴青松, 陳幸延">
+    <meta property="og:title" content="2026 泰拉學校：地之校｜台日跨國共創行動">
+    <meta property="og:description" content="走入宜蘭田野，與日本頂尖大學師生共同運用 AI 與設計思維，解決真實農村痛點。">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://i.ibb.co/ZzxC3BVn/icon.png">
+    <link rel="canonical" href="https://terra-school-2026.github.io/">
+    
+    <!-- 結構化資料 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "2026 泰拉學校：地之校 - 城鄉共創與永續食農",
+      "startDate": "2026-06-28",
+      "endDate": "2026-07-02",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "Place",
+        "name": "宜蘭（台北集合出發）",
+        "address": "宜蘭縣南澳鄉、員山鄉"
+      },
+      "image": "https://i.ibb.co/ZzxC3BVn/icon.png",
+      "description": "與日本早稻田大學師生共同針對食農永續議題進行跨國設計共創。",
+      "organizer": {
+        "@type": "Organization",
+        "name": "1221未來教育發展協會",
+        "url": "https://www.facebook.com/profile.php?id=61572347380594"
+      }
+    }
+    </script>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- React & Babel -->
@@ -12,134 +50,95 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
-        
-        body {
-            font-family: 'Noto Sans TC', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-        }
-
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .bg-grain {
-            background-image: url("https://www.transparenttextures.com/patterns/p6.png");
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #166534;
-            border-radius: 10px;
-        }
+        body { font-family: 'Noto Sans TC', sans-serif; scroll-behavior: smooth; }
+        .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
+        .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .bg-grain { background-image: url("https://www.transparenttextures.com/patterns/p6.png"); }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #166534; border-radius: 10px; }
     </style>
 </head>
-<body class="bg-stone-50 text-stone-900 overflow-x-hidden antialiased">
+<body class="bg-stone-50 text-stone-900 overflow-x-hidden antialiased text-center md:text-left">
     <div id="root"></div>
 
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
         const REGISTRATION_LINK = "https://forms.gle/s9JqTXUA6ykS9yEL9";
+        const FB_TERRA_LINK = "https://www.facebook.com/profile.php?id=61572347380594&locale=zh_TW";
+        const LOGO_URL = "https://i.ibb.co/ZzxC3BVn/icon.png";
 
-        // --- 圖標組件 ---
         const Icon = ({ name, size = 24, className = "" }) => {
             const iconRef = useRef(null);
-            useEffect(() => {
-                if (window.lucide) {
-                    window.lucide.createIcons();
-                }
-            }, []);
+            useEffect(() => { if (window.lucide) { window.lucide.createIcons(); } }, []);
             return <i data-lucide={name} style={{ width: size, height: size }} className={className}></i>;
         };
 
-        // 1. 導覽列 (Navbar)
         const Navbar = () => {
             const [isScrolled, setIsScrolled] = useState(false);
             const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
             useEffect(() => {
                 const handleScroll = () => setIsScrolled(window.scrollY > 50);
                 window.addEventListener('scroll', handleScroll);
                 return () => window.removeEventListener('scroll', handleScroll);
             }, []);
 
-            const handleApply = () => window.open(REGISTRATION_LINK, '_blank');
-
             return (
                 <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-2' : 'bg-transparent py-4'}`}>
-                    <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-                        <div className="w-10 h-10" /> 
-                        
-                        <div className="hidden md:flex space-x-8 items-center">
-                            {['活動主軸', '感官啟動', '行動場域', '導師團', '五日行程'].map((item) => (
+                    <div className="max-w-7xl mx-auto px-6 flex justify-between items-center text-left">
+                        <div className="flex items-center gap-3">
+                             <img src={LOGO_URL} alt="TERRA Icon" className="h-8 md:h-10 w-auto" />
+                             <span className={`font-black tracking-tighter text-xl hidden sm:block ${isScrolled ? 'text-stone-900' : 'text-white'}`}>泰拉學校</span>
+                        </div> 
+                        <div className="hidden md:flex space-x-8 items-center text-left">
+                            {['活動主軸', '感官啟動', '導師團', '五日行程'].map((item) => (
                                 <a key={item} href={`#${item === '活動主軸' ? '行動整合' : item}`} className={`text-sm font-bold tracking-widest hover:text-orange-500 transition-colors ${isScrolled ? 'text-stone-700' : 'text-white'}`}>
                                     {item}
                                 </a>
                             ))}
-                            <button onClick={handleApply} className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2.5 rounded-full text-sm font-black transition-all transform hover:scale-105 active:scale-95 shadow-lg shadow-orange-500/20">
-                                立即申請
-                            </button>
+                            <button onClick={() => window.open(REGISTRATION_LINK, '_blank')} className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2.5 rounded-full text-sm font-black shadow-lg">立即申請</button>
                         </div>
-
                         <button className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-                            {mobileMenuOpen ? 
-                                <Icon name="x" className={isScrolled ? 'text-gray-800' : 'text-white'} /> : 
-                                <Icon name="menu" className={isScrolled ? 'text-gray-800' : 'text-white'} />
-                            }
+                            <Icon name={mobileMenuOpen ? "x" : "menu"} className={isScrolled ? 'text-gray-800' : 'text-white'} />
                         </button>
                     </div>
-
                     {mobileMenuOpen && (
-                        <div className="absolute top-full left-0 w-full bg-white shadow-xl py-8 flex flex-col items-center space-y-8 md:hidden">
+                        <div className="absolute top-full left-0 w-full bg-white shadow-xl py-8 flex flex-col items-center space-y-8 md:hidden text-stone-900">
                             {['活動主軸', '感官啟動', '行動場域', '導師團', '五日行程'].map((item) => (
                                 <a key={item} href={`#${item === '活動主軸' ? '行動整合' : item}`} className="text-stone-800 text-xl font-bold tracking-widest" onClick={() => setMobileMenuOpen(false)}>{item}</a>
                             ))}
-                            <button onClick={handleApply} className="bg-orange-500 text-white px-10 py-4 rounded-full font-black text-lg">立即申請加入</button>
                         </div>
                     )}
                 </nav>
             );
         };
 
-        // 2. 首屏 (Hero Section)
         const Hero = () => {
-            const handleApply = () => window.open(REGISTRATION_LINK, '_blank');
             return (
-                <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+                <section className="relative h-screen w-full flex items-center justify-center overflow-hidden text-center">
                     <div className="absolute inset-0 z-0 bg-stone-900">
-                        <video autoPlay muted loop playsInline className="w-full h-full object-cover brightness-[0.5]" poster="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1920">
+                        <video 
+                            autoPlay 
+                            muted 
+                            loop 
+                            playsInline 
+                            className="w-full h-full object-cover brightness-[0.4]" 
+                            poster="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1920"
+                        >
                             <source src="https://assets.mixkit.co/videos/preview/mixkit-morning-mist-over-a-green-valley-44440-large.mp4" type="video/mp4" />
                         </video>
                     </div>
                     <div className="relative z-10 max-w-6xl mx-auto px-6 text-center text-white fade-in-up">
                         <div className="flex flex-col md:flex-row items-center justify-center gap-3 mb-8">
-                            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-5 py-2 rounded-full text-sm font-bold border border-white/20 tracking-widest text-white">
+                            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-5 py-2 rounded-full text-sm font-bold border border-white/20 tracking-widest">
                                 <Icon name="calendar" size={16} /> 2026/06/28 - 07/02
                             </div>
-                            <div className="inline-flex items-center gap-2 bg-blue-500/40 backdrop-blur-md px-5 py-2 rounded-full text-sm font-bold border border-blue-400/30 tracking-widest text-blue-50">
+                            <div className="inline-flex items-center gap-2 bg-blue-500/40 backdrop-blur-md px-5 py-2 rounded-full text-sm font-bold border border-blue-400/30 tracking-widest">
                                 <Icon name="users" size={16} /> 18-24 歲（大學生優先）
                             </div>
                         </div>
@@ -149,119 +148,89 @@
                                 早稻田大學 × 台日跨國設計行動
                             </span>
                         </h1>
-                        <p className="text-lg md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto font-medium leading-relaxed text-center">
-                            連結土地與科技。這不只是一場課程，是一場在宜蘭田野中，透過 AI 賦能與設計思考，找回五感直覺的跨國生命實踐。
+                        <p className="text-lg md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto font-medium leading-relaxed">
+                            台日青年共創永續食農。台北集合出發，於政治大學參與論壇後前往宜蘭田野。
+                            <br className="hidden md:block" />與早稻田大學師生共同行動，運用 AI 賦能與設計思考，為土地產出真實價值。
                         </p>
                         <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-                            <button onClick={handleApply} className="w-full md:w-auto bg-orange-500 hover:bg-orange-600 text-white px-12 py-5 rounded-full text-xl font-black transition-all shadow-xl shadow-orange-500/40 flex items-center justify-center gap-2 transform hover:-translate-y-1">
+                            <button onClick={() => window.open(REGISTRATION_LINK, '_blank')} className="w-full md:w-auto bg-orange-500 hover:bg-orange-600 text-white px-12 py-5 rounded-full text-xl font-black shadow-xl shadow-orange-500/40 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
                                 立即申請加入 <Icon name="chevron-right" size={24} />
                             </button>
-                            <div className="text-sm font-bold text-white/70 tracking-widest uppercase bg-black/20 px-4 py-2 rounded-lg backdrop-blur-sm">
-                                名額有限（僅開放早鳥 20 席）
-                            </div>
+                            <a href={FB_TERRA_LINK} target="_blank" className="bg-white/10 hover:bg-white/20 backdrop-blur-sm px-8 py-4 rounded-full border border-white/20 text-sm font-black text-white hover:text-orange-400 transition-all flex items-center gap-2">
+                                <Icon name="message-circle" size={18} /> 有疑問嗎？臉書私訊詢問
+                            </a>
                         </div>
                     </div>
                 </section>
             );
         };
 
-        // 3. 行動整合區塊 (Integrated Activity Focus & Framework)
         const IntegratedSection = () => {
             const steps = [
-                { title: "分組合作", icon: "users-2" },
-                { title: "實地踏查", icon: "map" },
-                { title: "採訪對象", icon: "mic" },
-                { title: "AI 收集資料", icon: "brain-circuit" },
-                { title: "產出解決方案", icon: "check-circle" }
+                { title: "分組合作", desc: "跨國混編組隊，建立夥伴關係", icon: "users-2" },
+                { title: "實地踏查", desc: "深入宜蘭場域，採集真實資訊", icon: "map" },
+                { title: "採訪對象", desc: "與農夫對話，辨識永續痛點", icon: "mic" },
+                { title: "應用 AI", desc: "透過 AI 整理田野數據並產出創意", icon: "brain-circuit" },
+                { title: "解決方案", desc: "產出具備社會影響力的共創提案", icon: "check-circle" }
             ];
 
-            const senses = [
-                { title: "覺察", desc: "在南澳原生園靜坐，與內在對話", icon: "wind" },
-                { title: "觸摸", desc: "親手收割甘蔗、編織稻草與手作竹器", icon: "hand" },
-                { title: "品味", desc: "鮮採農事體驗，品嚐原民料理與純淨食材", icon: "utensils" },
-                { title: "聆聽", desc: "訪談職人生命故事，聆聽土地的真實痛點", icon: "ear" }
-            ];
-
-            const stages = [
-                { title: "探索 (Discover)", desc: "進入三大行動場域，與職人深度對話。", icon: "map-pin", color: "text-green-600" },
-                { title: "定義 (Define)", desc: "運用 AI 辨識市場痛點，轉譯田野洞察。", icon: "cpu", color: "text-blue-600" },
-                { title: "共創 (Create)", desc: "與早稻田大學跨國協作，生成數位 Prototype。", icon: "users", color: "text-purple-600" },
-                { title: "驗證 (Validate)", desc: "成果發表與 Pay for Success 結構評估。", icon: "award", color: "text-orange-600" },
+            const diamondStages = [
+                { 
+                    title: "探索 (Discover)", 
+                    eng: "Diverge", 
+                    desc: "走進土地，放下既有框架。透過實地觀察、職人訪談與五感覺察，收集第一線的田野資訊，打開對食農議題的廣度認知。", 
+                    actions: ["實地觀察", "職人對話", "五感覺察"] 
+                },
+                { 
+                    title: "定義 (Define)", 
+                    eng: "Converge", 
+                    desc: "運用 AI 整理訪談內容與田野紀錄。在龐雜的資訊中過濾干擾，鎖定真正值得解決的食農核心痛點，將挑戰精準陳述。", 
+                    actions: ["AI 資訊整理", "痛點辨識", "需求定義"] 
+                },
+                { 
+                    title: "發展 (Develop)", 
+                    eng: "Diverge", 
+                    desc: "台日學生跨國共創。運用 AI 快速生成多樣化的創意 Prototype。在反覆討論與快速迭代中，尋找解決方案的最佳路徑。", 
+                    actions: ["原型製作", "跨國協作", "AI 輔助創意"] 
+                },
+                { 
+                    title: "交付 (Deliver)", 
+                    eng: "Converge", 
+                    desc: "將創意轉化為可落地的食農永續提案。向專家與導師進行成果展示，驗證提案的社會價值與可行性，邁向真實的影響力。", 
+                    actions: ["成果展示", "價值驗證", "行動承諾"] 
+                }
             ];
 
             return (
-                <section id="行動整合" className="py-24 bg-white relative overflow-hidden text-center text-stone-900">
-                    {/* 活動主軸部分 */}
+                <section id="行動整合" className="py-24 bg-white relative overflow-hidden">
                     <div className="max-w-7xl mx-auto px-6 mb-32 text-center text-stone-900">
-                        <div className="inline-block bg-green-50 text-green-800 px-6 py-2 rounded-full font-black tracking-widest mb-10 border border-green-100 uppercase text-sm text-center">
-                            ACTIVITY FOCUS
-                        </div>
-                        <div className="mb-16">
-                            <span className="block text-xl md:text-2xl font-bold text-stone-400 mb-4 tracking-[0.2em]">活動主軸</span>
-                            <h2 className="text-4xl md:text-6xl font-black text-stone-900 tracking-tight">
-                                <span className="text-green-700 text-center">城鄉共創．永續食農</span>
-                            </h2>
-                        </div>
-                        <div className="max-w-5xl mx-auto mb-20 text-xl md:text-2xl text-stone-600 leading-relaxed font-medium">
-                            針對主軸分組合作，實地踏查，採訪對象，應用 AI 收集資料，產出解決方案。
-                        </div>
-                        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8 mb-24">
-                            {steps.map((step, index) => (
-                                <div key={index} className="flex flex-col items-center group">
-                                    <div className="w-16 h-16 bg-stone-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-green-600 group-hover:text-white transition-all duration-300 shadow-sm border border-stone-100">
-                                        <Icon name={step.icon} size={32} />
-                                    </div>
-                                    <span className="font-bold text-stone-800">{step.title}</span>
+                        <div className="inline-block bg-green-50 text-green-800 px-6 py-2 rounded-full font-black tracking-widest mb-10 border border-green-100 uppercase text-sm text-center">ACTIVITY FOCUS</div>
+                        <h2 className="text-4xl md:text-6xl font-black text-stone-900 mb-6 tracking-tight text-center text-stone-900">活動主軸：<span className="text-green-700">城鄉共創．永續食農</span></h2>
+                        <p className="max-w-4xl mx-auto mb-16 text-xl md:text-2xl text-stone-600 leading-relaxed font-medium">
+                            針對主軸分組合作，實地踏查，採訪對象，應用 AI 收集資料，產出解決方案。這是一場回歸土地、運用科技、實踐永續的深度行動。
+                        </p>
+                        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 text-center">
+                            {steps.map((s, i) => (
+                                <div key={i} className="flex flex-col items-center p-6 bg-stone-50 rounded-3xl border border-stone-100 hover:shadow-xl transition-all">
+                                    <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-4"><Icon name={s.icon} size={32} className="text-green-600" /></div>
+                                    <h4 className="font-black text-stone-900 mb-2">{s.title}</h4>
+                                    <p className="text-sm text-stone-500 leading-snug">{s.desc}</p>
                                 </div>
                             ))}
                         </div>
                     </div>
 
-                    {/* 感官啟動區塊 */}
-                    <div id="感官啟動" className="bg-emerald-900 text-white py-32 -mx-6 px-6 relative">
+                    <div className="bg-stone-900 text-white py-32 -mx-6 px-6 relative text-center">
                         <div className="absolute inset-0 opacity-10 bg-grain"></div>
                         <div className="max-w-7xl mx-auto relative z-10 text-center">
-                            <div className="inline-block bg-white/10 text-emerald-300 px-6 py-2 rounded-full font-black tracking-widest mb-6 border border-white/10 uppercase text-xs text-center">
-                                SENSORY ACTIVATION
-                            </div>
-                            <h2 className="text-4xl md:text-6xl font-black mb-8 tracking-tight text-white text-center">感官啟動：不只是學習</h2>
-                            <p className="text-emerald-100/70 max-w-2xl mx-auto text-lg md:text-xl mb-20 leading-relaxed text-center">
-                                打開五感，讓學習從「大腦」回到「全身」。在真實的泥土與風聲中，看見問題，也找回自己。
-                            </p>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
-                                {senses.map((sense, i) => (
-                                    <div key={i} className="flex flex-col items-center group">
-                                        <div className="w-20 h-20 bg-emerald-800 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-xl border border-white/10">
-                                            <Icon name={sense.icon} size={40} className="text-emerald-300" />
-                                        </div>
-                                        <h4 className="text-2xl font-black mb-3">{sense.title}</h4>
-                                        <p className="text-emerald-100/60 font-medium leading-relaxed">{sense.desc}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* 協作框架部分 */}
-                    <div className="bg-stone-50 py-32 -mx-6 px-6 text-center">
-                        <div className="max-w-7xl mx-auto">
-                            <div className="inline-block bg-stone-200 text-stone-600 px-6 py-2 rounded-full font-black tracking-widest mb-6 border border-stone-300 uppercase text-xs text-center">
-                                COLLABORATION FRAMEWORK
-                            </div>
-                            <h2 className="text-3xl md:text-5xl font-black text-stone-800 mb-6 tracking-tight text-center md:leading-tight">
-                                貫穿行動的協作框架：Design Thinking x AI
-                            </h2>
-                            <p className="text-stone-600 max-w-2xl mx-auto text-lg mb-20 leading-relaxed text-center">
-                                我們不提供標準答案。透過設計思考的「發散與收斂」，引導學員從感官覺察出發，辨識真實痛點。
-                            </p>
-                            <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-left">
-                                {stages.map((stage, idx) => (
-                                    <div key={idx} className="bg-white p-10 rounded-3xl shadow-sm border border-stone-100 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
-                                        <div className="w-14 h-14 bg-stone-50 rounded-2xl flex items-center justify-center mb-8 border border-stone-100 shadow-inner">
-                                            <Icon name={stage.icon} className={stage.color} />
-                                        </div>
-                                        <h3 className="text-2xl font-black mb-4 text-stone-800">{stage.title}</h3>
-                                        <p className="text-stone-600 leading-relaxed font-medium">{stage.desc}</p>
+                            <h2 className="text-3xl md:text-5xl font-black mb-16 tracking-tight text-center text-white">行動框架：雙鑽石模型細讀</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-center">
+                                {diamondStages.map((stage, idx) => (
+                                    <div key={idx} className="relative p-10 bg-white/5 rounded-3xl border border-white/10 text-left text-white">
+                                        <div className="absolute -top-6 -left-6 w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center font-black text-xl shadow-lg">0{idx + 1}</div>
+                                        <h3 className="text-2xl font-black mb-2 text-orange-400">{stage.title}</h3>
+                                        <p className="text-stone-400 text-sm leading-relaxed mb-6">{stage.desc}</p>
+                                        <div className="flex flex-wrap gap-2 text-stone-300">{stage.actions.map(a => <span key={a} className="text-[10px] px-2 py-1 bg-white/10 rounded-full">{a}</span>)}</div>
                                     </div>
                                 ))}
                             </div>
@@ -271,114 +240,107 @@
             );
         };
 
-        // 4. 三大行動場域
-        const FieldLabs = () => {
-            const [expanded, setExpanded] = useState(null);
-            const fields = [
-                { id: 1, name: "阿聰自然田", title: "永續農法的實踐地", desc: "學習與自然環境的不確定性共處，探討青年移居鄉村的真實挑戰與契機。", image: "https://i.ibb.co/XZ300h7M/image.png", color: "bg-emerald-700", icon: "sprout" },
-                { id: 2, name: "水月農莊", title: "食農教育的循環場域", desc: "採蓮、採黑豆，透過農事體驗重新定義食物與人的感官連結。", image: "https://i.ibb.co/r2QHKDhr/image.png", color: "bg-blue-700", icon: "droplets" },
-                { id: 3, name: "倆佰甲慢島生活", title: "跨域職人的轉譯基地", desc: "訪談「半農半 X」跨界職人，學習專業知識如何於鄉村場域落地。", image: "https://i.ibb.co/0jbB6CjN/image.png", color: "bg-amber-700", icon: "leaf" }
-            ];
-            return (
-                <section id="行動場域" className="py-32 bg-white">
-                    <div className="max-w-7xl mx-auto px-6 text-center md:text-left">
-                        <h2 className="text-3xl md:text-5xl font-black text-stone-800 mb-16 tracking-tight">三大行動場域：深入土地</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-left">
-                            {fields.map((field) => (
-                                <div key={field.id} onClick={() => setExpanded(field)} className="group cursor-pointer relative overflow-hidden rounded-[2.5rem] h-[500px] shadow-xl border border-stone-100">
-                                    <img src={field.image} alt={field.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-stone-900/90 via-stone-900/20 to-transparent" />
-                                    <div className="absolute bottom-0 left-0 p-10 w-full text-white text-left">
-                                        <div className={`w-12 h-12 ${field.color} rounded-xl flex items-center justify-center mb-6`}><Icon name={field.icon} /></div>
-                                        <h4 className="text-white/70 text-xs font-black mb-2 tracking-[0.2em] uppercase">{field.name}</h4>
-                                        <h3 className="text-3xl font-black mb-4">{field.title}</h3>
-                                        <div className="mt-8 flex items-center text-sm font-black opacity-0 group-hover:opacity-100 transition-all text-white">點擊查看詳情 <Icon name="arrow-right" className="ml-2 text-white" /></div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {expanded && (
-                        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-stone-900/85 backdrop-blur-md" onClick={() => setExpanded(null)}>
-                            <div className="relative w-full max-w-4xl bg-white rounded-[3rem] overflow-hidden shadow-2xl flex flex-col md:flex-row" onClick={e => e.stopPropagation()}>
-                                <button className="absolute top-8 right-8 z-10 w-12 h-12 bg-stone-100 hover:bg-stone-200 rounded-full flex items-center justify-center transition-colors text-stone-800" onClick={() => setExpanded(null)}><Icon name="x" /></button>
-                                <div className="md:w-1/2 h-80 md:h-[600px]"><img src={expanded.image} className="w-full h-full object-cover" /></div>
-                                <div className="md:w-1/2 p-10 md:p-16 flex flex-col justify-center text-left text-stone-900">
-                                    <span className="text-orange-500 font-black tracking-widest text-xs uppercase mb-4">{expanded.name}</span>
-                                    <h3 className="text-4xl font-black text-stone-900 mb-8">{expanded.title}</h3>
-                                    <p className="text-stone-600 leading-relaxed text-lg mb-10 font-medium">{expanded.desc}</p>
-                                    <button onClick={() => window.open(REGISTRATION_LINK, '_blank')} className="bg-stone-900 text-white py-5 px-10 rounded-2xl font-black w-fit hover:bg-stone-800 transition-all">立即參與行動</button>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-                </section>
-            );
-        };
-
-        // 5. 導師顧問團
         const Mentors = () => {
             const [selected, setSelected] = useState(null);
+            
             const mentors = [
                 { 
                     name: "李世暉 教授", 
                     title: "政治大學日本研究學位學程", 
                     img: "https://i.ibb.co/LdL0f44G/image.jpg", 
                     quote: "連結台日視角，在土地的實踐中看見國際格局。", 
-                    fullBio: "李世暉老師為日本京都大學經濟學博士，現任政治大學日本研究學位學程教授，並擔任當代日本研究學會理事長。其研究專長涵蓋日本經濟安全保障、產業政策以及內容產業（Cool Japan）。在地之校中，李老師將協助學員建立跨國視角，將地方食農議題對接至國際市場與區域經濟趨勢。" 
+                    fullBio: "李世暉老師為日本京都大學經濟學博士，現任政治大學日本研究學位學程教授。其研究專長涵蓋日本經濟安全保障與地方創生政策。李教授將協助學員建立跨國視角，將宜蘭的在地食農議題對接至國際趨勢，分析日本「內容產業」模式如何應用於台灣農村轉型。" 
                 },
-                { name: "周鴻騰 教授", title: "佛光大學永續發展辦公室", img: "https://i.ibb.co/w5f2P9W/image.png", quote: "永續不只是數字，是土地的呼吸。", fullBio: "周鴻騰老師現任佛光大學永續發展辦公室執行長與副教授，長期深耕永續教育、食農教育、環境與健康、減碳防災及 SDGs／ESG 教學實踐。" },
-                { name: "劉晉宏 老師", title: "長榮大學 / 草根意識工作室", img: "https://i.ibb.co/ccJn87gD/image.png", quote: "重新建立人與食物的親密感。", fullBio: "劉晉宏老師長期投入食農教育、都市農耕、農村再生與地方創生實踐，為草根意識工作室核心推動者。" },
-                { name: "徐柏峯 老師", title: "敏捷專家學會", img: "https://i.ibb.co/67N6PBpS/image.png", quote: "走入現場才能洞察真實痛點，持續迭代才能淬鍊最優解法。", fullBio: "徐柏峯老師長期專注於敏捷方法、Scrum 流程與創新專案引導。協助團隊在複雜問題中快速迭代。" },
-                { name: "魏名聰 老師", title: "中華少年成長基金會 / 青年永續峰會", img: "https://i.ibb.co/LdhvxJT9/image.png", quote: "好的專案需要紮實的落地結構。", fullBio: "魏名聰老師長期活躍於社會創新與青年永續議題，具備深厚的專案管理與 Pay for Success (PFS) 績效支付合約設計經驗。" },
-                { name: "李樂翌 老師", title: "五感覺察・內在權威", img: "https://i.ibb.co/1fDmdBZG/image.png", quote: "聽見土地，先聽見自己。", fullBio: "李樂翌老師長期投入五感覺察、身體感知、自我探索與內在權威的陪伴式引導。在地之校中，李老師將帶領學員重新連結五感與土地。" }
+                { 
+                    name: "李樂翌 老師", 
+                    title: "五感覺察・內在權威引導師", 
+                    img: "https://i.ibb.co/1fDmdBZG/image.png", 
+                    quote: "聽見土地，先聽見自己。", 
+                    fullBio: "李樂翌老師擅長帶領學習者回到身體經驗。在地之校中，感官的「打開」是洞察問題的起點。她將協助學員在資訊超載的時代重新找回專注力與直覺，讓設計思考不僅是大腦的運算，更是透過五感與靈魂的參與，產出具溫度的解決方案。" 
+                },
+                { 
+                    name: "周鴻騰 教授", 
+                    title: "佛光大學永續發展辦公室", 
+                    img: "https://i.ibb.co/w5f2P9W/image.png", 
+                    quote: "永續不只是數字，是土地的呼吸。", 
+                    fullBio: "周鴻騰老師深耕永續教育與 ESG 教研實踐。他將協助學員建立社會責任視角，指導大家如何設計具備環境回饋能力的專案結構，縮短創意與產業界、投資方之間的距離，讓食農共創具備長期永續的發展潛力。" 
+                },
+                { 
+                    name: "徐柏峯 老師", 
+                    title: "敏捷專家學會 理事長", 
+                    img: "https://i.ibb.co/DHkvCg94/Gemini-Generated-Image-xlougxlougxlougx.png", 
+                    quote: "持續迭代，才是抵達真實解方的捷徑。", 
+                    fullBio: "徐柏峯老師是敏捷開發與 Scrum 流程專家。在五天的行動中，他將引導學員如何高效溝通，協助跨國團隊解決協作衝突。他將教導大家如何「快跑前進」，在短時間內測試並修正專案雛形，確保產出都是經過實戰驗證的精華。" 
+                },
+                { 
+                    name: "陳幸延 老師", 
+                    title: "深溝科技農夫 / 數位生態農業", 
+                    img: "https://i.ibb.co/Wv6tMfpr/image.png", 
+                    quote: "科技與生態不應對立，而是互補的語言。", 
+                    fullBio: "陳幸延老師是具備數位能力的現代農夫，致力於科技在生態農業上的應用。他將帶領學員示範如何運用低成本數位工具與 AI，在尊重土地的前提下提升農村管理效率，展現科技與自然共生的最佳實踐。" 
+                },
+                { 
+                    name: "蔡妤珮 執行長", 
+                    title: "國立成功大學智慧工場", 
+                    img: "https://i.ibb.co/V0qSwNRC/image.png", 
+                    quote: "好的設計應當是為了社會更好的運作。", 
+                    fullBio: "蔡妤珮老師現任成功大學智慧工場執行長，是台灣設計思考與社會創新推手。她擅長將龐雜的社會議題模組化，透過創意引導，協助學員將田野洞察轉化為社會設計，產出真正回應城鄉共創與食農永續的亮點方案。" 
+                },
+                { 
+                    name: "劉晉宏 老師", 
+                    title: "草根意識工作室 發起人", 
+                    img: "https://i.ibb.co/ccJn87gD/image.png", 
+                    quote: "重新建立人與食物的親密感。", 
+                    fullBio: "劉晉宏老師強調「走出校園，直面土地」。他具備深厚的草根行動力，將帶領學員走進南澳與員山場域，學習高品質的職人訪談，從田間的一草一木與農夫的一言一行中，辨識出那些被忽視的真實挑戰。" 
+                },
+                { 
+                    name: "賴青松 老師", 
+                    title: "穀東俱樂部 發起人", 
+                    img: "https://i.ibb.co/gZHScFN1/image.png", 
+                    quote: "土地不需要我們拯救，但我們需要被土地療癒。", 
+                    fullBio: "賴青松老師是台灣「新農業運動」精神指標，推動穀東俱樂部重新定義生產者與消費者關係。他將與學員分享深厚的土地實踐經驗，引導大家學習謙卑地面對大自然，理解食農不只是產值，更是人與環境的生命聯繫。" 
+                },
+                { 
+                    name: "魏名聰 老師", 
+                    title: "青年永續峰會 指導老師", 
+                    img: "https://i.ibb.co/LdhvxJT9/image.png", 
+                    quote: "好的專案需要紮實的落地結構。", 
+                    fullBio: "魏名聰老師專長於社會創新專案管理。他將引導學員從「創意」昇華為「具備可執行結構的提案」，教導如何定義關鍵指標，讓專案具備參與國際發表的高度，並為食農共創建立實質的落地基礎。" 
+                }
             ];
+
             return (
                 <section id="導師團" className="py-32 bg-stone-50 text-center text-stone-900">
-                    <div className="max-w-7xl mx-auto px-6">
-                        <div className="inline-block bg-stone-200 text-stone-600 px-6 py-2 rounded-full font-black tracking-widest mb-6 border border-stone-300 uppercase text-xs text-center">
-                            EXPERT ADVISORS
-                        </div>
-                        <h2 className="text-3xl md:text-5xl font-black text-stone-800 mb-24 tracking-tight text-center md:leading-tight">跨域領航：與專家同行</h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center max-w-6xl mx-auto text-stone-900">
+                    <div className="max-w-7xl mx-auto px-6 text-center text-stone-900">
+                        <div className="inline-block bg-stone-200 text-stone-600 px-6 py-2 rounded-full font-black tracking-widest mb-6 border border-stone-300 uppercase text-xs text-center text-stone-600">EXPERT ADVISORS</div>
+                        <h2 className="text-3xl md:text-5xl font-black text-stone-800 mb-24 tracking-tight text-center text-stone-800">跨域領航：與專家同行</h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto text-center">
                             {mentors.map((m, i) => (
-                                <div key={i} onClick={() => setSelected(m)} className="bg-white p-8 rounded-3xl shadow-sm border border-stone-100 hover:shadow-2xl transition-all cursor-pointer group flex flex-col items-center">
-                                    <div className="w-36 h-36 mb-8 rounded-full overflow-hidden ring-8 ring-stone-50 shadow-inner transition-transform group-hover:scale-105 bg-stone-200 flex items-center justify-center relative">
-                                        <img 
-                                            src={m.img} 
-                                            className="w-full h-full object-cover relative z-10" 
-                                            alt={m.name}
-                                            onError={(e) => {
-                                                e.target.style.display = 'none';
-                                            }}
-                                        />
+                                <div key={i} onClick={() => setSelected(m)} className="bg-white p-8 rounded-3xl border border-stone-100 shadow-sm hover:shadow-2xl transition-all cursor-pointer group flex flex-col items-center text-center">
+                                    <div className="w-36 h-36 mb-8 rounded-full overflow-hidden ring-8 ring-stone-50 group-hover:scale-105 transition-transform bg-stone-200 text-center">
+                                        <img src={m.img} className="w-full h-full object-cover" alt={m.name} onError={(e) => { e.target.src='https://via.placeholder.com/400?text=Advisor'; }} />
                                     </div>
-                                    <h4 className="text-2xl font-black text-stone-800 mb-2 tracking-tight">{m.name}</h4>
-                                    <p className="text-orange-600 text-xs font-black tracking-widest mb-6 uppercase h-10 flex items-center justify-center leading-tight px-4">{m.title}</p>
-                                    <div className="mt-auto flex items-center justify-center gap-1.5 text-xs font-black text-stone-400 group-hover:text-orange-500"><Icon name="info" size={14} /> 完整簡介</div>
+                                    <h4 className="text-2xl font-black mb-2 text-center text-stone-900">{m.name}</h4>
+                                    <p className="text-orange-600 text-xs font-black tracking-widest mb-6 uppercase h-10 flex items-center justify-center text-center px-4 leading-tight">{m.title}</p>
+                                    <div className="mt-auto flex items-center justify-center gap-1.5 text-xs font-black text-stone-400 group-hover:text-orange-500 transition-colors text-center text-stone-400"><Icon name="info" size={14} /> 完整簡介與觀點</div>
                                 </div>
                             ))}
                         </div>
                     </div>
-
                     {selected && (
-                        <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-md" onClick={() => setSelected(null)}>
-                            <div className="relative w-full max-w-2xl bg-white rounded-[3rem] p-10 md:p-16 shadow-2xl text-left text-stone-900" onClick={e => e.stopPropagation()}>
-                                <button className="absolute top-8 right-8 w-12 h-12 bg-stone-100 hover:bg-stone-200 rounded-full flex items-center justify-center transition-colors text-stone-800" onClick={() => setSelected(null)}><Icon name="x" /></button>
+                        <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-stone-900/80 backdrop-blur-md" onClick={() => setSelected(null)}>
+                            <div className="relative w-full max-w-2xl bg-white rounded-[3rem] p-10 md:p-16 shadow-2xl text-left text-stone-900 text-left" onClick={e => e.stopPropagation()}>
+                                <button className="absolute top-8 right-8 w-12 h-12 bg-stone-100 rounded-full flex items-center justify-center transition-colors text-stone-800" onClick={() => setSelected(null)}><Icon name="x" /></button>
                                 <div className="flex flex-col md:flex-row items-center gap-10 mb-12">
-                                    <div className="w-40 h-40 rounded-full overflow-hidden flex-shrink-0 shadow-xl ring-4 ring-stone-50 bg-stone-100 flex items-center justify-center relative text-stone-900">
-                                        <img src={selected.img} className="w-full h-full object-cover relative z-10" alt={selected.name} onError={(e) => e.target.style.display='none'} />
-                                    </div>
-                                    <div className="text-center md:text-left text-stone-900">
-                                        <span className="text-orange-500 font-black text-xs uppercase mb-2 block tracking-widest">專業導師團隊</span>
-                                        <h3 className="text-4xl font-black text-stone-900 mb-3">{selected.name}</h3>
-                                        <p className="text-stone-500 font-bold text-lg leading-snug">{selected.title}</p>
+                                    <div className="w-40 h-40 rounded-full overflow-hidden shadow-xl ring-4 ring-stone-50"><img src={selected.img} className="w-full h-full object-cover" alt={selected.name} onError={(e) => { e.target.src='https://via.placeholder.com/400?text=Advisor'; }} /></div>
+                                    <div className="text-stone-900">
+                                        <h3 className="text-4xl font-black mb-2">{selected.name}</h3>
+                                        <p className="text-stone-500 font-bold">{selected.title}</p>
                                     </div>
                                 </div>
-                                <p className="text-stone-800 font-black text-2xl italic leading-relaxed border-l-8 border-orange-500 pl-8 py-2 mb-10 text-stone-900">{selected.quote}</p>
-                                <p className="text-stone-600 leading-relaxed text-lg font-medium mb-12">{selected.fullBio}</p>
-                                <button onClick={() => setSelected(null)} className="text-stone-400 hover:text-stone-600 font-black transition-all text-sm underline underline-offset-8 uppercase tracking-widest">返回導師列表</button>
+                                <p className="text-stone-800 font-black text-xl italic border-l-8 border-orange-500 pl-8 mb-10 text-stone-900 text-stone-800">{selected.quote}</p>
+                                <p className="text-stone-600 leading-relaxed font-medium text-stone-600">{selected.fullBio}</p>
+                                <button onClick={() => setSelected(null)} className="text-stone-400 hover:text-stone-600 font-black transition-all text-sm underline underline-offset-8 uppercase tracking-widest text-center mt-8 block w-full text-center">返回導師列表</button>
                             </div>
                         </div>
                     )}
@@ -386,74 +348,41 @@
             );
         };
 
-        // 6. 五日行程
         const Journey = () => {
             const days = [
-                { day: "Day 1", title: "賦能與選題", desc: "台日青年永續論壇，pay for success 與 AI 應用，食農教育圓桌對談，open space 議題認領。", location: "政治大學羅家倫講堂" },
-                { day: "Day 2", title: "土地與覺察", desc: "南澳原生園靜坐，甘蔗採收與手作竹器，部落文化與原民料理，資料收集。", location: "南澳原生園、阿聰自然田" },
-                { day: "Day 3", title: "觀察與辨識", desc: "採蓮與相關農事體驗，倆佰甲水稻友善耕作踏查與稻草編織，職人訪談與痛點探究。", location: "南澳水月農莊" },
-                { day: "Day 4", title: "迭代與共創", desc: "公民生態調查 - 深溝釣魚大賽，AI 協助生成專案落實創意。", location: "員山倆佰甲慢島生活" },
-                { day: "Day 5", title: "傳承與發表", desc: "種樹宣誓與傳承，成果發表線上同步直播，專家評審。專案未來可在國際青年永續峰會發表。", location: "佛光大學" },
+                { day: "Day 1", title: "政大論壇、集合與出發", desc: "【台北集合】台日學員於政治大學共同參與「青年永續論壇」與食農對談。下午團體包車前往宜蘭場域，開啟共創選題。", location: "台北政治大學/宜蘭場域" },
+                { day: "Day 2", title: "土地覺察與感官啟動", desc: "南澳原生園靜坐覺察。實地體驗甘蔗採收與在地文化，與農夫職人第一線交流，收集初步田野資訊。", location: "宜蘭南澳" },
+                { day: "Day 3", title: "實地踏查與痛點鎖定", desc: "深入員山與南澳食農場域。運用 AI 輔助整理踏查資訊，收斂出真正值得挑戰的食農核心議題。", location: "宜蘭員山/南澳" },
+                { day: "Day 4", title: "跨國協作與方案共創", desc: "台日青年跨國共組小組進行方案設計。由 AI 協助生成初步原型，並由專家團隊進行即時指導優化。", location: "宜蘭場域" },
+                { day: "Day 5", title: "成果發表與台北解散", desc: "成果展示與永續提案評選。進行價值傳承儀式後，【全體團體接駁返回台北解散】，結束交流旅程。", location: "宜蘭/台北" },
             ];
             return (
                 <section id="五日行程" className="py-32 bg-white relative">
-                    <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row gap-20">
-                        <div className="lg:w-1/3 text-center md:text-left text-stone-900">
-                            <div className="sticky top-40">
-                                <h2 className="text-4xl md:text-6xl font-black text-stone-800 mb-8 tracking-tight md:leading-tight text-center md:text-left">5 日行程表：<br/>視覺化路徑</h2>
-                                <div className="inline-flex items-center gap-2 bg-stone-100 px-6 py-3 rounded-2xl text-stone-700 font-black mb-8 border border-stone-200 tracking-widest shadow-sm text-center"><Icon name="calendar" className="text-orange-500" /> 06/28 - 07/02</div>
-                                <p className="text-stone-600 text-xl font-medium leading-relaxed text-center md:text-left">一場從內在覺察到外在創新的旅程。我們將地圖轉化為行動。</p>
-                            </div>
+                    <div className="max-w-7xl mx-auto px-6 text-center md:text-left">
+                        <div className="bg-emerald-50 p-10 rounded-[3rem] mb-20 border border-emerald-100 text-stone-900 text-left">
+                             <h3 className="text-2xl font-black text-emerald-900 mb-6 flex items-center gap-4 text-center md:text-left text-emerald-900"><Icon name="info" size={28} className="text-emerald-500" /> 集合接駁與交流說明</h3>
+                             <p className="text-emerald-800/80 leading-relaxed font-medium">
+                                 本活動採「五天四夜團體共進行動」模式：包含台北往返宜蘭包車接駁、場域在地交通。
+                                 <br/><br/>
+                                 活動核心在於<strong>台日青年深度交流</strong>。早稻田大學師生將與台灣學員於特定重要行程共同參與、用餐與創作。在跨國協作的環境中，不僅交換創意，更建立深厚的國際夥伴關係。
+                             </p>
                         </div>
-                        <div className="lg:w-2/3 border-l-4 border-stone-50 pl-10 md:pl-16 py-6 text-left">
-                            {days.map((item, idx) => (
-                                <div key={idx} className="mb-24 relative last:mb-0">
-                                    <div className="absolute -left-[54px] md:-left-[78px] top-0 w-6 h-6 rounded-full bg-orange-500 ring-[12px] ring-orange-500/10 shadow-lg border-4 border-white" />
-                                    <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-8 mb-6 text-left text-stone-900">
-                                        <span className="text-orange-500 font-black text-3xl tracking-tighter">{item.day}</span>
-                                        <h3 className="text-3xl font-black text-stone-900 tracking-tight">{item.title}</h3>
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-20 text-center md:text-left text-stone-900">
+                            <div className="text-stone-900">
+                                <h2 className="text-4xl md:text-6xl font-black text-stone-800 mb-8 tracking-tight text-stone-800">5 日行程</h2>
+                                <div className="inline-flex items-center gap-2 bg-stone-100 px-6 py-3 rounded-2xl text-stone-700 font-black mb-8 border border-stone-200 shadow-sm text-center text-stone-700"><Icon name="calendar" className="text-orange-500" /> 06/28 - 07/02</div>
+                                <p className="text-stone-600 text-xl font-medium leading-relaxed text-center md:text-left text-stone-600">一場從內在覺察到外在創新的旅程。我們將地圖轉化為行動，將行動轉化為永續價值。</p>
+                            </div>
+                            <div className="lg:col-span-2 border-l-4 border-stone-50 pl-10 text-left text-stone-900 text-left text-stone-900">
+                                {days.map((d, i) => (
+                                    <div key={i} className="mb-16 relative text-left">
+                                        <div className="absolute -left-[54px] top-0 w-6 h-6 rounded-full bg-orange-500 border-4 border-white text-left" />
+                                        <h3 className="text-2xl font-black text-stone-900 mb-4 text-left text-stone-900">{d.day} {d.title}</h3>
+                                        <div className="bg-stone-50 p-8 rounded-3xl text-left text-stone-700"><p className="mb-4 font-medium text-left text-stone-700 leading-relaxed text-stone-700">{d.desc}</p><div className="flex items-center text-stone-400 text-xs font-bold uppercase text-left text-stone-400"><Icon name="map-pin" size={14} className="mr-2 text-orange-500" />{d.location}</div></div>
                                     </div>
-                                    <div className="bg-stone-50 p-10 rounded-[2.5rem] border border-stone-100 hover:shadow-sm transition-all text-left">
-                                        <p className="text-stone-700 text-xl mb-8 leading-relaxed font-medium">{item.desc}</p>
-                                        <div className="flex items-center text-stone-400 text-sm font-bold tracking-widest uppercase"><Icon name="map-pin" size={18} className="mr-3 text-orange-500" />{item.location}</div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            );
-        };
-
-        const Conversion = () => {
-            const handleApply = () => window.open(REGISTRATION_LINK, '_blank');
-            return (
-                <section className="py-32 px-6 bg-stone-50 text-center text-white">
-                    <div className="max-w-6xl mx-auto relative overflow-hidden bg-emerald-900 rounded-[4rem] p-12 md:p-24 shadow-2xl text-center">
-                        <h2 className="text-4xl md:text-7xl font-black text-white mb-8 tracking-tight text-center">開啟你的跨國創新之旅</h2>
-                        
-                        <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-12">
-                            <div className="bg-white/10 backdrop-blur-md px-8 py-3 rounded-full text-emerald-200 border border-white/10 flex items-center gap-3 font-black tracking-widest shadow-lg text-center">
-                                <Icon name="calendar" className="text-orange-400" size={20} /> 2026/06/28 - 07/02
-                            </div>
-                            <div className="bg-blue-600/30 backdrop-blur-md px-8 py-3 rounded-full text-blue-200 border border-blue-400/20 flex items-center gap-3 font-black tracking-widest shadow-lg text-center">
-                                <Icon name="users" className="text-blue-300" size={20} /> 招生對象：18-24 歲（大學生優先）
+                                ))}
                             </div>
                         </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
-                            <div className="bg-white rounded-[2.5rem] p-12 flex flex-col items-center shadow-2xl transform hover:-translate-y-2 transition-all">
-                                <span className="text-stone-400 text-xs font-black tracking-[0.3em] uppercase mb-4 text-center">每人定價</span>
-                                <div className="text-5xl font-black text-stone-900 mb-6 tracking-tighter text-center">$10,000 <span className="text-xl font-bold opacity-30 text-center text-stone-500">TWD</span></div>
-                            </div>
-                            <div className="bg-orange-500 rounded-[2.5rem] p-12 flex flex-col items-center shadow-2xl shadow-orange-500/30 border-8 border-orange-400 relative transform hover:-translate-y-2 transition-all">
-                                <div className="absolute -top-6 bg-white text-orange-600 px-6 py-2 rounded-full text-sm font-black shadow-xl tracking-widest uppercase text-center">限時優惠</div>
-                                <span className="text-white/80 text-xs font-black tracking-[0.3em] uppercase mb-4 text-center">兩人同行 / 早鳥優惠</span>
-                                <div className="text-5xl font-black text-white mb-6 tracking-tighter text-center">$8,500 <span className="text-xl font-bold opacity-50 text-center">TWD</span></div>
-                                <p className="text-orange-100 text-xs font-black tracking-widest uppercase text-center">★ 早鳥截止：4 月底 ★</p>
-                            </div>
-                        </div>
-                        <button onClick={handleApply} className="bg-white text-emerald-900 px-16 py-7 rounded-full text-2xl font-black transition-all shadow-2xl hover:bg-orange-500 hover:text-white transform hover:scale-105 active:scale-95 mx-auto block text-center">立即申請加入</button>
                     </div>
                 </section>
             );
@@ -462,32 +391,36 @@
         const Footer = () => {
             return (
                 <footer className="py-24 bg-stone-900 text-stone-400 px-6 border-t border-stone-800 text-left">
-                    <div className="max-w-7xl mx-auto">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-16 text-center md:text-left text-stone-300">
-                            <div className="col-span-1 md:col-span-2">
-                                <p className="text-base font-medium text-stone-500 max-w-md leading-relaxed uppercase tracking-widest mb-4">TARA SCHOOL 2026</p>
-                                <p className="text-base font-medium text-stone-500 max-w-md leading-relaxed mx-auto md:mx-0 text-center md:text-left">致力於連結土地、科技與設計思維。我們相信真實的改變始於現場，透過跨國協作產出具備企業價值的解決方案。</p>
-                                <div className="mt-10 flex gap-6 justify-center md:justify-start"><a href="https://www.facebook.com/1221feda?locale=zh_TW" target="_blank" className="w-12 h-12 bg-stone-800 rounded-2xl flex items-center justify-center hover:bg-blue-600 transition-all shadow-inner"><Icon name="facebook" size={24} className="text-white" /></a></div>
-                            </div>
-                            <div>
-                                <h5 className="text-white font-black mb-8 flex items-center gap-3 justify-center md:justify-start uppercase text-sm tracking-widest text-center md:text-left"><span className="w-6 h-px bg-orange-500"></span> 主辦單位</h5>
-                                <div className="text-center md:text-left">
-                                    <a href="https://www.facebook.com/1221feda?locale=zh_TW" target="_blank" className="text-base font-bold text-stone-300 hover:text-orange-400 transition-colors">1221未來教育發展協會</a>
+                    <div className="max-w-7xl mx-auto text-left text-stone-300">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-16 text-stone-300 text-left text-stone-300 text-stone-300">
+                            <div className="col-span-1 md:col-span-2 text-left">
+                                <div className="flex items-center gap-3 mb-6">
+                                     <img src={LOGO_URL} alt="TERRA Icon" className="h-10 w-auto" />
+                                     {/* 修正 TARA 為 TERRA */}
+                                     <p className="text-base font-medium text-white leading-relaxed uppercase tracking-widest text-white">TERRA SCHOOL 2026</p>
+                                </div>
+                                <p className="text-sm font-medium text-stone-500 mb-10 text-left leading-relaxed text-stone-500">致力於連結土地、科技與設計思維。我們相信真實的改變始於現場，透過跨國協作產出具備社會影響力的解決方案。</p>
+                                <div className="flex gap-4">
+                                    <a href={FB_TERRA_LINK} target="_blank" className="bg-orange-500 text-white px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest flex items-center gap-2 hover:bg-orange-600 transition-all shadow-lg text-white"><Icon name="message-circle" size={18} /> 問題諮詢請洽官方 Facebook</a>
                                 </div>
                             </div>
-                            <div>
-                                <h5 className="text-white font-black mb-8 flex items-center gap-3 justify-center md:justify-start uppercase text-sm tracking-widest text-center md:text-left"><span className="w-6 h-px bg-orange-500"></span> 協辦單位</h5>
-                                <ul className="text-base space-y-4 font-bold text-stone-500 text-center md:text-left">
-                                    <li className="hover:text-stone-300 transition-colors">佛光大學永續發展辦公室</li>
-                                    <li className="hover:text-stone-300 transition-colors">政治大學日本研究學位學程</li>
-                                    <li className="hover:text-stone-300 transition-colors">清華大學立德領導人才培育計畫</li>
-                                    <li className="hover:text-stone-300 transition-colors">敏捷專家學會</li>
+                            <div className="text-left text-stone-300">
+                                <h5 className="text-white font-black mb-8 uppercase text-xs tracking-widest text-left text-white">主辦單位</h5>
+                                <a href="https://www.facebook.com/1221feda" target="_blank" className="text-sm font-bold hover:text-orange-400 text-left block text-stone-300">1221未來教育發展協會</a>
+                            </div>
+                            <div className="text-left text-stone-300 text-stone-300">
+                                <h5 className="text-white font-black mb-8 uppercase text-xs tracking-widest text-left text-white">合作夥伴</h5>
+                                <ul className="text-sm space-y-4 font-bold text-stone-500 text-left text-stone-500">
+                                    <li className="text-left text-stone-500">早稻田大學師生團隊</li>
+                                    <li className="text-left text-stone-500">成功大學智慧工場</li>
+                                    <li className="text-left text-stone-500">穀東俱樂部 / 佛光大學</li>
                                 </ul>
                             </div>
                         </div>
-                        <div className="pt-10 border-t border-stone-800/50 flex flex-col md:flex-row justify-between items-center text-[11px] font-black uppercase tracking-[0.3em] text-center">
-                            <div className="flex gap-12 mb-8 md:mb-0 text-center"><a href="#" className="hover:text-orange-500 transition-colors">常見問題</a><a href="#" className="hover:text-orange-500 transition-colors">聯絡我們</a><a href="#" className="hover:text-orange-500 transition-colors">隱私權政策</a></div>
-                            <div className="italic text-stone-700 font-bold mt-8 md:mt-0 opacity-60 text-center md:text-right text-center">© 2026. 2026/06/28 - 07/02</div>
+                        <div className="pt-10 border-t border-stone-800/50 flex flex-col md:flex-row justify-between items-center text-[10px] font-black uppercase tracking-[0.3em] text-center text-stone-700">
+                            {/* 修正 TARA 為 TERRA */}
+                            <div className="mb-4 md:mb-0 text-center text-stone-700">© 2026. TERRA SCHOOL. 06/28 - 07/02</div>
+                            <div className="flex gap-8 text-center text-stone-600"><a href="#" className="hover:text-orange-500 text-center">常見問題</a><a href={FB_TERRA_LINK} target="_blank" className="hover:text-orange-500 text-center">聯絡我們</a></div>
                         </div>
                     </div>
                 </footer>
@@ -495,20 +428,11 @@
         };
 
         const App = () => {
-            useEffect(() => {
-                if (window.lucide) window.lucide.createIcons();
-            }, []);
+            useEffect(() => { if (window.lucide) window.lucide.createIcons(); }, []);
             return (
-                <div className="min-h-screen selection:bg-orange-200 selection:text-orange-900 bg-stone-50">
+                <div className="min-h-screen selection:bg-orange-200 selection:text-orange-900 bg-stone-50 text-stone-900 antialiased">
                     <Navbar />
-                    <main>
-                        <Hero />
-                        <IntegratedSection />
-                        <FieldLabs />
-                        <Mentors />
-                        <Journey />
-                        <Conversion />
-                    </main>
+                    <main><Hero /><IntegratedSection /><Mentors /><Journey /></main>
                     <Footer />
                 </div>
             );
