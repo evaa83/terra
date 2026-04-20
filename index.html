@@ -9,39 +9,9 @@
     <link rel="icon" href="https://i.ibb.co/ZzxC3BVn/icon.png" type="image/png">
     
     <!-- SEO & AI Optimization -->
-    <meta name="description" content="2026 泰拉學校「地之校」與早稻田大學合作，針對18-24歲青年，結合設計思考、AI賦能與宜蘭實地踏查，推動城鄉共創與永續食農解決方案。">
-    <meta name="keywords" content="泰拉學校, 地之校, 早稻田大學, 食農教育, 永續發展, AI農業, 設計思考, 社會設計, 國際交流, 宜蘭踏查, 蔡妤珮, 賴青松, 陳幸延">
-    <meta property="og:title" content="2026 泰拉學校：地之校｜台日跨國共創行動">
-    <meta property="og:description" content="走入宜蘭田野，與日本頂尖大學師生共同運用 AI 與設計思維，解決真實農村痛點。">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://i.ibb.co/ZzxC3BVn/icon.png">
-    <link rel="canonical" href="https://terra-school-2026.github.io/">
+    <meta name="description" content="2026 泰拉學校「地之校」與日本早稻田大學合作，針對18-24歲青年，結合設計思考、AI賦能與國際交流，產出專案可接軌聯合國青年永續峰會發表。">
+    <meta name="keywords" content="泰拉學校, 地之校, 早稻田大學, 永續食農, 聯合國青年永續峰會, AI農業, Vibe Coding, 國際交流, 世界公民, 宜蘭踏查, 蔡妤珮, 賴青松, 陳幸延">
     
-    <!-- 結構化資料 -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Event",
-      "name": "2026 泰拉學校：地之校 - 城鄉共創與永續食農",
-      "startDate": "2026-06-28",
-      "endDate": "2026-07-02",
-      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "location": {
-        "@type": "Place",
-        "name": "宜蘭（台北集合出發）",
-        "address": "宜蘭縣南澳鄉、員山鄉"
-      },
-      "image": "https://i.ibb.co/ZzxC3BVn/icon.png",
-      "description": "與日本早稻田大學師生共同針對食農永續議題進行跨國設計共創。",
-      "organizer": {
-        "@type": "Organization",
-        "name": "1221未來教育發展協會",
-        "url": "https://www.facebook.com/profile.php?id=61572347380594"
-      }
-    }
-    </script>
-
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- React & Babel -->
@@ -52,8 +22,8 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
-        body { font-family: 'Noto Sans TC', sans-serif; scroll-behavior: smooth; }
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Noto+Sans+JP:wght@300;400;700;900&display=swap');
+        body { font-family: 'Noto Sans TC', 'Noto Sans JP', sans-serif; scroll-behavior: smooth; }
         .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
         .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -67,11 +37,190 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useState, useEffect, useRef } = React;
+        const { useState, useEffect, useRef, createContext, useContext } = React;
+
+        // --- 全站翻譯字典 ---
+        const translations = {
+            zh: {
+                brand: "泰拉學校",
+                nav: { evolution: "生命進化", action: "行動整合", sensory: "感官啟動", mentors: "導師團", journey: "五日行程", apply: "立即申請" },
+                hero: { 
+                    mainTitle: "2026 泰拉學校：地之校",
+                    subtitle: "早稻田大學 × 台日跨國設計行動", 
+                    desc: "這不只是一場營隊，是一場生命的洗禮。在宜蘭田野中與日本師生共創，透過 AI 與心靈覺察，找到你與土地、與未來的真實連結。", 
+                    ask: "疑問諮詢：前往臉書私訊詢問" 
+                },
+                why: {
+                    title: "這場行動，將定義你的未來。",
+                    subtitle: "給 18-24 歲青年：這裡沒有標準答案，只有你與世界的直面交鋒。",
+                    items: [
+                        { title: "連結土地", desc: "腳踩泥土感應台灣母親，貢獻創意回饋這塊土地" },
+                        { title: "啟動事業", desc: "啟動價值食農共創專案，直接轉化未來事業起點" },
+                        { title: "科技賦能", desc: "整合應用頂尖人工智慧，掌握最新專案生成模式" },
+                        { title: "國際接軌", desc: "建立跨國深度學伴情誼，接軌聯合國級發表舞台" },
+                        { title: "自我尋真", desc: "啟動內在感官深度對話，遇見真實自我內在力量" }
+                    ]
+                },
+                action: {
+                    title: "活動主軸",
+                    theme: "城鄉共創 永續食農",
+                    desc: "城鄉共創 永續食農：分組合作，實地踏查，採訪對象，應用 AI 收集資料，產出解決方案。",
+                    diamondTitle: "設計思考雙鑽石模式",
+                    diamondStages: [
+                        { title: "探索", eng: "Discover", desc: "走進土地，放下既有框架。透過實地觀察、職人訪談與五感覺察，收集第一線的田野資訊，打開對食農議題的廣度認知。" },
+                        { title: "定義", eng: "Define", desc: "運用 AI 整理訪談內容與田野紀錄。在龐雜的資訊中過濾干擾，鎖定真正值得解決的食農核心痛點，將挑戰精準陳述。" },
+                        { title: "發展", eng: "Develop", desc: "台日學員跨國共創。運用 AI 快速生成多樣化的創意 Prototype。在反覆討論與快速迭代中，尋找解決方案的最佳路徑。" },
+                        { title: "交付", eng: "Deliver", desc: "將創意轉化為可落地的食農永續提案。向專家進行成果展示，驗證提案的社會價值與可行性，邁向真實的影響力。" }
+                    ],
+                    steps: [
+                        { title: "分組合作", desc: "跨國混編組隊，建立夥伴關係" },
+                        { title: "實地踏查", desc: "深入宜蘭場域，採集真實資訊" },
+                        { title: "採訪對象", desc: "與農夫對話，辨識永續痛點" },
+                        { title: "應用 AI", desc: "透過 AI 整理數據並產出創意" },
+                        { title: "解決方案", desc: "產出具備社會影響力的提案" }
+                    ]
+                },
+                mentors: {
+                    title: "跨域領航：與專家同行",
+                    info: "完整簡介與觀點",
+                    back: "返回導師列表"
+                },
+                journey: {
+                    title: "5 日行程",
+                    logisticsTitle: "集合接駁與交流說明",
+                    logisticsDesc: "包含台北往返宜蘭包車接駁。日本早稻田大學師生將與台灣學員於重要行程、用餐與創作時間共同參與，建立深厚國際友誼。",
+                    days: [
+                        { day: "Day 1", title: "政大論壇與共創開啟", desc: "【台北集合】於政大共同參與論壇與對談。隨後團體包車前往宜蘭，開啟選題。", location: "台北政大/宜蘭" },
+                        { day: "Day 2", title: "土地覺察與感官啟動", desc: "南澳靜坐。體驗土地觸感，與職人對話，進行心靈與田野的雙重交流。", location: "宜蘭南澳" },
+                        { day: "Day 3", title: "實地踏查與痛點鎖定", desc: "深入農事場域。運用 AI 輔助整理資訊，收斂出真正值得挑戰的食農議題。", location: "員山/南澳" },
+                        { day: "Day 4", title: "跨國協作與方案共創", desc: "台日青年共組小組。運用 AI 生成原型，針對商業價值與社會貢獻進行優化。", location: "宜蘭場域" },
+                        { day: "Day 5", title: "成果發表與台北解散", desc: "成果展示與永續提案評選。進行價值傳承儀式後，【團體接駁返回台北解散】。", location: "宜蘭/台北" }
+                    ]
+                },
+                footer: { desc: "致力於連結土地、科技與設計思維。真實的改變始於現場，透過跨國協作產出具備社會價值的解決方案。", consult: "問題諮詢：官方 Facebook" }
+            },
+            en: {
+                brand: "TERRA SCHOOL",
+                nav: { evolution: "Evolution", action: "Action", sensory: "Sensory", mentors: "Mentors", journey: "Schedule", apply: "Apply Now" },
+                hero: { 
+                    mainTitle: "2026 TERRA SCHOOL: EARTH",
+                    subtitle: "Waseda Univ. × International Design Action", 
+                    desc: "More than a camp, it's a life baptism. Co-create in Yilan fields with Japanese peers. Use AI and awareness to find your true connection with the land.", 
+                    ask: "Inquiry: Message us on FB" 
+                },
+                why: {
+                    title: "This Action Defines Your Future.",
+                    subtitle: "To youths 18-24: No standard answers here, only your direct encounter with the world.",
+                    items: [
+                        { title: "Land Bond", desc: "Feel the soil of motherland, contribute creativity to Taiwan land." },
+                        { title: "New Venture", desc: "Start your career with high-value co-created agri-food projects." },
+                        { title: "AI Masters", desc: "Master top AI tools and the latest generative project workflows." },
+                        { title: "Global Lab", desc: "Build global bonds and join the UN-level sustainability summits." },
+                        { title: "True Inner", desc: "Engage inner senses and meet your authentic self and inner power." }
+                    ]
+                },
+                action: {
+                    title: "Action Focus",
+                    theme: "Urban-Rural Co-creation, Sustainable Agri-food",
+                    desc: "Urban-Rural Co-creation: Team up, field research, stakeholder interviews, AI data analysis, and deliver impactful solutions.",
+                    diamondTitle: "Design Thinking Double Diamond",
+                    diamondStages: [
+                        { title: "Discover", eng: "Diverge", desc: "Step onto the land and drop existing biases. Collect raw field data through observation and deep stakeholder interviews." },
+                        { title: "Define", eng: "Converge", desc: "Use AI to organize field notes. Filter out noise to lock onto the core agrifood pain points worth solving." },
+                        { title: "Develop", eng: "Diverge", desc: "International co-creation with Japanese peers. Generate diverse prototypes using AI tools for rapid iteration." },
+                        { title: "Deliver", eng: "Converge", desc: "Transform ideas into feasible sustainability proposals. Validate social value and pitch to expert advisors." }
+                    ],
+                    steps: [
+                        { title: "Team Up", desc: "Cross-border teams building partnerships" },
+                        { title: "Field Study", desc: "Visit Yilan sites for real-world data" },
+                        { title: "Interviews", desc: "Talk with farmers to find pain points" },
+                        { title: "AI Power", desc: "Process data and generate ideas with AI" },
+                        { title: "Solutions", desc: "Deliver proposals with social impact" }
+                    ]
+                },
+                mentors: {
+                    title: "Expert Advisors",
+                    info: "Bio & Insights",
+                    back: "Back to List"
+                },
+                journey: {
+                    title: "5-Day Schedule",
+                    logisticsTitle: "Transport & Exchange",
+                    logisticsDesc: "Shuttle between Taipei and Yilan included. Waseda University students will join for key activities, meals, and co-creation to build international friendships.",
+                    days: [
+                        { day: "Day 1", title: "NCCU Forum & Kick-off", desc: "Group assembly at NCCU for forum and dialogue. Then travel to Yilan by chartered bus.", location: "NCCU / Yilan" },
+                        { day: "Day 2", title: "Sensory & Nature", desc: "Meditation in Nan-ao. Experience the land, talk with artisans, and connect with nature.", location: "Nan-ao, Yilan" },
+                        { day: "Day 3", title: "Field Study & Pain Points", desc: "Visit farms. Use AI to process information and define the core agrifood challenges.", location: "Yilan Sites" },
+                        { day: "Day 4", title: "Global Co-creation", desc: "Collaborate in international teams. Use AI to generate prototypes and refine values.", location: "Yilan Sites" },
+                        { day: "Day 5", title: "Demo Day & Departure", desc: "Sustainability proposal evaluation. Closing ceremony and group return to Taipei.", location: "Yilan / Taipei" }
+                    ]
+                },
+                footer: { desc: "Connecting land, tech, and design. Real change starts on-site, producing social value through cross-border collaboration.", consult: "Inquiry: Official Facebook" }
+            },
+            ja: {
+                brand: "テラ・スクール",
+                nav: { evolution: "進化", action: "共創", sensory: "五感", mentors: "講師陣", journey: "日程", apply: "申し込む" },
+                hero: { 
+                    mainTitle: "2026 テラ・スクール：地の校",
+                    subtitle: "早稲田大学 × 日台合同デザインアクション", 
+                    desc: "これは単なるキャンプではなく、生命の洗禮です。宜蘭の田野で日本人の仲間と共創し、AIと気づきを通じて大地との真の繋がりを見つけましょう。", 
+                    ask: "お問い合わせ：Facebook DM" 
+                },
+                why: {
+                    title: "この行動が、あなたの未来を定義する。",
+                    subtitle: "18-24歳の若者へ：ここに正解はありません。あるのは世界との直接対決だけです。",
+                    items: [
+                        { title: "大地を繋ぐ", desc: "母なる台灣を知り、大地の鼓動を感じ、直接貢献を果たす" },
+                        { title: "起業の起点", desc: "食農プロジェクトを始動し、未来のビジネスの起点とする" },
+                        { title: "最先端AI", desc: "最先端の人工知能を統合し、最新の生成モードを習得する" },
+                        { title: "世界へ羽撃く", desc: "深い友情を築き、国連級のサステナビリティ舞台へ繋がる" },
+                        { title: "自己との邂逅", desc: "五感の対話を起動し、真実の自分と内なる力に出会う旅へ" }
+                    ]
+                },
+                action: {
+                    title: "活動主軸",
+                    theme: "地域共創、持続可能な食農",
+                    desc: "地域共創・持続可能な食農：チームを組み、フィールドワーク、インタビューを行い、AIを活用して解決策を提案します。",
+                    diamondTitle: "デザイン思考 ダブルダイヤモンド",
+                    diamondStages: [
+                        { title: "探索", eng: "Discover", desc: "現場に入り、先入観を捨てる。観察やインタビュー、五感を通じてフィールドの生の情報を収集します。" },
+                        { title: "定義", eng: "Define", desc: "AIを使って情報を整理。膨大なデータからノイズを取り除き、解決すべき食農の核心的な課題を特定します。" },
+                        { title: "発展", eng: "Develop", desc: "日台合同チームで共創。AIツールを活用して多様なプロトタイプを生成し、最適な解決策を模索します。" },
+                        { title: "交付", eng: "Deliver", desc: "アイデアを実行可能な提案へ。社会的価値を検証し、専門家やメンターに向けて成果を発表します。" }
+                    ],
+                    steps: [
+                        { title: "チーム編成", desc: "日台共同チームでパートナーシップを構築" },
+                        { title: "フィールドワーク", desc: "宜蘭の現場でリアルな情報を収集" },
+                        { title: "インタビュー", desc: "農家との対話で課題を特定" },
+                        { title: "AI 活用", desc: "AIでデータを整理しアイデアを創出" },
+                        { title: "解決策提案", desc: "社会的影響力のある提案を作成" }
+                    ]
+                },
+                mentors: {
+                    title: "専門家講師陣",
+                    info: "プロフィールと視點",
+                    back: "講師一覧へ戻る"
+                },
+                journey: {
+                    title: "5日間の行程",
+                    logisticsTitle: "集合送迎と交流について",
+                    logisticsDesc: "台北・宜蘭間の貸切バス送迎を含みます。早稲田大学の学生と共に活動、食事、制作を行い、深い国際的な絆を築きます。",
+                    days: [
+                        { day: "Day 1", title: "政治大学フォーラムと開始", desc: "政治大学でフォーラムに参加。その後、バスで宜蘭へ移動しプロジェクトを開始。", location: "台北/宜蘭" },
+                        { day: "Day 2", title: "大地的気づきと五感起動", desc: "南澳で瞑想。大地の感触を体験し、職人と対話し、自分自身を見つめ直す。", location: "宜蘭南澳" },
+                        { day: "Day 3", title: "フィールド調査と課題特定", desc: "農場調査。AIを活用して情報を整理し、取り組むべき課題を絞り込む。", location: "宜蘭現場" },
+                        { day: "Day 4", title: "日台共同共創アクション", desc: "日台合同チームで制作。AIでプロトタイプを生成し、価値を磨き上げる。", location: "宜蘭現場" },
+                        { day: "Day 5", title: "成果発表と台北解散", desc: "持続可能な提案のプレゼン。閉会式後、台北へ戻り解散となります。", location: "宜蘭/台北" }
+                    ]
+                },
+                footer: { desc: "土地、技術、デザインを繋ぐ。真の変化は現場から始まり、越境共創を通じて社会的価値を生み出します。", consult: "お問い合わせ：公式 Facebook" }
+            }
+        };
+
+        const LangContext = createContext();
 
         const REGISTRATION_LINK = "https://forms.gle/s9JqTXUA6ykS9yEL9";
         const FB_TERRA_LINK = "https://www.facebook.com/profile.php?id=61572347380594&locale=zh_TW";
-        const LOGO_URL = "https://i.ibb.co/ZzxC3BVn/icon.png";
 
         const Icon = ({ name, size = 24, className = "" }) => {
             const iconRef = useRef(null);
@@ -80,8 +229,9 @@
         };
 
         const Navbar = () => {
+            const { lang, setLang, t } = useContext(LangContext);
             const [isScrolled, setIsScrolled] = useState(false);
-            const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
             useEffect(() => {
                 const handleScroll = () => setIsScrolled(window.scrollY > 50);
                 window.addEventListener('scroll', handleScroll);
@@ -92,72 +242,72 @@
                 <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-2' : 'bg-transparent py-4'}`}>
                     <div className="max-w-7xl mx-auto px-6 flex justify-between items-center text-left">
                         <div className="flex items-center gap-3">
-                             <img src={LOGO_URL} alt="TERRA Icon" className="h-8 md:h-10 w-auto" />
-                             <span className={`font-black tracking-tighter text-xl hidden sm:block ${isScrolled ? 'text-stone-900' : 'text-white'}`}>泰拉學校</span>
+                             <img src="https://i.ibb.co/ZzxC3BVn/icon.png" alt="TERRA Icon" className="h-8 md:h-10 w-auto" />
+                             <span className={`font-black tracking-tighter text-xl hidden sm:block ${isScrolled ? 'text-stone-900' : 'text-white'}`}>{t.brand}</span>
                         </div> 
-                        <div className="hidden md:flex space-x-8 items-center text-left">
-                            {['活動主軸', '感官啟動', '導師團', '五日行程'].map((item) => (
-                                <a key={item} href={`#${item === '活動主軸' ? '行動整合' : item}`} className={`text-sm font-bold tracking-widest hover:text-orange-500 transition-colors ${isScrolled ? 'text-stone-700' : 'text-white'}`}>
-                                    {item}
+                        
+                        <div className="hidden md:flex space-x-6 items-center">
+                            {['evolution', 'action', 'sensory', 'mentors', 'journey'].map((key) => (
+                                <a key={key} href={`#${key === 'evolution' ? '活動誘因' : key === 'mentors' ? '導師團' : key === 'journey' ? '五日行程' : '行動整合'}`} 
+                                   className={`text-xs font-bold tracking-widest hover:text-orange-500 transition-colors ${isScrolled ? 'text-stone-700' : 'text-white'}`}>
+                                    {t.nav[key]}
                                 </a>
                             ))}
-                            <button onClick={() => window.open(REGISTRATION_LINK, '_blank')} className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2.5 rounded-full text-sm font-black shadow-lg">立即申請</button>
+                            
+                            <div className="flex bg-black/10 backdrop-blur-md rounded-full p-1 border border-white/10 ml-4">
+                                {['zh', 'en', 'ja'].map(l => (
+                                    <button 
+                                        key={l} 
+                                        onClick={() => setLang(l)} 
+                                        className={`px-3 py-1 rounded-full text-[10px] font-black transition-all ${lang === l ? 'bg-orange-500 text-white' : 'text-white/60 hover:text-white'}`}
+                                    >
+                                        {l === 'zh' ? 'CH' : l.toUpperCase()}
+                                    </button>
+                                ))}
+                            </div>
+
+                            <button onClick={() => window.open(REGISTRATION_LINK, '_blank')} className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-full text-xs font-black shadow-lg">
+                                {t.nav.apply}
+                            </button>
                         </div>
-                        <button className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-                            <Icon name={mobileMenuOpen ? "x" : "menu"} className={isScrolled ? 'text-gray-800' : 'text-white'} />
-                        </button>
                     </div>
-                    {mobileMenuOpen && (
-                        <div className="absolute top-full left-0 w-full bg-white shadow-xl py-8 flex flex-col items-center space-y-8 md:hidden text-stone-900">
-                            {['活動主軸', '感官啟動', '行動場域', '導師團', '五日行程'].map((item) => (
-                                <a key={item} href={`#${item === '活動主軸' ? '行動整合' : item}`} className="text-stone-800 text-xl font-bold tracking-widest" onClick={() => setMobileMenuOpen(false)}>{item}</a>
-                            ))}
-                        </div>
-                    )}
                 </nav>
             );
         };
 
         const Hero = () => {
+            const { t } = useContext(LangContext);
             return (
-                <section className="relative h-screen w-full flex items-center justify-center overflow-hidden text-center">
+                <section className="relative h-screen w-full flex items-center justify-center overflow-hidden text-center text-white">
                     <div className="absolute inset-0 z-0 bg-stone-900">
-                        <video 
-                            autoPlay 
-                            muted 
-                            loop 
-                            playsInline 
-                            className="w-full h-full object-cover brightness-[0.4]" 
-                            poster="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1920"
-                        >
+                        <video autoPlay muted loop playsInline className="w-full h-full object-cover brightness-[0.4]" poster="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1920">
                             <source src="https://assets.mixkit.co/videos/preview/mixkit-morning-mist-over-a-green-valley-44440-large.mp4" type="video/mp4" />
                         </video>
                     </div>
-                    <div className="relative z-10 max-w-6xl mx-auto px-6 text-center text-white fade-in-up">
+                    <div className="relative z-10 max-w-6xl mx-auto px-6 fade-in-up">
                         <div className="flex flex-col md:flex-row items-center justify-center gap-3 mb-8">
-                            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-5 py-2 rounded-full text-sm font-bold border border-white/20 tracking-widest">
+                            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-5 py-2 rounded-full text-sm font-bold border border-white/20 tracking-widest text-white">
                                 <Icon name="calendar" size={16} /> 2026/06/28 - 07/02
                             </div>
-                            <div className="inline-flex items-center gap-2 bg-blue-500/40 backdrop-blur-md px-5 py-2 rounded-full text-sm font-bold border border-blue-400/30 tracking-widest">
-                                <Icon name="users" size={16} /> 18-24 歲（大學生優先）
+                            <div className="inline-flex items-center gap-2 bg-blue-500/40 backdrop-blur-md px-5 py-2 rounded-full text-sm font-bold border border-blue-400/30 tracking-widest text-blue-50">
+                                <Icon name="users" size={16} /> 18-24 歲 / 學生優先
                             </div>
                         </div>
-                        <h1 className="flex flex-col gap-4 mb-10 tracking-tight text-center">
-                            <span className="text-4xl md:text-7xl font-black block">2026 泰拉學校：地之校</span>
-                            <span className="text-xl md:text-4xl font-bold text-orange-400 opacity-90 tracking-wide block">
-                                早稻田大學 × 台日跨國設計行動
+                        <h1 className="flex flex-col gap-4 mb-10 tracking-tight">
+                            <span className="text-4xl md:text-7xl font-black block">{t.hero.mainTitle}</span>
+                            <span className="text-xl md:text-4xl font-bold text-orange-400 opacity-90 tracking-wide block text-center">
+                                {t.hero.subtitle}
                             </span>
                         </h1>
                         <p className="text-lg md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto font-medium leading-relaxed">
-                            台日青年共創永續食農。台北集合出發，於政治大學參與論壇後前往宜蘭田野。
-                            <br className="hidden md:block" />與早稻田大學師生共同行動，運用 AI 賦能與設計思考，為土地產出真實價值。
+                            {t.hero.desc}
                         </p>
                         <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-                            <button onClick={() => window.open(REGISTRATION_LINK, '_blank')} className="w-full md:w-auto bg-orange-500 hover:bg-orange-600 text-white px-12 py-5 rounded-full text-xl font-black shadow-xl shadow-orange-500/40 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                                立即申請加入 <Icon name="chevron-right" size={24} />
+                            <button onClick={() => window.open(REGISTRATION_LINK, '_blank')} className="w-full md:w-auto bg-orange-500 hover:bg-orange-600 text-white px-12 py-5 rounded-full text-xl font-black shadow-xl shadow-orange-500/40 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 text-center">
+                                {t.nav.apply} <Icon name="chevron-right" size={24} />
                             </button>
-                            <a href={FB_TERRA_LINK} target="_blank" className="bg-white/10 hover:bg-white/20 backdrop-blur-sm px-8 py-4 rounded-full border border-white/20 text-sm font-black text-white hover:text-orange-400 transition-all flex items-center gap-2">
-                                <Icon name="message-circle" size={18} /> 有疑問嗎？臉書私訊詢問
+                            <a href={FB_TERRA_LINK} target="_blank" className="bg-white/10 hover:bg-white/20 backdrop-blur-sm px-8 py-4 rounded-full border border-white/20 text-sm font-black text-white transition-all flex items-center gap-2">
+                                <Icon name="message-circle" size={18} /> {t.hero.ask}
                             </a>
                         </div>
                     </div>
@@ -165,72 +315,77 @@
             );
         };
 
-        const IntegratedSection = () => {
-            const steps = [
-                { title: "分組合作", desc: "跨國混編組隊，建立夥伴關係", icon: "users-2" },
-                { title: "實地踏查", desc: "深入宜蘭場域，採集真實資訊", icon: "map" },
-                { title: "採訪對象", desc: "與農夫對話，辨識永續痛點", icon: "mic" },
-                { title: "應用 AI", desc: "透過 AI 整理田野數據並產出創意", icon: "brain-circuit" },
-                { title: "解決方案", desc: "產出具備社會影響力的共創提案", icon: "check-circle" }
-            ];
-
-            const diamondStages = [
-                { 
-                    title: "探索 (Discover)", 
-                    eng: "Diverge", 
-                    desc: "走進土地，放下既有框架。透過實地觀察、職人訪談與五感覺察，收集第一線的田野資訊，打開對食農議題的廣度認知。", 
-                    actions: ["實地觀察", "職人對話", "五感覺察"] 
-                },
-                { 
-                    title: "定義 (Define)", 
-                    eng: "Converge", 
-                    desc: "運用 AI 整理訪談內容與田野紀錄。在龐雜的資訊中過濾干擾，鎖定真正值得解決的食農核心痛點，將挑戰精準陳述。", 
-                    actions: ["AI 資訊整理", "痛點辨識", "需求定義"] 
-                },
-                { 
-                    title: "發展 (Develop)", 
-                    eng: "Diverge", 
-                    desc: "台日學生跨國共創。運用 AI 快速生成多樣化的創意 Prototype。在反覆討論與快速迭代中，尋找解決方案的最佳路徑。", 
-                    actions: ["原型製作", "跨國協作", "AI 輔助創意"] 
-                },
-                { 
-                    title: "交付 (Deliver)", 
-                    eng: "Converge", 
-                    desc: "將創意轉化為可落地的食農永續提案。向專家與導師進行成果展示，驗證提案的社會價值與可行性，邁向真實的影響力。", 
-                    actions: ["成果展示", "價值驗證", "行動承諾"] 
-                }
-            ];
+        const WhyTerra = () => {
+            const { t } = useContext(LangContext);
+            const iconColors = ["bg-emerald-100 text-emerald-600", "bg-orange-100 text-orange-600", "bg-cyan-100 text-cyan-600", "bg-blue-100 text-blue-600", "bg-purple-100 text-purple-600"];
+            const icons = ["heart", "rocket", "zap", "globe", "sparkles"];
 
             return (
-                <section id="行動整合" className="py-24 bg-white relative overflow-hidden">
-                    <div className="max-w-7xl mx-auto px-6 mb-32 text-center text-stone-900">
-                        <div className="inline-block bg-green-50 text-green-800 px-6 py-2 rounded-full font-black tracking-widest mb-10 border border-green-100 uppercase text-sm text-center">ACTIVITY FOCUS</div>
-                        <h2 className="text-4xl md:text-6xl font-black text-stone-900 mb-6 tracking-tight text-center text-stone-900">活動主軸：<span className="text-green-700">城鄉共創．永續食農</span></h2>
-                        <p className="max-w-4xl mx-auto mb-16 text-xl md:text-2xl text-stone-600 leading-relaxed font-medium">
-                            針對主軸分組合作，實地踏查，採訪對象，應用 AI 收集資料，產出解決方案。這是一場回歸土地、運用科技、實踐永續的深度行動。
+                <section id="活動誘因" className="py-32 bg-stone-50 text-center text-stone-900">
+                    <div className="max-w-7xl mx-auto px-6 text-center">
+                        <div className="mb-24 text-center">
+                            <h2 className="text-3xl md:text-6xl font-black mb-8 tracking-tighter">{t.why.title}</h2>
+                            <p className="text-stone-500 text-xl font-medium max-w-2xl mx-auto leading-relaxed">{t.why.subtitle}</p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                            {t.why.items.map((item, i) => (
+                                <div key={i} className={`bg-white p-12 rounded-[4rem] shadow-sm border border-stone-100 hover:shadow-2xl transition-all duration-500 group ${i >= 3 ? 'lg:col-span-1.5' : ''}`}>
+                                    <div className={`w-20 h-20 ${iconColors[i]} rounded-3xl flex items-center justify-center mb-10 group-hover:scale-110 transition-transform mx-auto md:mx-0 shadow-inner`}>
+                                        <Icon name={icons[i]} size={40} />
+                                    </div>
+                                    <h3 className="text-4xl md:text-5xl font-black text-orange-600 mb-8 text-center md:text-left tracking-tighter uppercase leading-none">
+                                        {item.title}
+                                    </h3>
+                                    <p className="text-stone-800 text-xl font-bold leading-relaxed tracking-wide text-center md:text-left">
+                                        {item.desc}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const IntegratedSection = () => {
+            const { t } = useContext(LangContext);
+
+            return (
+                <section id="行動整合" className="py-24 bg-white relative overflow-hidden text-center text-stone-900">
+                    <div className="max-w-7xl mx-auto px-6 mb-32 text-center">
+                        <div className="inline-block bg-green-50 text-green-800 px-6 py-2 rounded-full font-black tracking-widest mb-10 border border-green-100 uppercase text-sm">ACTIVITY FOCUS</div>
+                        {/* 修正後的活動主軸標題結構 */}
+                        <h2 className="text-4xl md:text-6xl font-black mb-6 flex flex-col items-center">
+                            <span>{t.action.title}</span>
+                            <span className="text-orange-600 mt-4 font-black">{t.action.theme}</span>
+                        </h2>
+                        <p className="max-w-4xl mx-auto text-xl md:text-2xl text-stone-600 leading-relaxed font-medium mt-10">
+                           {t.action.desc}
                         </p>
-                        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 text-center">
-                            {steps.map((s, i) => (
-                                <div key={i} className="flex flex-col items-center p-6 bg-stone-50 rounded-3xl border border-stone-100 hover:shadow-xl transition-all">
-                                    <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-4"><Icon name={s.icon} size={32} className="text-green-600" /></div>
-                                    <h4 className="font-black text-stone-900 mb-2">{s.title}</h4>
-                                    <p className="text-sm text-stone-500 leading-snug">{s.desc}</p>
+                        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mt-16 text-center">
+                            {t.action.steps.map((s, i) => (
+                                <div key={i} className="flex flex-col items-center group">
+                                    <div className="w-16 h-16 bg-stone-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-green-600 group-hover:text-white transition-all shadow-sm border border-stone-100">
+                                        <Icon name={i === 0 ? "users-2" : i === 1 ? "map" : i === 2 ? "mic" : i === 3 ? "brain-circuit" : "check-circle"} size={32} />
+                                    </div>
+                                    <h4 className="font-black text-stone-900 mb-1">{s.title}</h4>
+                                    <p className="text-xs text-stone-400 font-medium px-2">{s.desc}</p>
                                 </div>
                             ))}
                         </div>
                     </div>
 
-                    <div className="bg-stone-900 text-white py-32 -mx-6 px-6 relative text-center">
-                        <div className="absolute inset-0 opacity-10 bg-grain"></div>
-                        <div className="max-w-7xl mx-auto relative z-10 text-center">
-                            <h2 className="text-3xl md:text-5xl font-black mb-16 tracking-tight text-center text-white">行動框架：雙鑽石模型細讀</h2>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 text-center">
-                                {diamondStages.map((stage, idx) => (
-                                    <div key={idx} className="relative p-10 bg-white/5 rounded-3xl border border-white/10 text-left text-white">
-                                        <div className="absolute -top-6 -left-6 w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center font-black text-xl shadow-lg">0{idx + 1}</div>
+                    <div className="bg-stone-900 text-white py-32 -mx-6 px-6 relative text-center text-center text-center">
+                        <div className="absolute inset-0 opacity-10 bg-grain text-center"></div>
+                        <div className="max-w-7xl mx-auto relative z-10 text-center text-white">
+                            <h2 className="text-3xl md:text-5xl font-black mb-16 tracking-tight text-center text-white">{t.action.diamondTitle}</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                                {t.action.diamondStages.map((stage, idx) => (
+                                    <div key={idx} className="relative p-10 bg-white/5 rounded-3xl border border-white/10 text-left">
+                                        <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center font-black text-xl shadow-lg mb-6">0{idx + 1}</div>
                                         <h3 className="text-2xl font-black mb-2 text-orange-400">{stage.title}</h3>
-                                        <p className="text-stone-400 text-sm leading-relaxed mb-6">{stage.desc}</p>
-                                        <div className="flex flex-wrap gap-2 text-stone-300">{stage.actions.map(a => <span key={a} className="text-[10px] px-2 py-1 bg-white/10 rounded-full">{a}</span>)}</div>
+                                        <span className="text-xs font-bold text-white/40 block mb-6 tracking-[0.2em] uppercase">{stage.eng}</span>
+                                        <p className="text-stone-300 text-sm leading-relaxed">{stage.desc}</p>
                                     </div>
                                 ))}
                             </div>
@@ -241,88 +396,81 @@
         };
 
         const Mentors = () => {
+            const { lang, t } = useContext(LangContext);
             const [selected, setSelected] = useState(null);
             
             const mentors = [
                 { 
-                    name: "李世暉 教授", 
-                    title: "政治大學日本研究學位學程", 
-                    img: "https://i.ibb.co/LdL0f44G/image.jpg", 
-                    quote: "連結台日視角，在土地的實踐中看見國際格局。", 
-                    fullBio: "李世暉老師為日本京都大學經濟學博士，現任政治大學日本研究學位學程教授。其研究專長涵蓋日本經濟安全保障與地方創生政策。李教授將協助學員建立跨國視角，將宜蘭的在地食農議題對接至國際趨勢，分析日本「內容產業」模式如何應用於台灣農村轉型。" 
+                    zh: { name: "李世暉 教授", title: "政治大學日本研究學位學程", quote: "連結台日視角，在土地的實踐中看見國際格局。", bio: "李世暉老師為日本京都大學經濟學博士，現任政治大學日本研究學位學程教授。其研究專長涵蓋日本經濟安全保障與地方創生政策。李教授將協助學員建立跨國視角，分析日本模式如何應用於台灣農村轉型。" },
+                    en: { name: "Li, Shi-Hui", title: "Professor, National Chengchi University", quote: "Connecting Taiwan-Japan perspectives to see international patterns in land practice.", bio: "Dr. Li Shi-Hui is a Ph.D. in Economics from Kyoto University and a Professor at NCCU. His research focuses on Japanese economic security and rural revitalization. He helps students connect local agri-food issues with international economic trends." },
+                    ja: { name: "李世暉 教授", title: "国立政治大学日本研究学位プログラム", quote: "日台の視点を結びつけ、大地の実践から国際的な構図を見出す。", bio: "京都大学経済学博士。宜蘭の食農課題を国際市場や地域経済のトレンドに結びつける視点を提供します。" },
+                    img: "https://i.ibb.co/LdL0f44G/image.jpg"
                 },
                 { 
-                    name: "李樂翌 老師", 
-                    title: "五感覺察・內在權威引導師", 
-                    img: "https://i.ibb.co/1fDmdBZG/image.png", 
-                    quote: "聽見土地，先聽見自己。", 
-                    fullBio: "李樂翌老師擅長帶領學習者回到身體經驗。在地之校中，感官的「打開」是洞察問題的起點。她將協助學員在資訊超載的時代重新找回專注力與直覺，讓設計思考不僅是大腦的運算，更是透過五感與靈魂的參與，產出具溫度的解決方案。" 
+                    zh: { name: "李樂翌 老師", title: "五感覺察・內在權威引導師", quote: "聽見土地，先聽見自己。", bio: "李樂翌老師擅長帶領學習者回到身體經驗與深度的感官覺察。引導大家透過與大自然的連結進行自我對話，產出具備溫度的解決方案。" },
+                    en: { name: "Li, Le-Yi", title: "Inner Senses & Authority Guide", quote: "To hear the land, first hear yourself.", bio: "Le-Yi specializes in sensory awareness and inner authority. In Terra School, she helps students reconnect with their intuition through nature." },
+                    ja: { name: "李樂翌 先生", title: "五感と内なる権威のガイド", quote: "大地を聴くために、まず自分自身を聴く。", bio: "身体経験と五感を通じた気づきの導き手。大自然との繋がりを通じて自己対話を行い、直感を取り戻す手助けをします。" },
+                    img: "https://i.ibb.co/1fDmdBZG/image.png"
                 },
                 { 
-                    name: "周鴻騰 教授", 
-                    title: "佛光大學永續發展辦公室", 
-                    img: "https://i.ibb.co/w5f2P9W/image.png", 
-                    quote: "永續不只是數字，是土地的呼吸。", 
-                    fullBio: "周鴻騰老師深耕永續教育與 ESG 教研實踐。他將協助學員建立社會責任視角，指導大家如何設計具備環境回饋能力的專案結構，縮短創意與產業界、投資方之間的距離，讓食農共創具備長期永續的發展潛力。" 
+                    zh: { name: "周鴻騰 教授", title: "佛光大學永續發展辦公室", quote: "永續不只是數字，是土地的呼吸。", bio: "周鴻騰老師深耕永續教育與 ESG 教研。他將協助學員建立社會責任視角，指導大家如何設計具備環境回饋能力的專案結構。" },
+                    en: { name: "Chou, Hung-Teng", title: "Office of Sustainable Development, FGU", quote: "Sustainability isn't just numbers; it's the breath of the land.", bio: "Dr. Chou specializes in environmental education and ESG practice. He assists students in creating project structures with environmental feedback loops." },
+                    ja: { name: "周鴻騰 教授", title: "佛光大学持続可能発展オフィス", quote: "サステナビリティは単なる数字ではなく、大地の呼吸です。", bio: "持続可能な教育とESG研究に従事。環境への還元を考慮したプロジェクト設計を指導します。" },
+                    img: "https://i.ibb.co/w5f2P9W/image.png"
                 },
                 { 
-                    name: "徐柏峯 老師", 
-                    title: "敏捷專家學會 理事長", 
-                    img: "https://i.ibb.co/DHkvCg94/Gemini-Generated-Image-xlougxlougxlougx.png", 
-                    quote: "持續迭代，才是抵達真實解方的捷徑。", 
-                    fullBio: "徐柏峯老師是敏捷開發與 Scrum 流程專家。在五天的行動中，他將引導學員如何高效溝通，協助跨國團隊解決協作衝突。他將教導大家如何「快跑前進」，在短時間內測試並修正專案雛形，確保產出都是經過實戰驗證的精華。" 
+                    zh: { name: "徐柏峯 老師", title: "敏捷專家學會 理事長", quote: "持續迭代，才是抵達真實解方的捷徑。", bio: "徐柏峯老師是敏捷開發與 Scrum 流程專家。他將教導大家如何透過快速測試修正專案，確保產出都是經過實戰驗證的精華。" },
+                    en: { name: "Hsu, Bo-Feng", title: "Chairman, Agile Experts Association", quote: "Continuous iteration is the shortcut to a real solution.", bio: "Bo-Feng is an expert in Agile and Scrum. He teaches how to 'fail fast and learn faster' to ensure prototypes are validated through practice." },
+                    ja: { name: "徐柏峯 先生", title: "アジャイル専門家協会 理事長", quote: "継続的な改善こそが、真の解決策への近道です。", bio: "アジャイル開發とスクラムの専門家。素早い試作と修正のサイクルを指導し、実戦に裏打ちされた成果物へと導きます。" },
+                    img: "https://i.ibb.co/DHkvCg94/Gemini-Generated-Image-xlougxlougxlougx.png"
                 },
                 { 
-                    name: "陳幸延 老師", 
-                    title: "深溝科技農夫 / 數位生態農業", 
-                    img: "https://i.ibb.co/Wv6tMfpr/image.png", 
-                    quote: "科技與生態不應對立，而是互補的語言。", 
-                    fullBio: "陳幸延老師是具備數位能力的現代農夫，致力於科技在生態農業上的應用。他將帶領學員示範如何運用低成本數位工具與 AI，在尊重土地的前提下提升農村管理效率，展現科技與自然共生的最佳實踐。" 
+                    zh: { name: "陳幸延 老師", title: "深溝科技農夫 / 數位生態農業", quote: "科技與生態不應對立，而是互補的語言。", bio: "陳幸延老師是具備數位能力的現代農夫。在地之校中，他將示範如何運用低成本數位工具提升農村管理效率。" },
+                    en: { name: "Sing-Yan Chen", title: "Ag-Tech Farmer, Shen-Gou", quote: "Tech and ecology aren't opposites, but complementary languages.", bio: "Sing-Yan is a modern farmer with strong digital skills. He applies sensors and AI to ecological farming." },
+                    ja: { name: "陳幸延 先生", title: "深溝テック農家・デジタル生態農業", quote: "テクノロジーと生態系は対立するものではなく、補完し合う言語です。", bio: "高いデジタルスキルを持つ現代の農家。技術と土地が共生する最良の実踐を学員に示します。" },
+                    img: "https://i.ibb.co/Wv6tMfpr/image.png"
                 },
                 { 
-                    name: "蔡妤珮 執行長", 
-                    title: "國立成功大學智慧工場", 
-                    img: "https://i.ibb.co/V0qSwNRC/image.png", 
-                    quote: "好的設計應當是為了社會更好的運作。", 
-                    fullBio: "蔡妤珮老師現任成功大學智慧工場執行長，是台灣設計思考與社會創新推手。她擅長將龐雜的社會議題模組化，透過創意引導，協助學員將田野洞察轉化為社會設計，產出真正回應城鄉共創與食農永續的亮點方案。" 
+                    zh: { name: "蔡妤珮 執行長", title: "國立成功大學智慧工場", quote: "好的設計應當是為了社會更好的運作。", bio: "蔡妤珮老師現任成功大學智慧工場執行長。她擅長透過創意引導，協助學員將田野觀察轉化為可落地的社會設計方案。" },
+                    en: { name: "Yu-Pei Tsai", title: "CEO, NCKU Wisdom Lab", quote: "Good design is for the better functioning of society.", bio: "Yu-Pei is a major driver of social innovation. She excels at turning field insights into feasible social design solutions." },
+                    ja: { name: "蔡妤珮 先生", title: "国立成功大学智恵工場 執行長", quote: "優れたデザインは、社会をより良く動かすためのものであるべきです。", bio: "フィールドでの複雑な洞察を、実行可能なソーシャルデザイン案へと昇華させる指導に長けています。" },
+                    img: "https://i.ibb.co/V0qSwNRC/image.png"
                 },
                 { 
-                    name: "劉晉宏 老師", 
-                    title: "草根意識工作室 發起人", 
-                    img: "https://i.ibb.co/ccJn87gD/image.png", 
-                    quote: "重新建立人與食物的親密感。", 
-                    fullBio: "劉晉宏老師強調「走出校園，直面土地」。他具備深厚的草根行動力，將帶領學員走進南澳與員山場域，學習高品質的職人訪談，從田間的一草一木與農夫的一言一行中，辨識出那些被忽視的真實挑戰。" 
+                    zh: { name: "劉晉宏 老師", title: "草根意識工作室 發起人", quote: "重新建立人與食物的親密感。", bio: "劉晉宏老師強調「走出校園，直面土地」。他具備深厚的草根行動力，將帶領學員走進場域學習高品質的職人訪談。" },
+                    en: { name: "Liu, Chin-Hung", title: "Founder, Grassroots Awareness Studio", quote: "Re-establishing the intimacy between people and food.", bio: "Chin-Hung emphasizes taking education out of the classroom. He leads students into field settings to learn stakeholder interviewing." },
+                    ja: { name: "劉晉宏 先生", title: "草根意識スタジオ 発起人", quote: "人間と食べ物の間の親密さを再構築しましょう。", bio: "「キャンパスを飛び出し、大地と向き合う」ことを強調。現場での質の高いインタビューを通じて課題を特定します。" },
+                    img: "https://i.ibb.co/ccJn87gD/image.png"
                 },
                 { 
-                    name: "賴青松 老師", 
-                    title: "穀東俱樂部 發起人", 
-                    img: "https://i.ibb.co/gZHScFN1/image.png", 
-                    quote: "土地不需要我們拯救，但我們需要被土地療癒。", 
-                    fullBio: "賴青松老師是台灣「新農業運動」精神指標，推動穀東俱樂部重新定義生產者與消費者關係。他將與學員分享深厚的土地實踐經驗，引導大家學習謙卑地面對大自然，理解食農不只是產值，更是人與環境的生命聯繫。" 
+                    zh: { name: "賴青松 老師", title: "穀東俱樂部 發起人", quote: "土地不需要我們拯救，但我們需要被土地療癒。", bio: "賴青松老師是台灣「新農業運動」的精神指標。他將與學員分享深厚的土地實踐經驗，引導大家學習謙卑地面對土地。" },
+                    en: { name: "Lai, Ching-Sung", title: "Founder, Grain Club", quote: "The land doesn't need us to save it, but we need to be healed by it.", bio: "Ching-Sung is an icon of Taiwan's 'New Agriculture Movement.' Students learn to face the land with humility." },
+                    ja: { name: "賴青松 先生", title: "穀東倶楽部 発起人", quote: "大地は私たちによる救済を必要としていません。私たちが大地に癒やされる必要があるのです。", bio: "台灣の「新農業運動」の精神的支柱。大地に謙虚に向き合う姿勢を学びます。" },
+                    img: "https://i.ibb.co/gZHScFN1/image.png"
                 },
                 { 
-                    name: "魏名聰 老師", 
-                    title: "青年永續峰會 指導老師", 
-                    img: "https://i.ibb.co/LdhvxJT9/image.png", 
-                    quote: "好的專案需要紮實的落地結構。", 
-                    fullBio: "魏名聰老師專長於社會創新專案管理。他將引導學員從「創意」昇華為「具備可執行結構的提案」，教導如何定義關鍵指標，讓專案具備參與國際發表的高度，並為食農共創建立實質的落地基礎。" 
+                    zh: { name: "魏名聰 老師", title: "青年永續峰會 指導老師", quote: "好的專案需要紮實的落地結構。", bio: "魏名聰老師專長於社會創新專案管理. 他將引導學員從「好的創意」昇華為「具備商業價值的提案」。" },
+                    en: { name: "Wei, Ming-Tsung", title: "Advisor, Youth Sustainability Summit", quote: "A good project needs a solid structure for implementation.", bio: "Ming-Tsung specializes in social innovation project management. He guides students in turning ideas into business-ready proposals." },
+                    ja: { name: "魏名聰 先生", title: "青年サステナビリティサミット 指導教師", quote: "良いプロジェクトには、しっかりとした実行構造が必要です。", bio: "ソーシャルイノベーションの専門家。アイデアを「ビジネス価値のある提案」へと昇華させます。" },
+                    img: "https://i.ibb.co/LdhvxJT9/image.png"
                 }
             ];
 
+            const currentData = (m) => m[lang] || m.zh;
+
             return (
-                <section id="導師團" className="py-32 bg-stone-50 text-center text-stone-900">
+                <section id="導師團" className="py-32 bg-stone-50 text-center text-stone-900 text-center">
                     <div className="max-w-7xl mx-auto px-6 text-center text-stone-900">
-                        <div className="inline-block bg-stone-200 text-stone-600 px-6 py-2 rounded-full font-black tracking-widest mb-6 border border-stone-300 uppercase text-xs text-center text-stone-600">EXPERT ADVISORS</div>
-                        <h2 className="text-3xl md:text-5xl font-black text-stone-800 mb-24 tracking-tight text-center text-stone-800">跨域領航：與專家同行</h2>
+                        <h2 className="text-3xl md:text-5xl font-black mb-24 tracking-tight">{t.mentors.title}</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto text-center">
                             {mentors.map((m, i) => (
-                                <div key={i} onClick={() => setSelected(m)} className="bg-white p-8 rounded-3xl border border-stone-100 shadow-sm hover:shadow-2xl transition-all cursor-pointer group flex flex-col items-center text-center">
-                                    <div className="w-36 h-36 mb-8 rounded-full overflow-hidden ring-8 ring-stone-50 group-hover:scale-105 transition-transform bg-stone-200 text-center">
-                                        <img src={m.img} className="w-full h-full object-cover" alt={m.name} onError={(e) => { e.target.src='https://via.placeholder.com/400?text=Advisor'; }} />
+                                <div key={i} onClick={() => setSelected(m)} className="bg-white p-8 rounded-3xl border border-stone-100 shadow-sm hover:shadow-2xl transition-all cursor-pointer group flex flex-col items-center">
+                                    <div className="w-36 h-36 mb-8 rounded-full overflow-hidden ring-8 ring-stone-50 group-hover:scale-105 transition-transform bg-stone-200">
+                                        <img src={m.img} className="w-full h-full object-cover" alt={currentData(m).name} />
                                     </div>
-                                    <h4 className="text-2xl font-black mb-2 text-center text-stone-900">{m.name}</h4>
-                                    <p className="text-orange-600 text-xs font-black tracking-widest mb-6 uppercase h-10 flex items-center justify-center text-center px-4 leading-tight">{m.title}</p>
-                                    <div className="mt-auto flex items-center justify-center gap-1.5 text-xs font-black text-stone-400 group-hover:text-orange-500 transition-colors text-center text-stone-400"><Icon name="info" size={14} /> 完整簡介與觀點</div>
+                                    <h4 className="text-2xl font-black mb-2">{currentData(m).name}</h4>
+                                    <p className="text-orange-600 text-xs font-black tracking-widest mb-6 uppercase h-10 flex items-center justify-center text-center px-4 leading-tight">{currentData(m).title}</p>
+                                    <div className="mt-auto flex items-center justify-center gap-1.5 text-xs font-black text-stone-400 group-hover:text-orange-500 transition-colors"><Icon name="info" size={14} /> {t.mentors.info}</div>
                                 </div>
                             ))}
                         </div>
@@ -332,15 +480,15 @@
                             <div className="relative w-full max-w-2xl bg-white rounded-[3rem] p-10 md:p-16 shadow-2xl text-left text-stone-900 text-left" onClick={e => e.stopPropagation()}>
                                 <button className="absolute top-8 right-8 w-12 h-12 bg-stone-100 rounded-full flex items-center justify-center transition-colors text-stone-800" onClick={() => setSelected(null)}><Icon name="x" /></button>
                                 <div className="flex flex-col md:flex-row items-center gap-10 mb-12">
-                                    <div className="w-40 h-40 rounded-full overflow-hidden shadow-xl ring-4 ring-stone-50"><img src={selected.img} className="w-full h-full object-cover" alt={selected.name} onError={(e) => { e.target.src='https://via.placeholder.com/400?text=Advisor'; }} /></div>
-                                    <div className="text-stone-900">
-                                        <h3 className="text-4xl font-black mb-2">{selected.name}</h3>
-                                        <p className="text-stone-500 font-bold">{selected.title}</p>
+                                    <div className="w-40 h-40 rounded-full overflow-hidden shadow-xl ring-4 ring-stone-50"><img src={selected.img} className="w-full h-full object-cover" alt={currentData(selected).name}/></div>
+                                    <div className="text-stone-900 text-left">
+                                        <h3 className="text-4xl font-black mb-2">{currentData(selected).name}</h3>
+                                        <p className="text-stone-500 font-bold">{currentData(selected).title}</p>
                                     </div>
                                 </div>
-                                <p className="text-stone-800 font-black text-xl italic border-l-8 border-orange-500 pl-8 mb-10 text-stone-900 text-stone-800">{selected.quote}</p>
-                                <p className="text-stone-600 leading-relaxed font-medium text-stone-600">{selected.fullBio}</p>
-                                <button onClick={() => setSelected(null)} className="text-stone-400 hover:text-stone-600 font-black transition-all text-sm underline underline-offset-8 uppercase tracking-widest text-center mt-8 block w-full text-center">返回導師列表</button>
+                                <p className="text-stone-800 font-black text-xl italic border-l-8 border-orange-500 pl-8 mb-10">{currentData(selected).quote}</p>
+                                <p className="text-stone-600 leading-relaxed font-medium">{currentData(selected).bio}</p>
+                                <button onClick={() => setSelected(null)} className="text-stone-400 hover:text-stone-600 font-black transition-all text-sm underline underline-offset-8 uppercase tracking-widest text-center mt-8 block w-full">{t.mentors.back}</button>
                             </div>
                         </div>
                     )}
@@ -349,36 +497,25 @@
         };
 
         const Journey = () => {
-            const days = [
-                { day: "Day 1", title: "政大論壇、集合與出發", desc: "【台北集合】台日學員於政治大學共同參與「青年永續論壇」與食農對談。下午團體包車前往宜蘭場域，開啟共創選題。", location: "台北政治大學/宜蘭場域" },
-                { day: "Day 2", title: "土地覺察與感官啟動", desc: "南澳原生園靜坐覺察。實地體驗甘蔗採收與在地文化，與農夫職人第一線交流，收集初步田野資訊。", location: "宜蘭南澳" },
-                { day: "Day 3", title: "實地踏查與痛點鎖定", desc: "深入員山與南澳食農場域。運用 AI 輔助整理踏查資訊，收斂出真正值得挑戰的食農核心議題。", location: "宜蘭員山/南澳" },
-                { day: "Day 4", title: "跨國協作與方案共創", desc: "台日青年跨國共組小組進行方案設計。由 AI 協助生成初步原型，並由專家團隊進行即時指導優化。", location: "宜蘭場域" },
-                { day: "Day 5", title: "成果發表與台北解散", desc: "成果展示與永續提案評選。進行價值傳承儀式後，【全體團體接駁返回台北解散】，結束交流旅程。", location: "宜蘭/台北" },
-            ];
+            const { t } = useContext(LangContext);
             return (
                 <section id="五日行程" className="py-32 bg-white relative">
-                    <div className="max-w-7xl mx-auto px-6 text-center md:text-left">
+                    <div className="max-w-7xl mx-auto px-6 text-center md:text-left text-stone-900">
                         <div className="bg-emerald-50 p-10 rounded-[3rem] mb-20 border border-emerald-100 text-stone-900 text-left">
-                             <h3 className="text-2xl font-black text-emerald-900 mb-6 flex items-center gap-4 text-center md:text-left text-emerald-900"><Icon name="info" size={28} className="text-emerald-500" /> 集合接駁與交流說明</h3>
-                             <p className="text-emerald-800/80 leading-relaxed font-medium">
-                                 本活動採「五天四夜團體共進行動」模式：包含台北往返宜蘭包車接駁、場域在地交通。
-                                 <br/><br/>
-                                 活動核心在於<strong>台日青年深度交流</strong>。早稻田大學師生將與台灣學員於特定重要行程共同參與、用餐與創作。在跨國協作的環境中，不僅交換創意，更建立深厚的國際夥伴關係。
-                             </p>
+                             <h3 className="text-2xl font-black text-emerald-900 mb-6 flex items-center gap-4 text-center md:text-left text-emerald-900"><Icon name="info" size={28} className="text-emerald-500" /> {t.journey.logisticsTitle}</h3>
+                             <p className="text-emerald-800/80 leading-relaxed font-medium">{t.journey.logisticsDesc}</p>
                         </div>
-                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-20 text-center md:text-left text-stone-900">
-                            <div className="text-stone-900">
-                                <h2 className="text-4xl md:text-6xl font-black text-stone-800 mb-8 tracking-tight text-stone-800">5 日行程</h2>
-                                <div className="inline-flex items-center gap-2 bg-stone-100 px-6 py-3 rounded-2xl text-stone-700 font-black mb-8 border border-stone-200 shadow-sm text-center text-stone-700"><Icon name="calendar" className="text-orange-500" /> 06/28 - 07/02</div>
-                                <p className="text-stone-600 text-xl font-medium leading-relaxed text-center md:text-left text-stone-600">一場從內在覺察到外在創新的旅程。我們將地圖轉化為行動，將行動轉化為永續價值。</p>
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-20">
+                            <div className="text-stone-900 text-center md:text-left">
+                                <h2 className="text-4xl md:text-6xl font-black mb-8">{t.journey.title}</h2>
+                                <div className="inline-flex items-center gap-2 bg-stone-100 px-6 py-3 rounded-2xl text-stone-700 font-black mb-8 border border-stone-200 shadow-sm"><Icon name="calendar" className="text-orange-500" /> 06/28 - 07/02</div>
                             </div>
-                            <div className="lg:col-span-2 border-l-4 border-stone-50 pl-10 text-left text-stone-900 text-left text-stone-900">
-                                {days.map((d, i) => (
-                                    <div key={i} className="mb-16 relative text-left">
-                                        <div className="absolute -left-[54px] top-0 w-6 h-6 rounded-full bg-orange-500 border-4 border-white text-left" />
-                                        <h3 className="text-2xl font-black text-stone-900 mb-4 text-left text-stone-900">{d.day} {d.title}</h3>
-                                        <div className="bg-stone-50 p-8 rounded-3xl text-left text-stone-700"><p className="mb-4 font-medium text-left text-stone-700 leading-relaxed text-stone-700">{d.desc}</p><div className="flex items-center text-stone-400 text-xs font-bold uppercase text-left text-stone-400"><Icon name="map-pin" size={14} className="mr-2 text-orange-500" />{d.location}</div></div>
+                            <div className="lg:col-span-2 border-l-4 border-stone-50 pl-10 text-left">
+                                {t.journey.days.map((d, i) => (
+                                    <div key={i} className="mb-16 relative text-left text-stone-900">
+                                        <div className="absolute -left-[54px] top-0 w-6 h-6 rounded-full bg-orange-500 border-4 border-white" />
+                                        <h3 className="text-2xl font-black text-stone-900 mb-4 text-left">{d.day} {d.title}</h3>
+                                        <div className="bg-stone-50 p-8 rounded-3xl text-left"><p className="mb-4 font-medium text-stone-700 leading-relaxed text-left">{d.desc}</p><div className="flex items-center text-stone-400 text-xs font-bold uppercase"><Icon name="map-pin" size={14} className="mr-2 text-orange-500" />{d.location}</div></div>
                                     </div>
                                 ))}
                             </div>
@@ -389,38 +526,37 @@
         };
 
         const Footer = () => {
+            const { t } = useContext(LangContext);
             return (
-                <footer className="py-24 bg-stone-900 text-stone-400 px-6 border-t border-stone-800 text-left">
-                    <div className="max-w-7xl mx-auto text-left text-stone-300">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-16 text-stone-300 text-left text-stone-300 text-stone-300">
+                <footer className="py-24 bg-stone-900 text-stone-400 px-6 border-t border-stone-800 text-left text-left text-left">
+                    <div className="max-w-7xl mx-auto text-left text-stone-300 text-stone-300">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-16 text-stone-300 text-left">
                             <div className="col-span-1 md:col-span-2 text-left">
                                 <div className="flex items-center gap-3 mb-6">
-                                     <img src={LOGO_URL} alt="TERRA Icon" className="h-10 w-auto" />
-                                     {/* 修正 TARA 為 TERRA */}
+                                     <img src="https://i.ibb.co/ZzxC3BVn/icon.png" alt="TERRA Icon" className="h-10 w-auto" />
                                      <p className="text-base font-medium text-white leading-relaxed uppercase tracking-widest text-white">TERRA SCHOOL 2026</p>
                                 </div>
-                                <p className="text-sm font-medium text-stone-500 mb-10 text-left leading-relaxed text-stone-500">致力於連結土地、科技與設計思維。我們相信真實的改變始於現場，透過跨國協作產出具備社會影響力的解決方案。</p>
+                                <p className="text-sm font-medium text-stone-500 mb-10 text-left leading-relaxed">{t.footer.desc}</p>
                                 <div className="flex gap-4">
-                                    <a href={FB_TERRA_LINK} target="_blank" className="bg-orange-500 text-white px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest flex items-center gap-2 hover:bg-orange-600 transition-all shadow-lg text-white"><Icon name="message-circle" size={18} /> 問題諮詢請洽官方 Facebook</a>
+                                    <a href={FB_TERRA_LINK} target="_blank" className="bg-orange-500 text-white px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest flex items-center gap-2 hover:bg-orange-600 transition-all shadow-lg text-white"><Icon name="message-circle" size={18} /> {t.footer.consult}</a>
                                 </div>
                             </div>
-                            <div className="text-left text-stone-300">
-                                <h5 className="text-white font-black mb-8 uppercase text-xs tracking-widest text-left text-white">主辦單位</h5>
-                                <a href="https://www.facebook.com/1221feda" target="_blank" className="text-sm font-bold hover:text-orange-400 text-left block text-stone-300">1221未來教育發展協會</a>
+                            <div className="text-left">
+                                <h5 className="text-white font-black mb-8 uppercase text-xs tracking-widest text-stone-300">Organizer</h5>
+                                <a href="https://www.facebook.com/1221feda" target="_blank" className="text-sm font-bold hover:text-orange-400 text-stone-300">1221未來教育發展協會</a>
                             </div>
-                            <div className="text-left text-stone-300 text-stone-300">
-                                <h5 className="text-white font-black mb-8 uppercase text-xs tracking-widest text-left text-white">合作夥伴</h5>
-                                <ul className="text-sm space-y-4 font-bold text-stone-500 text-left text-stone-500">
-                                    <li className="text-left text-stone-500">早稻田大學師生團隊</li>
-                                    <li className="text-left text-stone-500">成功大學智慧工場</li>
-                                    <li className="text-left text-stone-500">穀東俱樂部 / 佛光大學</li>
+                            <div className="text-left text-stone-300">
+                                <h5 className="text-white font-black mb-8 uppercase text-xs tracking-widest text-white text-stone-300 text-stone-300">Partners</h5>
+                                <ul className="text-sm space-y-4 font-bold text-stone-500">
+                                    <li>Waseda University (早稲田大学)</li>
+                                    <li>NCKU Wisdom Lab (成功大學)</li>
+                                    <li>Grain Club / Fo Guang Univ.</li>
                                 </ul>
                             </div>
                         </div>
                         <div className="pt-10 border-t border-stone-800/50 flex flex-col md:flex-row justify-between items-center text-[10px] font-black uppercase tracking-[0.3em] text-center text-stone-700">
-                            {/* 修正 TARA 為 TERRA */}
                             <div className="mb-4 md:mb-0 text-center text-stone-700">© 2026. TERRA SCHOOL. 06/28 - 07/02</div>
-                            <div className="flex gap-8 text-center text-stone-600"><a href="#" className="hover:text-orange-500 text-center">常見問題</a><a href={FB_TERRA_LINK} target="_blank" className="hover:text-orange-500 text-center">聯絡我們</a></div>
+                            <div className="flex gap-8 text-center text-stone-600 text-center text-center"><a href="#" className="hover:text-orange-500 text-center text-stone-600">FAQ</a><a href={FB_TERRA_LINK} target="_blank" className="hover:text-orange-500 text-center text-stone-600">Contact</a></div>
                         </div>
                     </div>
                 </footer>
@@ -428,13 +564,25 @@
         };
 
         const App = () => {
-            useEffect(() => { if (window.lucide) window.lucide.createIcons(); }, []);
+            const [lang, setLang] = useState('zh');
+            const t = translations[lang];
+
+            useEffect(() => { if (window.lucide) window.lucide.createIcons(); }, [lang]);
+
             return (
-                <div className="min-h-screen selection:bg-orange-200 selection:text-orange-900 bg-stone-50 text-stone-900 antialiased">
-                    <Navbar />
-                    <main><Hero /><IntegratedSection /><Mentors /><Journey /></main>
-                    <Footer />
-                </div>
+                <LangContext.Provider value={{ lang, setLang, t }}>
+                    <div className="min-h-screen selection:bg-orange-200 selection:text-orange-900 bg-stone-50 text-stone-900 antialiased text-center md:text-left">
+                        <Navbar />
+                        <main>
+                            <Hero />
+                            <WhyTerra />
+                            <IntegratedSection />
+                            <Mentors />
+                            <Journey />
+                        </main>
+                        <Footer />
+                    </div>
+                </LangContext.Provider>
             );
         };
 
