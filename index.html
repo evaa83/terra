@@ -39,6 +39,10 @@
     <script type="text/babel">
         const { useState, useEffect, useRef, createContext, useContext } = React;
 
+        // --- 全域常數定義 ---
+        const REGISTRATION_LINK = "https://forms.gle/s9JqTXUA6ykS9yEL9";
+        const FB_TERRA_LINK = "https://www.facebook.com/profile.php?id=61572347380594&locale=zh_TW";
+
         // --- 全站翻譯字典 ---
         const translations = {
             zh: {
@@ -56,7 +60,7 @@
                     items: [
                         { title: "守護土地", desc: "腳踩泥土感應台灣母親 貢獻創意回饋這塊土地" },
                         { title: "國際情誼", desc: "結交日本學伴深度交流 建立跨國友誼邁向世界" },
-                        { title: "實戰履歷", desc: "生成專案接軌國際峰會 打造頂尖大學學習歷程" },
+                        { title: "實戰履歷", desc: "生成專案接軌國際峰會 打造最強大學學習歷程" },
                         { title: "科技實踐", desc: "結合頂尖人工智慧技術 掌握設計思考實踐方法" },
                         { title: "內在導航", desc: "學會連結內在權威指引 遇見真實自我內在力量" }
                     ]
@@ -97,7 +101,14 @@
                         { day: "Day 5", title: "成果發表與台北解散", desc: "成果展示與永續提案評選。進行價值傳承儀式後，【團體接駁返回台北解散】。", location: "宜蘭/台北" }
                     ]
                 },
-                footer: { desc: "致力於連結土地、科技與設計思維。真實的改變始於現場，透過跨國協作產出具備社會價值的解決方案。", consult: "問題諮詢：官方 Facebook" }
+                footer: { 
+                    desc: "致力於連結土地、科技與設計思維。真實的改變始於現場，透過跨國協作產出具備社會價值的解決方案。", 
+                    consult: "問題諮詢：官方 Facebook",
+                    organizer: "主辦單位",
+                    coorganizer: "協辦單位",
+                    partner: "合作夥伴",
+                    coorgList: ["政大日本研究院", "政大日本研究學位學程", "佛光大學永續辦公室", "清大立德領導人才培育計劃", "敏捷專家學會"]
+                }
             },
             en: {
                 brand: "TERRA SCHOOL",
@@ -155,7 +166,14 @@
                         { day: "Day 5", title: "Demo Day & Departure", desc: "Sustainability proposal evaluation. Closing ceremony and group return to Taipei.", location: "Yilan / Taipei" }
                     ]
                 },
-                footer: { desc: "Connecting land, tech, and design. Real change starts on-site, producing social value through cross-border collaboration.", consult: "Inquiry: Official Facebook" }
+                footer: { 
+                    desc: "Connecting land, tech, and design. Real change starts on-site, producing social value through cross-border collaboration.", 
+                    consult: "Inquiry: Official Facebook",
+                    organizer: "Organizer",
+                    coorganizer: "Co-organizers",
+                    partner: "Partners",
+                    coorgList: ["Institute of Japanese Studies, NCCU", "MA/PhD Program in Japan Studies, NCCU", "Office of Sustainable Development, FGU", "Leader Leadership Program, NTHU", "Agile Experts Association"]
+                }
             },
             ja: {
                 brand: "テラ・スクール",
@@ -170,7 +188,7 @@
                     title: "この行動が、あなたの未来を定義する。",
                     subtitle: "18-24歳の若者へ：ここに正解はありません。あるのは世界との直接対決だけです。",
                     items: [
-                        { title: "台湾を護る", desc: "宜蘭の田野に踏み込み 大地の課題を自ら解決する" },
+                        { title: "台湾を護る", desc: "宜蘭の田野に踏み込み 大地的課題を自ら解決する" },
                         { title: "国際的な絆", desc: "日本の学伴と深く交流し 世界市民への第一歩を刻む" },
                         { title: "実戦的経歴", desc: "成果を国際サミットに繋げ 最高の学びの履歴を築く" },
                         { title: "最先端AI", desc: "AI技術とデザイン思考を融合し 問題解決を習得する" },
@@ -213,13 +231,18 @@
                         { day: "Day 5", title: "成果発表と台北解散", desc: "持続可能な提案のプレゼン。閉会式後、台北へ戻り解散となります。", location: "宜蘭/台北" }
                     ]
                 },
-                footer: { desc: "土地、技術、デザインを繋ぐ。真の変化は現場から始まり、越境共創を通じて社会的価値を生み出します。", consult: "お問い合わせ：公式 Facebook" }
+                footer: { 
+                    desc: "土地、技術、デザインを繋ぐ。真の変化は現場から始まり、越境共創を通じて社会的価値を生み出します。", 
+                    consult: "お問い合わせ：公式 Facebook",
+                    organizer: "主催",
+                    coorganizer: "共催",
+                    partner: "協力",
+                    coorgList: ["政治大学日本研究院", "政治大学日本研究学位プログラム", "佛光大学持続可能発展オフィス", "清華大学立徳リーダーシップ育成計画", "アジャイル専門家協会"]
+                }
             }
         };
 
         const LangContext = createContext();
-
-        const FB_TERRA_LINK = "https://www.facebook.com/profile.php?id=61572347380594&locale=zh_TW";
 
         const Icon = ({ name, size = 24, className = "" }) => {
             const iconRef = useRef(null);
@@ -239,13 +262,13 @@
 
             return (
                 <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-2' : 'bg-transparent py-4'}`}>
-                    <div className="max-w-7xl mx-auto px-6 flex justify-between items-center text-left text-left">
-                        <div className="flex items-center gap-3 text-left">
+                    <div className="max-w-7xl mx-auto px-6 flex justify-between items-center text-left">
+                        <div className="flex items-center gap-3">
                              <img src="https://i.ibb.co/ZzxC3BVn/icon.png" alt="TERRA Icon" className="h-8 md:h-10 w-auto" />
                              <span className={`font-black tracking-tighter text-xl hidden sm:block ${isScrolled ? 'text-stone-900' : 'text-white'}`}>{t.brand}</span>
                         </div> 
                         
-                        <div className="hidden md:flex space-x-6 items-center text-left">
+                        <div className="hidden md:flex space-x-6 items-center">
                             {['evolution', 'action', 'sensory', 'mentors', 'journey'].map((key) => (
                                 <a key={key} href={`#${key === 'evolution' ? '活動誘因' : key === 'mentors' ? '導師團' : key === 'journey' ? '五日行程' : '行動整合'}`} 
                                    className={`text-xs font-bold tracking-widest hover:text-orange-500 transition-colors ${isScrolled ? 'text-stone-700' : 'text-white'}`}>
@@ -265,7 +288,7 @@
                                 ))}
                             </div>
 
-                            <button onClick={() => window.open("https://forms.gle/s9JqTXUA6ykS9yEL9", '_blank')} className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-full text-xs font-black shadow-lg">
+                            <button onClick={() => window.open(REGISTRATION_LINK, '_blank')} className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-full text-xs font-black shadow-lg">
                                 {t.nav.apply}
                             </button>
                         </div>
@@ -277,14 +300,14 @@
         const Hero = () => {
             const { t } = useContext(LangContext);
             return (
-                <section className="relative h-screen w-full flex items-center justify-center overflow-hidden text-center text-white text-center text-center text-center">
+                <section className="relative h-screen w-full flex items-center justify-center overflow-hidden text-center text-white">
                     <div className="absolute inset-0 z-0 bg-stone-900 text-center">
                         <video autoPlay muted loop playsInline className="w-full h-full object-cover brightness-[0.4]" poster="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1920">
                             <source src="https://assets.mixkit.co/videos/preview/mixkit-morning-mist-over-a-green-valley-44440-large.mp4" type="video/mp4" />
                         </video>
                     </div>
                     <div className="relative z-10 max-w-6xl mx-auto px-6 fade-in-up text-center">
-                        <div className="flex flex-col md:flex-row items-center justify-center gap-3 mb-8 text-center">
+                        <div className="flex flex-col md:flex-row items-center justify-center gap-3 mb-8 text-center text-center">
                             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-5 py-2 rounded-full text-sm font-bold border border-white/20 tracking-widest text-white">
                                 <Icon name="calendar" size={16} /> 2026/06/28 - 07/02
                             </div>
@@ -292,17 +315,17 @@
                                 <Icon name="users" size={16} /> 18-24 歲 / 學生優先
                             </div>
                         </div>
-                        <h1 className="flex flex-col gap-4 mb-10 tracking-tight text-center">
-                            <span className="text-4xl md:text-7xl font-black block text-center">{t.hero.mainTitle}</span>
+                        <h1 className="flex flex-col gap-4 mb-10 tracking-tight">
+                            <span className="text-4xl md:text-7xl font-black block text-center text-center">{t.hero.mainTitle}</span>
                             <span className="text-xl md:text-4xl font-bold text-orange-400 opacity-90 tracking-wide block text-center">
                                 {t.hero.subtitle}
                             </span>
                         </h1>
-                        <p className="text-lg md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto font-medium leading-relaxed text-center text-center">
+                        <p className="text-lg md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto font-medium leading-relaxed text-center">
                             {t.hero.desc}
                         </p>
                         <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-center">
-                            <button onClick={() => window.open("https://forms.gle/s9JqTXUA6ykS9yEL9", '_blank')} className="w-full md:w-auto bg-orange-500 hover:bg-orange-600 text-white px-12 py-5 rounded-full text-xl font-black shadow-xl shadow-orange-500/40 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 text-center text-center">
+                            <button onClick={() => window.open(REGISTRATION_LINK, '_blank')} className="w-full md:w-auto bg-orange-500 hover:bg-orange-600 text-white px-12 py-5 rounded-full text-xl font-black shadow-xl shadow-orange-500/40 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 text-center">
                                 {t.nav.apply} <Icon name="chevron-right" size={24} />
                             </button>
                             <a href={FB_TERRA_LINK} target="_blank" className="bg-white/10 hover:bg-white/20 backdrop-blur-sm px-8 py-4 rounded-full border border-white/20 text-sm font-black text-white transition-all flex items-center gap-2 text-center text-center">
@@ -320,13 +343,13 @@
             const icons = ["heart", "globe", "rocket", "zap", "sparkles"];
 
             return (
-                <section id="活動誘因" className="py-32 bg-stone-50 text-center text-stone-900 text-center text-center">
-                    <div className="max-w-7xl mx-auto px-6 text-center">
+                <section id="活動誘因" className="py-32 bg-stone-50 text-center text-stone-900 text-center">
+                    <div className="max-w-7xl mx-auto px-6 text-center text-center">
                         <div className="mb-24 text-center">
                             <h2 className="text-3xl md:text-6xl font-black mb-8 tracking-tighter text-center">{t.why.title}</h2>
                             <p className="text-stone-500 text-xl font-medium max-w-2xl mx-auto leading-relaxed text-center">{t.why.subtitle}</p>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 text-center">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                             {t.why.items.map((item, i) => (
                                 <div key={i} className={`bg-white p-12 rounded-[4rem] shadow-sm border border-stone-100 hover:shadow-2xl transition-all duration-500 group ${i >= 3 ? 'lg:col-span-1.5' : ''}`}>
                                     <div className={`w-20 h-20 ${iconColors[i]} rounded-3xl flex items-center justify-center mb-10 group-hover:scale-110 transition-transform mx-auto md:mx-0 shadow-inner`}>
@@ -350,8 +373,8 @@
             const { t } = useContext(LangContext);
 
             return (
-                <section id="行動整合" className="py-24 bg-white relative overflow-hidden text-center text-stone-900 text-center text-center">
-                    <div className="max-w-7xl mx-auto px-6 mb-32 text-center text-center text-center">
+                <section id="行動整合" className="py-24 bg-white relative overflow-hidden text-center text-stone-900 text-center text-center text-center">
+                    <div className="max-w-7xl mx-auto px-6 mb-32 text-center text-center">
                         <div className="inline-block bg-green-50 text-green-800 px-6 py-2 rounded-full font-black tracking-widest mb-10 border border-green-100 uppercase text-sm text-center">ACTIVITY FOCUS</div>
                         <h2 className="text-4xl md:text-6xl font-black mb-6 flex flex-col items-center text-center">
                             <span>{t.action.title}</span>
@@ -362,24 +385,24 @@
                         </p>
                         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mt-16 text-center text-center">
                             {t.action.steps.map((s, i) => (
-                                <div key={i} className="flex flex-col items-center group text-center text-center text-center">
-                                    <div className="w-16 h-16 bg-stone-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-green-600 group-hover:text-white transition-all shadow-sm border border-stone-100">
+                                <div key={i} className="flex flex-col items-center group text-center text-center">
+                                    <div className="w-16 h-16 bg-stone-50 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-green-600 group-hover:text-white transition-all shadow-sm border border-stone-100 text-center">
                                         <Icon name={i === 0 ? "users-2" : i === 1 ? "map" : i === 2 ? "mic" : i === 3 ? "brain-circuit" : "check-circle"} size={32} />
                                     </div>
-                                    <h4 className="font-black text-stone-900 mb-1">{s.title}</h4>
-                                    <p className="text-xs text-stone-400 font-medium px-2">{s.desc}</p>
+                                    <h4 className="font-black text-stone-900 mb-1 text-center">{s.title}</h4>
+                                    <p className="text-xs text-stone-400 font-medium px-2 text-center">{s.desc}</p>
                                 </div>
                             ))}
                         </div>
                     </div>
 
-                    <div className="bg-stone-900 text-white py-32 -mx-6 px-6 relative text-center text-center text-center text-center text-center">
+                    <div className="bg-stone-900 text-white py-32 -mx-6 px-6 relative text-center text-center text-center">
                         <div className="absolute inset-0 opacity-10 bg-grain text-center text-center"></div>
                         <div className="max-w-7xl mx-auto relative z-10 text-center text-white">
                             <h2 className="text-3xl md:text-5xl font-black mb-16 tracking-tight text-center text-white">{t.action.diamondTitle}</h2>
-                            <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 text-center text-center">
+                            <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 text-center">
                                 {t.action.diamondStages.map((stage, idx) => (
-                                    <div key={idx} className="relative p-10 bg-white/5 rounded-3xl border border-white/10 text-left text-white text-left">
+                                    <div key={idx} className="relative p-10 bg-white/5 rounded-3xl border border-white/10 text-left text-white text-left text-left">
                                         <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center font-black text-xl shadow-lg mb-6 mx-auto">0{idx + 1}</div>
                                         <h3 className="text-2xl font-black mb-2 text-orange-400 text-center">{stage.title}</h3>
                                         <span className="text-xs font-bold text-white/40 block mb-6 tracking-[0.2em] uppercase text-center">{stage.eng}</span>
@@ -399,9 +422,9 @@
             
             const mentors = [
                 { 
-                    zh: { name: "李世暉 教授", title: "政治大學日本研究學位學程", quote: "連結台日視角，在土地的實踐中看見國際格局。", bio: "李世暉老師為日本京都大學經濟學博士，現任政治大學日本研究學位學程教授。其研究專長涵蓋日本經濟安全保障與地方創生政策。李教授將協助學員建立跨國視角，分析日本模式如何應用於台灣農村轉型。" },
+                    zh: { name: "李世暉 教授", title: "政治大學日本研究學位學程", quote: "連結台日視角，在土地的實踐中看見國際格局。", bio: "李世暉老師為日本京都大學經濟學博士，現任政治大學日本研究學位學程教授，並擔任當代日本研究學會理事長。其研究專長涵蓋日本經濟安全保障與地方創生政策。李教授將協助學員建立跨國視角，將宜蘭的在地食農議題對接至國際區域經濟趨勢，分析日本「內容產業」模式如何應用於台灣農村。" },
                     en: { name: "Li, Shi-Hui", title: "Professor, National Chengchi University", quote: "Connecting Taiwan-Japan perspectives to see international patterns in land practice.", bio: "Dr. Li Shi-Hui is a Ph.D. in Economics from Kyoto University and a Professor at NCCU. His research focuses on Japanese economic security and rural revitalization. He helps students connect local agri-food issues with international economic trends, analyzing how Japan's 'content industry' models can be applied to Taiwanese agriculture." },
-                    ja: { name: "李世暉 教授", title: "国立政治大学日本研究学位プログラム", quote: "日台の視点を結びつけ、大地の実践から国際的な構図を見出す。", bio: "京都大学経済学博士。現在は政治大学教授、現代日本研究学会理事長を務める。日本経済安全保障、産業政策、クールジャパンが専門。宜蘭の食農課題を国際市場や地域経済のトレンドに結びつける視点を提供し、日本の「コンテンツ産業」モデルを台湾の農村にどう活かすかを指導します。" },
+                    ja: { name: "李世暉 教授", title: "国立政治大学日本研究学位プログラム", quote: "日台の視点を結びつけ、大地の実践から国際的な構図を見出す。", bio: "京都大学経済学博士。現在は政治大学教授、現代日本研究学会理事長を務める。日本経済安全保障、産業政策、クールジャパンが専門。宜蘭の食農課題を国際市場や地域経済のトレンドに結びつける視点を提供し、日本の「コンテンツ產業」モデルを台湾の農村にどう活かすかを指導します。" },
                     img: "https://i.ibb.co/LdL0f44G/image.jpg"
                 },
                 { 
@@ -435,7 +458,7 @@
                     img: "https://i.ibb.co/V0qSwNRC/image.png"
                 },
                 { 
-                    zh: { name: "劉晉宏 老師", title: "草根意識工作室 發起人", quote: "重新建立人與食物的親密感。", bio: "劉晉宏老師強調「走出校園，直面土地」。他具備深厚的草根行動力，將帶領學員走進南澳與員山的場域，學習如何進行高品質的職人訪談，從田間的一草一木、農夫的一言一行中，辨識出那些被忽視的真實挑戰，找回人與食物最原始的連結。" },
+                    zh: { name: "劉晉宏 老師", title: "草根意識工作室 發起人", quote: "重新建立人與食物的親密感。", bio: "劉晉宏老師長期投入食農教育與農村再生，強調「走出校園，直面土地」。他具備深厚的草根行動力，將帶領學員走進南澳與員山的場域，學習如何進行高品質的職人訪談，從田間的一草一木、農夫的一言一行中，辨識出那些被忽視的真實挑戰，找回人與食物最原始的連結。" },
                     en: { name: "Liu, Chin-Hung", title: "Founder, Grassroots Awareness Studio", quote: "Re-establishing the intimacy between people and food.", bio: "Chin-Hung emphasizes taking education out of the classroom and onto the land. He leads students into field settings to learn high-quality stakeholder interviewing, identifying ignored challenges through the words and actions of farmers. His goal is to help everyone reconnect with the origin of our food." },
                     ja: { name: "劉晉宏 先生", title: "草根意識スタジオ 発起人", quote: "人間と食べ物の間の親密さを再構築しましょう。", bio: "「キャンパスを飛び出し、大地と向き合う」ことを強調。現場での質の高いインタビューを通じて、見過ごされがちなリアルな課題を特定します。人間と食べ物の最も原始的な繋がりを取り戻すための草の根の行動力を伝授します。" },
                     img: "https://i.ibb.co/ccJn87gD/image.png"
@@ -457,36 +480,36 @@
             const currentData = (m) => m[lang] || m.zh;
 
             return (
-                <section id="導師團" className="py-32 bg-stone-50 text-center text-stone-900 text-center text-center text-center">
-                    <div className="max-w-7xl mx-auto px-6 text-center text-stone-900 text-center text-center text-center">
+                <section id="導師團" className="py-32 bg-stone-50 text-center text-stone-900 text-center text-center">
+                    <div className="max-w-7xl mx-auto px-6 text-center text-stone-900 text-center">
                         <h2 className="text-3xl md:text-5xl font-black mb-24 tracking-tight text-center">{t.mentors.title}</h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto text-center text-center">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto text-center">
                             {mentors.map((m, i) => (
-                                <div key={i} onClick={() => setSelected(m)} className="bg-white p-8 rounded-3xl border border-stone-100 shadow-sm hover:shadow-2xl transition-all cursor-pointer group flex flex-col items-center text-center text-center">
-                                    <div className="w-36 h-36 mb-8 rounded-full overflow-hidden ring-8 ring-stone-50 group-hover:scale-105 transition-transform bg-stone-200 text-center text-center">
+                                <div key={i} onClick={() => setSelected(m)} className="bg-white p-8 rounded-3xl border border-stone-100 shadow-sm hover:shadow-2xl transition-all cursor-pointer group flex flex-col items-center text-center">
+                                    <div className="w-36 h-36 mb-8 rounded-full overflow-hidden ring-8 ring-stone-50 group-hover:scale-105 transition-transform bg-stone-200 text-center">
                                         <img src={m.img} className="w-full h-full object-cover" alt={currentData(m).name} />
                                     </div>
                                     <h4 className="text-2xl font-black mb-2 text-center text-stone-900">{currentData(m).name}</h4>
-                                    <p className="text-orange-600 text-xs font-black tracking-widest mb-6 uppercase h-10 flex items-center justify-center text-center px-4 leading-tight text-center">{currentData(m).title}</p>
-                                    <div className="mt-auto flex items-center justify-center gap-1.5 text-xs font-black text-stone-400 group-hover:text-orange-500 transition-colors text-center text-center text-center"><Icon name="info" size={14} /> {t.mentors.info}</div>
+                                    <p className="text-orange-600 text-xs font-black tracking-widest mb-6 uppercase h-10 flex items-center justify-center text-center px-4 leading-tight">{currentData(m).title}</p>
+                                    <div className="mt-auto flex items-center justify-center gap-1.5 text-xs font-black text-stone-400 group-hover:text-orange-500 transition-colors text-center text-center"><Icon name="info" size={14} /> {t.mentors.info}</div>
                                 </div>
                             ))}
                         </div>
                     </div>
                     {selected && (
                         <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 bg-stone-900/80 backdrop-blur-md" onClick={() => setSelected(null)}>
-                            <div className="relative w-full max-w-2xl bg-white rounded-[3rem] p-10 md:p-16 shadow-2xl text-left text-stone-900 text-left text-stone-900 text-left text-left" onClick={e => e.stopPropagation()}>
+                            <div className="relative w-full max-w-2xl bg-white rounded-[3rem] p-10 md:p-16 shadow-2xl text-left text-stone-900 text-left text-stone-900 text-left" onClick={e => e.stopPropagation()}>
                                 <button className="absolute top-8 right-8 w-12 h-12 bg-stone-100 rounded-full flex items-center justify-center transition-colors text-stone-800" onClick={() => setSelected(null)}><Icon name="x" /></button>
-                                <div className="flex flex-col md:flex-row items-center gap-10 mb-12 text-left text-left">
+                                <div className="flex flex-col md:flex-row items-center gap-10 mb-12 text-left">
                                     <div className="w-40 h-40 rounded-full overflow-hidden shadow-xl ring-4 ring-stone-50"><img src={selected.img} className="w-full h-full object-cover" alt={currentData(selected).name}/></div>
-                                    <div className="text-stone-900 text-left text-left text-left">
+                                    <div className="text-stone-900 text-left">
                                         <h3 className="text-4xl font-black mb-2 text-left">{currentData(selected).name}</h3>
                                         <p className="text-stone-500 font-bold text-left">{currentData(selected).title}</p>
                                     </div>
                                 </div>
-                                <p className="text-stone-800 font-black text-xl italic border-l-8 border-orange-500 pl-8 mb-10 text-stone-900 text-left text-left">{currentData(selected).quote}</p>
-                                <p className="text-stone-600 leading-relaxed font-medium text-lg text-stone-600 text-left text-left">{currentData(selected).bio}</p>
-                                <button onClick={() => setSelected(null)} className="text-stone-400 hover:text-stone-600 font-black transition-all text-sm underline underline-offset-8 uppercase tracking-widest text-center mt-12 block w-full text-center text-center">{t.mentors.back}</button>
+                                <p className="text-stone-800 font-black text-xl italic border-l-8 border-orange-500 pl-8 mb-10 text-stone-900 text-left">{currentData(selected).quote}</p>
+                                <p className="text-stone-600 leading-relaxed font-medium text-lg text-stone-600 text-left">{currentData(selected).bio}</p>
+                                <button onClick={() => setSelected(null)} className="text-stone-400 hover:text-stone-600 font-black transition-all text-sm underline underline-offset-8 uppercase tracking-widest text-center mt-12 block w-full text-center">{t.mentors.back}</button>
                             </div>
                         </div>
                     )}
@@ -497,23 +520,23 @@
         const Journey = () => {
             const { t } = useContext(LangContext);
             return (
-                <section id="五日行程" className="py-32 bg-white relative text-center text-center">
-                    <div className="max-w-7xl mx-auto px-6 text-center md:text-left text-stone-900 text-center text-center">
-                        <div className="bg-emerald-50 p-10 rounded-[3rem] mb-20 border border-emerald-100 text-stone-900 text-left text-stone-900 text-left text-left text-left">
-                             <h3 className="text-2xl font-black text-emerald-900 mb-6 flex items-center gap-4 text-center md:text-left text-emerald-900 text-left text-left text-left text-left text-left"><Icon name="info" size={28} className="text-emerald-500" /> {t.journey.logisticsTitle}</h3>
-                             <p className="text-emerald-800/80 leading-relaxed font-medium text-left text-left">{t.journey.logisticsDesc}</p>
+                <section id="五日行程" className="py-32 bg-white relative text-center">
+                    <div className="max-w-7xl mx-auto px-6 text-center md:text-left text-stone-900 text-center">
+                        <div className="bg-emerald-50 p-10 rounded-[3rem] mb-20 border border-emerald-100 text-stone-900 text-left text-stone-900 text-left">
+                             <h3 className="text-2xl font-black text-emerald-900 mb-6 flex items-center gap-4 text-center md:text-left text-emerald-900 text-left text-left"><Icon name="info" size={28} className="text-emerald-500" /> {t.journey.logisticsTitle}</h3>
+                             <p className="text-emerald-800/80 leading-relaxed font-medium text-left">{t.journey.logisticsDesc}</p>
                         </div>
-                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-20 text-center text-center">
-                            <div className="text-stone-900 text-center md:text-left text-stone-900 text-center text-center">
-                                <h2 className="text-4xl md:text-6xl font-black mb-8 text-stone-800 text-center md:text-left text-stone-800 text-center text-center">{t.journey.title}</h2>
-                                <div className="inline-flex items-center gap-2 bg-stone-100 px-6 py-3 rounded-2xl text-stone-700 font-black mb-8 border border-stone-200 shadow-sm text-center text-center text-center"><Icon name="calendar" className="text-orange-500" /> 06/28 - 07/02</div>
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-20 text-center">
+                            <div className="text-stone-900 text-center md:text-left text-stone-900 text-center">
+                                <h2 className="text-4xl md:text-6xl font-black mb-8 text-stone-800 text-center md:text-left text-stone-800 text-center">{t.journey.title}</h2>
+                                <div className="inline-flex items-center gap-2 bg-stone-100 px-6 py-3 rounded-2xl text-stone-700 font-black mb-8 border border-stone-200 shadow-sm text-center text-center"><Icon name="calendar" className="text-orange-500" /> 06/28 - 07/02</div>
                             </div>
-                            <div className="lg:col-span-2 border-l-4 border-stone-50 pl-10 text-left text-stone-900 text-left text-left text-left">
+                            <div className="lg:col-span-2 border-l-4 border-stone-50 pl-10 text-left text-stone-900 text-left">
                                 {t.journey.days.map((d, i) => (
-                                    <div key={i} className="mb-16 relative text-left text-left text-left">
-                                        <div className="absolute -left-[54px] top-0 w-6 h-6 rounded-full bg-orange-500 border-4 border-white text-left text-left text-left" />
-                                        <h3 className="text-2xl font-black text-stone-900 mb-4 text-left text-left text-left">{d.day} {d.title}</h3>
-                                        <div className="bg-stone-50 p-8 rounded-3xl text-left text-left text-left"><p className="mb-4 font-medium text-stone-700 leading-relaxed text-left text-left text-left text-left">{d.desc}</p><div className="flex items-center text-stone-400 text-xs font-bold uppercase text-left text-left text-left"><Icon name="map-pin" size={14} className="mr-2 text-orange-500" />{d.location}</div></div>
+                                    <div key={i} className="mb-16 relative text-left">
+                                        <div className="absolute -left-[54px] top-0 w-6 h-6 rounded-full bg-orange-500 border-4 border-white text-left text-left" />
+                                        <h3 className="text-2xl font-black text-stone-900 mb-4 text-left text-left">{d.day} {d.title}</h3>
+                                        <div className="bg-stone-50 p-8 rounded-3xl text-left text-left text-left"><p className="mb-4 font-medium text-stone-700 leading-relaxed text-left text-left text-left">{d.desc}</p><div className="flex items-center text-stone-400 text-xs font-bold uppercase text-left text-left"><Icon name="map-pin" size={14} className="mr-2 text-orange-500" />{d.location}</div></div>
                                     </div>
                                 ))}
                             </div>
@@ -526,35 +549,35 @@
         const Footer = () => {
             const { t } = useContext(LangContext);
             return (
-                <footer className="py-24 bg-stone-900 text-stone-400 px-6 border-t border-stone-800 text-left text-left text-left text-left text-left text-left text-left">
-                    <div className="max-w-7xl mx-auto text-left text-stone-300 text-stone-300 text-left text-left">
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-16 text-stone-300 text-left text-left text-left">
+                <footer className="py-24 bg-stone-900 text-stone-400 px-6 border-t border-stone-800 text-left text-left text-left text-left">
+                    <div className="max-w-7xl mx-auto text-left text-stone-300 text-stone-300 text-left">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-16 text-stone-300 text-left text-left">
                             <div className="col-span-1 md:col-span-2 text-left text-left text-left">
-                                <div className="flex items-center gap-3 mb-6 text-left text-left">
+                                <div className="flex items-center gap-3 mb-6 text-left">
                                      <img src="https://i.ibb.co/ZzxC3BVn/icon.png" alt="TERRA Icon" className="h-10 w-auto" />
-                                     <p className="text-base font-medium text-white leading-relaxed uppercase tracking-widest text-white text-left text-left">TERRA SCHOOL 2026</p>
+                                     <p className="text-base font-medium text-white leading-relaxed uppercase tracking-widest text-white text-left">TERRA SCHOOL 2026</p>
                                 </div>
-                                <p className="text-sm font-medium text-stone-500 mb-10 text-left leading-relaxed text-left text-left">{t.footer.desc}</p>
-                                <div className="flex gap-4 text-white text-left text-left">
-                                    <a href={FB_TERRA_LINK} target="_blank" className="bg-orange-500 text-white px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest flex items-center gap-2 hover:bg-orange-600 transition-all shadow-lg text-white text-left text-left text-left"><Icon name="message-circle" size={18} /> {t.footer.consult}</a>
+                                <p className="text-sm font-medium text-stone-500 mb-10 text-left leading-relaxed text-left">{t.footer.desc}</p>
+                                <div className="flex gap-4 text-white text-left">
+                                    <a href={FB_TERRA_LINK} target="_blank" className="bg-orange-500 text-white px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest flex items-center gap-2 hover:bg-orange-600 transition-all shadow-lg text-white text-left"><Icon name="message-circle" size={18} /> {t.footer.consult}</a>
                                 </div>
                             </div>
-                            <div className="text-left text-left text-left">
-                                <h5 className="text-white font-black mb-8 uppercase text-xs tracking-widest text-stone-300 text-left text-left">Organizer</h5>
+                            <div className="text-left text-left">
+                                <h5 className="text-white font-black mb-8 uppercase text-xs tracking-widest text-stone-300 text-left text-left">{t.footer.organizer}</h5>
                                 <a href="https://www.facebook.com/1221feda" target="_blank" className="text-sm font-bold hover:text-orange-400 text-stone-300 text-left text-left">1221未來教育發展協會</a>
                             </div>
-                            <div className="text-left text-stone-300 text-left text-left">
-                                <h5 className="text-white font-black mb-8 uppercase text-xs tracking-widest text-white text-stone-300 text-stone-300 text-left text-left text-left">Partners</h5>
+                            <div className="text-left text-stone-300 text-left">
+                                <h5 className="text-white font-black mb-8 uppercase text-xs tracking-widest text-white text-stone-300 text-stone-300 text-left">協辦單位</h5>
                                 <ul className="text-sm space-y-4 font-bold text-stone-500 text-stone-500 text-left text-left">
-                                    <li className="text-left text-left">Waseda University (早稲田大学)</li>
-                                    <li className="text-left text-left">NCKU Wisdom Lab (成功大學)</li>
-                                    <li className="text-left text-left">Grain Club / Fo Guang Univ.</li>
+                                    {t.footer.coorgList.map((item, idx) => (
+                                        <li key={idx} className="text-left">{item}</li>
+                                    ))}
                                 </ul>
                             </div>
                         </div>
                         <div className="pt-10 border-t border-stone-800/50 flex flex-col md:flex-row justify-between items-center text-[10px] font-black uppercase tracking-[0.3em] text-center text-stone-700 text-center text-center">
-                            <div className="mb-4 md:mb-0 text-center text-stone-700 text-center text-center">© 2026. TERRA SCHOOL. 06/28 - 07/02</div>
-                            <div className="flex gap-8 text-center text-stone-600 text-center text-center text-center text-center text-center"><a href="#" className="hover:text-orange-500 text-center text-stone-600 text-center text-center">FAQ</a><a href={FB_TERRA_LINK} target="_blank" className="hover:text-orange-500 text-center text-stone-600 text-center text-center text-center">Contact</a></div>
+                            <div className="mb-4 md:mb-0 text-center text-stone-700 text-center">© 2026. TERRA SCHOOL. 06/28 - 07/02</div>
+                            <div className="flex gap-8 text-center text-stone-600 text-center text-center text-center text-center"><a href="#" className="hover:text-orange-500 text-center text-stone-600 text-center text-center">FAQ</a><a href={FB_TERRA_LINK} target="_blank" className="hover:text-orange-500 text-center text-stone-600 text-center text-center text-center">Contact</a></div>
                         </div>
                     </div>
                 </footer>
