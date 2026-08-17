@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 680" role="img" aria-labelledby="title desc">
+  <title id="title">泰拉七區 Venn Diagram</title>
+  <desc id="desc">由體驗自然、覺察自我、理解創造三個圓構成的七區 Venn Diagram。</desc>
+
+  <defs>
+    <circle id="shapeA" cx="380" cy="230" r="205"/>
+    <circle id="shapeB" cx="255" cy="430" r="205"/>
+    <circle id="shapeC" cx="505" cy="430" r="205"/>
+
+    <clipPath id="clipB"><use href="#shapeB"/></clipPath>
+    <clipPath id="clipC"><use href="#shapeC"/></clipPath>
+
+    <mask id="excludeBC">
+      <rect width="760" height="680" fill="white"/>
+      <use href="#shapeB" fill="black"/>
+      <use href="#shapeC" fill="black"/>
+    </mask>
+    <mask id="excludeAC">
+      <rect width="760" height="680" fill="white"/>
+      <use href="#shapeA" fill="black"/>
+      <use href="#shapeC" fill="black"/>
+    </mask>
+    <mask id="excludeAB">
+      <rect width="760" height="680" fill="white"/>
+      <use href="#shapeA" fill="black"/>
+      <use href="#shapeB" fill="black"/>
+    </mask>
+    <mask id="excludeA">
+      <rect width="760" height="680" fill="white"/>
+      <use href="#shapeA" fill="black"/>
+    </mask>
+    <mask id="excludeB">
+      <rect width="760" height="680" fill="white"/>
+      <use href="#shapeB" fill="black"/>
+    </mask>
+    <mask id="excludeC">
+      <rect width="760" height="680" fill="white"/>
+      <use href="#shapeC" fill="black"/>
+    </mask>
+
+    <style>
+      .region{cursor:pointer;opacity:.96;transition:opacity .2s ease,filter .2s ease}
+      .region:hover{opacity:1;filter:brightness(1.12) saturate(1.05)}
+      text{font-family:system-ui,-apple-system,"Noto Sans TC","Microsoft JhengHei",sans-serif}
+    </style>
+  </defs>
+
+  <rect width="760" height="680" rx="26" fill="#F5F1E8"/>
+
+  <a href="/nature">
+    <g class="region" mask="url(#excludeBC)">
+      <use href="#shapeA" fill="#68785B"/>
+    </g>
+  </a>
+
+  <a href="/awareness">
+    <g class="region" mask="url(#excludeAC)">
+      <use href="#shapeB" fill="#64748B"/>
+    </g>
+  </a>
+
+  <a href="/creation">
+    <g class="region" mask="url(#excludeAB)">
+      <use href="#shapeC" fill="#C87952"/>
+    </g>
+  </a>
+
+  <a href="/nature-awareness">
+    <g class="region" clip-path="url(#clipB)" mask="url(#excludeC)">
+      <use href="#shapeA" fill="#587477"/>
+    </g>
+  </a>
+
+  <a href="/nature-creation">
+    <g class="region" clip-path="url(#clipC)" mask="url(#excludeB)">
+      <use href="#shapeA" fill="#8B744A"/>
+    </g>
+  </a>
+
+  <a href="/awareness-creation">
+    <g class="region" clip-path="url(#clipC)" mask="url(#excludeA)">
+      <use href="#shapeB" fill="#8A6C6B"/>
+    </g>
+  </a>
+
+  <a href="/terra">
+    <g class="region" clip-path="url(#clipB)">
+      <g clip-path="url(#clipC)">
+        <use href="#shapeA" fill="#514D43"/>
+      </g>
+    </g>
+  </a>
+
+  <g fill="#FFFDF8" text-anchor="middle" font-weight="700" pointer-events="none">
+    <text x="380" y="155" font-size="29">體驗自然</text>
+    <text x="210" y="520" font-size="29">覺察自我</text>
+    <text x="550" y="520" font-size="29">理解創造</text>
+    <text x="380" y="348" font-size="42" font-weight="800">泰拉</text>
+  </g>
+
+  <g fill="#FFFDF8" fill-opacity=".94" text-anchor="middle" font-size="15" font-weight="700" pointer-events="none">
+    <text x="294" y="318">自然 × 覺察</text>
+    <text x="466" y="318">自然 × 創造</text>
+    <text x="380" y="490">覺察 × 創造</text>
+  </g>
+</svg>
