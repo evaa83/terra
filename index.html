@@ -119,60 +119,56 @@
     </div>
   </header>
 
-  <section id="capacities" class="pt-32 pb-24 px-6 bg-stone-50 border-b border-stone-200/50" style="background-image: radial-gradient(circle at 80% 20%, rgba(104, 120, 91, 0.08) 0%, transparent 60%);">
-    <div class="max-w-5xl mx-auto">
+    <section id="capacities" class="pt-44 pb-24 px-6 bg-stone-50 border-b border-stone-200/50" style="background-image: radial-gradient(circle at 80% 20%, rgba(104, 120, 91, 0.08) 0%, transparent 60%);">
+    <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16">
         <p class="text-[#C87952] text-sm font-extrabold tracking-[0.2em] uppercase mb-4">TERRA SCHOOL</p>
         <h1 class="font-extrabold text-3xl md:text-5xl text-[#0F2A1C] font-serif leading-tight tracking-wide mb-6">
           向外體驗自然，向內看見自己，<br class="hidden sm:inline" />從需求創造可能。
         </h1>
-        <p class="text-stone-500 text-sm mt-3">移動游標至文氏圖的圓圈上，探索三個能力的交會與意涵。</p>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 mt-12">
         <!-- Left: Interactive Venn SVG -->
-        <div class="lg:col-span-7 flex justify-center">
-          <div class="w-full max-w-[500px]">
-            <svg id="terraVenn" viewBox="0 0 760 680" role="img" aria-label="泰拉三個能力文氏圖" style="width: 100%; height: auto;">
-              <defs>
-                <!-- SVG Circles -->
-                <circle id="shapeA" cx="380" cy="230" r="205"></circle>
-                <circle id="shapeB" cx="255" cy="430" r="205"></circle>
-                <circle id="shapeC" cx="505" cy="430" r="205"></circle>
-              </defs>
+        <div class="w-full max-w-[460px] lg:max-w-[480px] shrink-0 flex justify-center">
+          <svg id="terraVenn" viewBox="0 0 760 680" role="img" aria-label="泰拉三個能力文氏圖" style="width: 100%; height: auto;">
+            <defs>
+              <!-- SVG Circles -->
+              <circle id="shapeA" cx="380" cy="230" r="205"></circle>
+              <circle id="shapeB" cx="255" cy="430" r="205"></circle>
+              <circle id="shapeC" cx="505" cy="430" r="205"></circle>
+            </defs>
 
-              <!-- Transparent Overlapping Circles (using mix-blend-mode for natural theory color blending) -->
-              <g style="isolation: isolate;">
-                <!-- Circle A: 體驗自然 (Green) -->
-                <use href="#shapeA" id="circleA" class="venn-circle" fill="#68785B" style="mix-blend-mode: multiply;" />
-                <!-- Circle B: 覺察自我 (Blue) -->
-                <use href="#shapeB" id="circleB" class="venn-circle" fill="#64748B" style="mix-blend-mode: multiply;" />
-                <!-- Circle C: 理解創造 (Orange) -->
-                <use href="#shapeC" id="circleC" class="venn-circle" fill="#C87952" style="mix-blend-mode: multiply;" />
-              </g>
+            <!-- Transparent Overlapping Circles (using mix-blend-mode for natural theory color blending) -->
+            <g style="isolation: isolate;">
+              <!-- Circle A: 體驗自然 (Green) -->
+              <use href="#shapeA" id="circleA" class="venn-circle" fill="#68785B" style="mix-blend-mode: multiply;" />
+              <!-- Circle B: 覺察自我 (Blue) -->
+              <use href="#shapeB" id="circleB" class="venn-circle" fill="#64748B" style="mix-blend-mode: multiply;" />
+              <!-- Circle C: 理解創造 (Orange) -->
+              <use href="#shapeC" id="circleC" class="venn-circle" fill="#C87952" style="mix-blend-mode: multiply;" />
+            </g>
 
-              <!-- Main Labels inside Circles -->
-              <g fill="#FFFDF8" text-anchor="middle" font-family="'Noto Sans TC', sans-serif" font-weight="700" pointer-events="none" style="text-shadow: 0 2px 4px rgba(0,0,0,0.15);">
-                <text x="380" y="155" font-size="28">體驗自然</text>
-                <text x="210" y="520" font-size="28">覺察自我</text>
-                <text x="550" y="520" font-size="28">理解創造</text>
-                <text x="380" y="352" font-size="44" font-weight="800">泰拉</text>
-              </g>
-            </svg>
-          </div>
+            <!-- Main Labels inside Circles -->
+            <g fill="#FFFDF8" text-anchor="middle" font-family="'Noto Sans TC', sans-serif" font-weight="700" pointer-events="none" style="text-shadow: 0 2px 4px rgba(0,0,0,0.15);">
+              <text x="380" y="155" font-size="28">體驗自然</text>
+              <text x="210" y="520" font-size="28">覺察自我</text>
+              <text x="550" y="520" font-size="28">理解創造</text>
+              <text x="380" y="352" font-size="44" font-weight="800">泰拉</text>
+            </g>
+          </svg>
         </div>
 
         <!-- Right: Dynamic Text Card -->
-        <div class="lg:col-span-5">
+        <div class="w-full lg:max-w-[440px] flex-grow">
           <div class="bg-white border border-stone-200/80 rounded-3xl p-8 shadow-xl min-h-[320px] flex flex-col justify-between">
             <div id="infoCardContent" class="info-card-text fade-in">
               <span id="infoKicker" class="text-xs font-bold uppercase tracking-widest text-[#68785B] mb-2 block">CORE PILLAR</span>
               <h3 id="infoTitle" class="text-2xl font-extrabold text-[#0F2A1C] font-serif mb-4">體驗自然、覺察自我與理解創造</h3>
               <p id="infoDesc" class="text-stone-600 text-sm leading-relaxed">
-                這是泰拉學校核心能力的三個圓圈。當三個圓圈在中心交會時，就構成了「泰拉學校」的主體學習精神。<br><br>請將滑鼠移到任一個圓圈，深入探索每一種能力以及點擊定位。
+                這是泰拉學校核心能力的三個圓圈。當三個圓圈在中心交會時，就構成了「泰拉學校」的主體學習精神。<br><br>請將滑鼠移到任一個圓圈，深入探索每一種能力。
               </p>
             </div>
-            
           </div>
         </div>
       </div>
