@@ -119,56 +119,47 @@
     </div>
   </header>
 
-    <section id="capacities" class="pt-44 pb-24 px-6 bg-stone-50 border-b border-stone-200/50" style="background-image: radial-gradient(circle at 80% 20%, rgba(104, 120, 91, 0.08) 0%, transparent 60%);">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16">
-        <p class="text-[#C87952] text-sm font-extrabold tracking-[0.2em] uppercase mb-4">TERRA SCHOOL</p>
-        <h1 class="font-extrabold text-3xl md:text-5xl text-[#0F2A1C] font-serif leading-tight tracking-wide mb-6">
-          Experience Nature Outwards, <br class="hidden sm:inline" />See Yourself Inwards, <br class="hidden sm:inline" />Create Possibilities from Needs.
-        </h1>
+      <section id="capacities" class="pt-28 pb-20 px-6 bg-stone-50 border-b border-stone-200/50" style="background-image: radial-gradient(circle at 80% 20%, rgba(104, 120, 91, 0.08) 0%, transparent 60%);">
+    <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16">
+      <!-- Left: Interactive Venn SVG -->
+      <div class="w-full flex justify-center" style="max-width: 480px; flex-shrink: 0;">
+        <svg id="terraVenn" viewBox="0 0 760 680" role="img" aria-label="Terra 3-Circle Venn Diagram" style="width: 100%; height: auto;">
+          <defs>
+            <!-- SVG Circles -->
+            <circle id="shapeA" cx="380" cy="230" r="205"></circle>
+            <circle id="shapeB" cx="255" cy="430" r="205"></circle>
+            <circle id="shapeC" cx="505" cy="430" r="205"></circle>
+          </defs>
+
+          <!-- Transparent Overlapping Circles -->
+          <g style="isolation: isolate;">
+            <!-- Circle A: Experience Nature (Green) -->
+            <use href="#shapeA" id="circleA" class="venn-circle" fill="#68785B" style="mix-blend-mode: multiply;" />
+            <!-- Circle B: Aware of Self (Blue) -->
+            <use href="#shapeB" id="circleB" class="venn-circle" fill="#64748B" style="mix-blend-mode: multiply;" />
+            <!-- Circle C: Understand & Create (Orange) -->
+            <use href="#shapeC" id="circleC" class="venn-circle" fill="#C87952" style="mix-blend-mode: multiply;" />
+          </g>
+
+          <!-- Main Labels inside Circles -->
+          <g fill="#FFFDF8" text-anchor="middle" font-family="'Outfit', 'Noto Sans TC', sans-serif" font-weight="700" pointer-events="none" style="text-shadow: 0 2px 4px rgba(0,0,0,0.15);">
+            <text x="380" y="150" font-size="24">Experience Nature</text>
+            <text x="210" y="520" font-size="24">Aware of Self</text>
+            <text x="550" y="520" font-size="24">Understand & Create</text>
+            <text x="380" y="352" font-size="44" font-weight="800">Terra</text>
+          </g>
+        </svg>
       </div>
 
-      <div class="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 mt-12">
-        <!-- Left: Interactive Venn SVG -->
-        <div class="w-full max-w-[460px] lg:max-w-[480px] shrink-0 flex justify-center">
-          <svg id="terraVenn" viewBox="0 0 760 680" role="img" aria-label="Terra 3-Circle Venn Diagram" style="width: 100%; height: auto;">
-            <defs>
-              <!-- SVG Circles -->
-              <circle id="shapeA" cx="380" cy="230" r="205"></circle>
-              <circle id="shapeB" cx="255" cy="430" r="205"></circle>
-              <circle id="shapeC" cx="505" cy="430" r="205"></circle>
-            </defs>
-
-            <!-- Transparent Overlapping Circles -->
-            <g style="isolation: isolate;">
-              <!-- Circle A: Experience Nature (Green) -->
-              <use href="#shapeA" id="circleA" class="venn-circle" fill="#68785B" style="mix-blend-mode: multiply;" />
-              <!-- Circle B: Aware of Self (Blue) -->
-              <use href="#shapeB" id="circleB" class="venn-circle" fill="#64748B" style="mix-blend-mode: multiply;" />
-              <!-- Circle C: Understand & Create (Orange) -->
-              <use href="#shapeC" id="circleC" class="venn-circle" fill="#C87952" style="mix-blend-mode: multiply;" />
-            </g>
-
-            <!-- Main Labels inside Circles -->
-            <g fill="#FFFDF8" text-anchor="middle" font-family="'Outfit', 'Noto Sans TC', sans-serif" font-weight="700" pointer-events="none" style="text-shadow: 0 2px 4px rgba(0,0,0,0.15);">
-              <text x="380" y="150" font-size="24">Experience Nature</text>
-              <text x="210" y="520" font-size="24">Aware of Self</text>
-              <text x="550" y="520" font-size="24">Understand & Create</text>
-              <text x="380" y="352" font-size="44" font-weight="800">Terra</text>
-            </g>
-          </svg>
-        </div>
-
-        <!-- Right: Dynamic Text Card -->
-        <div class="w-full lg:max-w-[440px] flex-grow">
-          <div class="bg-white border border-stone-200/80 rounded-3xl p-8 shadow-xl min-h-[320px] flex flex-col justify-between">
-            <div id="infoCardContent" class="info-card-text fade-in">
-              <span id="infoKicker" class="text-xs font-bold uppercase tracking-widest text-[#68785B] mb-2 block">CORE PILLAR</span>
-              <h3 id="infoTitle" class="text-2xl font-extrabold text-[#0F2A1C] font-serif mb-4">Nature, Self & Creation</h3>
-              <p id="infoDesc" class="text-stone-600 text-sm leading-relaxed">
-                These are the three core circles of capability at Terra School. When they intersect in the center, they constitute the holistic learning spirit of Terra.<br><br>Hover over any circle to explore each capacity.
-              </p>
-            </div>
+      <!-- Right: Dynamic Text Card -->
+      <div class="w-full" style="max-width: 440px; flex-grow: 1;">
+        <div class="bg-white border border-stone-200/80 rounded-3xl p-8 shadow-xl min-h-[320px] flex flex-col justify-between">
+          <div id="infoCardContent" class="info-card-text fade-in">
+            <span id="infoKicker" class="text-xs font-bold uppercase tracking-widest text-[#68785B] mb-2 block">CORE PILLAR</span>
+            <h3 id="infoTitle" class="text-2xl font-extrabold text-[#0F2A1C] font-serif mb-4">Nature, Self & Creation</h3>
+            <p id="infoDesc" class="text-stone-600 text-sm leading-relaxed">
+              These are the three core circles of capability at Terra School. When they intersect in the center, they constitute the holistic learning spirit of Terra.<br><br>Hover over any circle to explore each capacity.
+            </p>
           </div>
         </div>
       </div>

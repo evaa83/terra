@@ -119,56 +119,47 @@
     </div>
   </header>
 
-    <section id="capacities" class="pt-44 pb-24 px-6 bg-stone-50 border-b border-stone-200/50" style="background-image: radial-gradient(circle at 80% 20%, rgba(104, 120, 91, 0.08) 0%, transparent 60%);">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16">
-        <p class="text-[#C87952] text-sm font-extrabold tracking-[0.2em] uppercase mb-4">TERRA SCHOOL</p>
-        <h1 class="font-extrabold text-3xl md:text-5xl text-[#0F2A1C] font-serif leading-tight tracking-wide mb-6">
-          外に向かって自然を体験し、<br class="hidden sm:inline" />内に向かって自己を内省し、<br class="hidden sm:inline" />ニーズから可能性を創造する。
-        </h1>
+      <section id="capacities" class="pt-28 pb-20 px-6 bg-stone-50 border-b border-stone-200/50" style="background-image: radial-gradient(circle at 80% 20%, rgba(104, 120, 91, 0.08) 0%, transparent 60%);">
+    <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16">
+      <!-- Left: Interactive Venn SVG -->
+      <div class="w-full flex justify-center" style="max-width: 480px; flex-shrink: 0;">
+        <svg id="terraVenn" viewBox="0 0 760 680" role="img" aria-label="テラの3つの能力ベン図" style="width: 100%; height: auto;">
+          <defs>
+            <!-- SVG Circles -->
+            <circle id="shapeA" cx="380" cy="230" r="205"></circle>
+            <circle id="shapeB" cx="255" cy="430" r="205"></circle>
+            <circle id="shapeC" cx="505" cy="430" r="205"></circle>
+          </defs>
+
+          <!-- Transparent Overlapping Circles -->
+          <g style="isolation: isolate;">
+            <!-- Circle A: 自然体験 (Green) -->
+            <use href="#shapeA" id="circleA" class="venn-circle" fill="#68785B" style="mix-blend-mode: multiply;" />
+            <!-- Circle B: 自己内省 (Blue) -->
+            <use href="#shapeB" id="circleB" class="venn-circle" fill="#64748B" style="mix-blend-mode: multiply;" />
+            <!-- Circle C: 理解と創造 (Orange) -->
+            <use href="#shapeC" id="circleC" class="venn-circle" fill="#C87952" style="mix-blend-mode: multiply;" />
+          </g>
+
+          <!-- Main Labels inside Circles -->
+          <g fill="#FFFDF8" text-anchor="middle" font-family="'Noto Sans TC', sans-serif" font-weight="700" pointer-events="none" style="text-shadow: 0 2px 4px rgba(0,0,0,0.15);">
+            <text x="380" y="155" font-size="28">自然体験</text>
+            <text x="210" y="520" font-size="28">自己内省</text>
+            <text x="550" y="520" font-size="28">理解と創造</text>
+            <text x="380" y="352" font-size="44" font-weight="800">テラ</text>
+          </g>
+        </svg>
       </div>
 
-      <div class="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 mt-12">
-        <!-- Left: Interactive Venn SVG -->
-        <div class="w-full max-w-[460px] lg:max-w-[480px] shrink-0 flex justify-center">
-          <svg id="terraVenn" viewBox="0 0 760 680" role="img" aria-label="テラの3つの能力ベン図" style="width: 100%; height: auto;">
-            <defs>
-              <!-- SVG Circles -->
-              <circle id="shapeA" cx="380" cy="230" r="205"></circle>
-              <circle id="shapeB" cx="255" cy="430" r="205"></circle>
-              <circle id="shapeC" cx="505" cy="430" r="205"></circle>
-            </defs>
-
-            <!-- Transparent Overlapping Circles -->
-            <g style="isolation: isolate;">
-              <!-- Circle A: 自然体験 (Green) -->
-              <use href="#shapeA" id="circleA" class="venn-circle" fill="#68785B" style="mix-blend-mode: multiply;" />
-              <!-- Circle B: 自己内省 (Blue) -->
-              <use href="#shapeB" id="circleB" class="venn-circle" fill="#64748B" style="mix-blend-mode: multiply;" />
-              <!-- Circle C: 理解と創造 (Orange) -->
-              <use href="#shapeC" id="circleC" class="venn-circle" fill="#C87952" style="mix-blend-mode: multiply;" />
-            </g>
-
-            <!-- Main Labels inside Circles -->
-            <g fill="#FFFDF8" text-anchor="middle" font-family="'Noto Sans TC', sans-serif" font-weight="700" pointer-events="none" style="text-shadow: 0 2px 4px rgba(0,0,0,0.15);">
-              <text x="380" y="155" font-size="28">自然体験</text>
-              <text x="210" y="520" font-size="28">自己内省</text>
-              <text x="550" y="520" font-size="28">理解と創造</text>
-              <text x="380" y="352" font-size="44" font-weight="800">テラ</text>
-            </g>
-          </svg>
-        </div>
-
-        <!-- Right: Dynamic Text Card -->
-        <div class="w-full lg:max-w-[440px] flex-grow">
-          <div class="bg-white border border-stone-200/80 rounded-3xl p-8 shadow-xl min-h-[320px] flex flex-col justify-between">
-            <div id="infoCardContent" class="info-card-text fade-in">
-              <span id="infoKicker" class="text-xs font-bold uppercase tracking-widest text-[#68785B] mb-2 block">CORE PILLAR</span>
-              <h3 id="infoTitle" class="text-2xl font-extrabold text-[#0F2A1C] font-serif mb-4">自然、自己、そして創造</h3>
-              <p id="infoDesc" class="text-stone-600 text-sm leading-relaxed">
-                これらはテラ学校が提唱する3つのコア能力です。3つの円が中央で交わることで、テラ学校の全体的な学びの精神が形成されます。<br><br>いずれかの円にマウスを合わせて、それぞれの詳細を探求しましょう。
-              </p>
-            </div>
+      <!-- Right: Dynamic Text Card -->
+      <div class="w-full" style="max-width: 440px; flex-grow: 1;">
+        <div class="bg-white border border-stone-200/80 rounded-3xl p-8 shadow-xl min-h-[320px] flex flex-col justify-between">
+          <div id="infoCardContent" class="info-card-text fade-in">
+            <span id="infoKicker" class="text-xs font-bold uppercase tracking-widest text-[#68785B] mb-2 block">CORE PILLAR</span>
+            <h3 id="infoTitle" class="text-2xl font-extrabold text-[#0F2A1C] font-serif mb-4">自然、自己、そして創造</h3>
+            <p id="infoDesc" class="text-stone-600 text-sm leading-relaxed">
+              これらはテラ学校が提唱する3つのコア能力です。3つの円が中央で交わることで、テラ学校の全体的な学びの精神が形成されます。<br><br>いずれかの円にマウスを合わせて、それぞれの詳細を探求しましょう。
+            </p>
           </div>
         </div>
       </div>
