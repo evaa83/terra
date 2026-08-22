@@ -87,6 +87,64 @@
       scroll-behavior: smooth;
     }
   </style>
+
+  <style>
+    /* UI/UX Director Styles - Ensures robust responsive layout regardless of Tailwind precompile limits */
+    .terra-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      width: 100%;
+    }
+    @media (max-width: 1023px) {
+      .hero-container-mobile {
+        flex-direction: column-reverse !important;
+      }
+    }
+    @media (min-width: 1024px) {
+      .terra-container {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        gap: 4rem !important;
+        text-align: left !important;
+      }
+      .terra-container.reverse {
+        flex-direction: row-reverse !important;
+      }
+    }
+    .terra-w-half {
+      width: 100%;
+    }
+    @media (min-width: 1024px) {
+      .terra-w-half {
+        width: 50% !important;
+        flex-shrink: 0 !important;
+      }
+      .terra-w-grow {
+        flex-grow: 1 !important;
+        width: auto !important;
+      }
+    }
+    
+    /* Hero Carousel Slide Transitions - Fixed overlapping bug */
+    .hero-slide-text {
+      opacity: 0 !important;
+      position: absolute !important;
+      pointer-events: none !important;
+      transform: translateX(15px) !important;
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out !important;
+      width: 100%;
+    }
+    .hero-slide-text.active {
+      opacity: 1 !important;
+      position: relative !important;
+      pointer-events: auto !important;
+      transform: translateX(0) !important;
+    }
+  </style>
+
 </head>
 <body class="antialiased">
 
@@ -124,24 +182,24 @@
 
   <!-- Hero Carousel Section -->
   <section id="hero-carousel" class="pt-32 pb-20 px-6 bg-[#FFFDF8] border-b border-stone-200/50" style="background-image: radial-gradient(circle at 80% 20%, rgba(104, 120, 91, 0.05) 0%, transparent 60%);">
-    <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
+    <div class="max-w-6xl mx-auto terra-container hero-container-mobile">
       <!-- Left: Text Slides -->
-      <div class="w-full" style="max-width: 500px; min-h: 380px; display: flex; flex-col; justify-content: space-between;">
+      <div class="terra-w-half" style="max-width: 500px; min-h: 380px; display: flex; flex-direction: column; justify-content: space-between;">
         <div class="relative overflow-hidden flex-grow flex items-center" style="min-h: 280px;">
           <!-- Slide Text 0: Nature -->
-          <div class="hero-slide-text transition-all duration-700 opacity-100 transform translate-x-0" id="slide-text-0">
+          <div class="hero-slide-text active" id="slide-text-0">
             <span class="text-xs font-bold uppercase tracking-widest text-[#68785B] mb-3 block">NATURE EXPERIENCE</span>
             <h1 class="text-3xl md:text-5xl font-extrabold text-[#0F2A1C] font-serif leading-tight mb-6">自然を体験し、<br>地球と共生する</h1>
             <p class="text-stone-600 text-sm md:text-base leading-relaxed">都市生活で凝り固まった五感を解放するため、田園、高山、そして海洋へ繰り出します。聴覚、視覚、触覚を通じて本物の自然の生息地を肌で感じ、母なる地球との共生のつながりを築きます。</p>
           </div>
           <!-- Slide Text 1: Self -->
-          <div class="hero-slide-text transition-all duration-700 opacity-0 absolute transform translate-x-8 pointer-events-none" id="slide-text-1">
+          <div class="hero-slide-text" id="slide-text-1">
             <span class="text-xs font-bold uppercase tracking-widest text-[#64748B] mb-3 block">INNER AWARENESS</span>
             <h1 class="text-3xl md:text-5xl font-extrabold text-[#0F2A1C] font-serif leading-tight mb-6">自己を内省し、<br>心と対話する</h1>
             <p class="text-stone-600 text-sm md:text-base leading-relaxed">喧騒にあふれる時代に歩みを緩め、意識を外の世界から内側へと向けます。マインドフルネス、瞑想、深い自然観察を通じて、身体や感情の微細な変化に耳を傾け、本当の自分と対話します。</p>
           </div>
           <!-- Slide Text 2: Creation -->
-          <div class="hero-slide-text transition-all duration-700 opacity-0 absolute transform translate-x-8 pointer-events-none" id="slide-text-2">
+          <div class="hero-slide-text" id="slide-text-2">
             <span class="text-xs font-bold uppercase tracking-widest text-[#C87952] mb-3 block">DESIGN & CREATION</span>
             <h1 class="text-3xl md:text-5xl font-extrabold text-[#0F2A1C] font-serif leading-tight mb-6">理解と創造で、<br>行動を起こす</h1>
             <p class="text-stone-600 text-sm md:text-base leading-relaxed">人間中心の文脈に立ち返り、深い共感を築きます。デザイン思考の4Dプロセス（Discover、Define、Develop、Deliver）と現代のテクノロジーを組み合わせ、アイデアを具体的かつ持続可能な行動へと転換します。</p>
@@ -167,11 +225,10 @@
       </div>
 
       <!-- Right: Image Slider -->
-      <div class="w-full flex-grow relative overflow-hidden rounded-3xl shadow-xl aspect-video" style="max-width: 540px; max-height: 360px;">
-        <img src="assets/yilan_field_1.jpg" alt="自然体験" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-100" id="slide-img-0" />
+      <div class="terra-w-half flex justify-center" style="max-width: 540px; flex-shrink: 0;"><div class="w-full aspect-video relative overflow-hidden rounded-3xl shadow-xl"><img src="assets/yilan_field_1.jpg" alt="自然体験" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-100" id="slide-img-0" />
         <img src="assets/yilan_field_2.jpg" alt="自己内省" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" id="slide-img-1" />
         <img src="assets/terra-earth-school.jpg" alt="理解と創造" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" id="slide-img-2" />
-      </div>
+      </div></div>
     </div>
   </section>
 
@@ -183,11 +240,11 @@
         <h2 class="text-3xl font-extrabold text-[#0F2A1C] font-serif">最新活動の募集</h2>
       </div>
       
-      <div class="bg-[#FAF5F0] border border-orange-200/40 rounded-3xl p-8 md:p-12 shadow-lg relative overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col md:flex-row items-center gap-10">
-        <div class="w-full md:w-1/2 aspect-video rounded-2xl overflow-hidden bg-stone-100 shadow-sm shrink-0">
+      <div class="bg-[#FAF5F0] border border-orange-200/40 rounded-3xl p-8 md:p-12 shadow-lg relative overflow-hidden transition-all duration-300 hover:shadow-xl terra-container">
+        <div class="terra-w-half aspect-video rounded-2xl overflow-hidden bg-stone-100 shadow-sm">
           <img src="assets/yilan_field_4.jpg" alt="天之校募集" class="w-full h-full object-cover" />
         </div>
-        <div class="flex-grow">
+        <div class="terra-w-grow terra-align-left">
           <span class="inline-block px-3 py-1 bg-[#68785B] text-white text-xs font-bold rounded-full mb-4">2027年冬季 募集中</span>
           <h3 class="text-2xl font-bold text-[#0F2A1C] font-serif mb-3">天之校 ｜ 山旅共生・持続可能な高山</h3>
           <div class="space-y-2 text-stone-600 text-sm mb-6 leading-relaxed">
@@ -213,9 +270,9 @@
         <h2 class="text-3xl font-extrabold text-[#0F2A1C] font-serif">3つのコア能力</h2>
       </div>
 
-      <div class="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16">
+      <div class="terra-container">
         <!-- Left: Interactive Venn SVG -->
-        <div class="w-full flex justify-center" style="max-width: 480px; flex-shrink: 0;">
+        <div class="terra-w-half flex justify-center" style="max-width: 480px;">
           <svg id="terraVenn" viewBox="0 0 760 680" role="img" aria-label="テラの3つの能力ベン図" style="width: 100%; height: auto;">
             <defs>
               <circle id="shapeA" cx="380" cy="230" r="205"></circle>
@@ -237,7 +294,7 @@
         </div>
 
         <!-- Right: Dynamic Text Card -->
-        <div class="w-full" style="max-width: 440px; flex-grow: 1;">
+        <div class="terra-w-half" style="max-width: 440px;">
           <div class="bg-white border border-stone-200/80 rounded-3xl p-8 shadow-xl min-h-[320px] flex flex-col justify-between">
             <div id="infoCardContent" class="info-card-text fade-in">
               <span id="infoKicker" class="text-xs font-bold uppercase tracking-widest text-[#68785B] mb-2 block">CORE PILLAR</span>
@@ -260,8 +317,8 @@
         <h2 class="text-3xl font-extrabold text-[#0F2A1C] font-serif">これまでの活動実績</h2>
       </div>
       
-      <div class="bg-stone-50 border border-stone-200/60 rounded-3xl p-8 md:p-12 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col md:flex-row-reverse items-center gap-10">
-        <div class="w-full md:w-1/2 aspect-video rounded-2xl overflow-hidden bg-stone-100 shadow-sm shrink-0">
+      <div class="bg-stone-50 border border-stone-200/60 rounded-3xl p-8 md:p-12 shadow-md hover:shadow-lg transition-all duration-300 terra-container reverse">
+        <div class="terra-w-half aspect-video rounded-2xl overflow-hidden bg-stone-100 shadow-sm">
           <img src="assets/terra-earth-school.jpg" alt="地之校成果展" class="w-full h-full object-cover" />
         </div>
         <div class="flex-grow">
@@ -556,17 +613,15 @@
         if (!textEl || !imgEl || !dotEl) continue;
 
         if (i === currentHeroSlide) {
-          textEl.classList.remove('opacity-0', 'absolute', 'translate-x-8', 'pointer-events-none');
-          textEl.classList.add('opacity-100', 'translate-x-0');
+          textEl.classList.add('active');
           imgEl.style.opacity = '1';
           imgEl.style.zIndex = '10';
           dotEl.style.backgroundColor = getDotColor(i);
         } else {
-          textEl.classList.remove('opacity-100', 'translate-x-0');
-          textEl.classList.add('opacity-0', 'absolute', 'translate-x-8', 'pointer-events-none');
+          textEl.classList.remove('active');
           imgEl.style.opacity = '0';
           imgEl.style.zIndex = '0';
-          dotEl.style.backgroundColor = '#d6d3d1'; // bg-stone-300
+          dotEl.style.backgroundColor = '#d6d3d1';
         }
       }
     }
