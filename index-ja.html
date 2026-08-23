@@ -178,37 +178,43 @@
     </div>
   </header>
 
-    <!-- Hero Carousel Section (Option A - Split Screen, 4 Slides) -->
-    <!-- Hero Carousel Section (Option A - Split Screen, 4 Slides) -->
+      <!-- Hero Section -->
+    <!-- Hero Section -->
   <section id="hero-carousel" class="px-6 bg-[#FFFDF8] border-b border-stone-200/50" style="padding-top: 140px; padding-bottom: 80px; background-image: radial-gradient(circle at 80% 20%, rgba(104, 120, 91, 0.05) 0%, transparent 60%);">
-    <div class="max-w-6xl mx-auto terra-container hero-container-mobile">
+    <!-- Part 1: About Terra (Text Only, Centered & Premium) -->
+    <div class="max-w-3xl mx-auto text-center mb-20">
+      <h1 class="text-3xl md:text-5xl font-extrabold text-[#0F2A1C] font-serif leading-tight mb-8">テラ学校</h1>
+      <div class="text-stone-600 space-y-6 leading-relaxed text-base md:text-lg">
+        <p>
+          <strong>テラ（Terra）</strong>とはラテン語で「地球」を意味し、人々が地球という母なる存在の胸に再び戻り、実際に体験し深く理解することを目指しています。
+        </p>
+        <p>
+          AIが知識の習得や働き方を急速に変える中、私たちは深く考えました。「この時代において、人々に最も必要な学びとは何か？」その答えとして誕生したのが、壁のない学校「テラ学校」です。私たちは人々を現場へ連れ出し、リアルな世界と問題に向き合わせます。
+        </p>
+      </div>
+    </div>
+
+    <!-- Part 2: Split-Screen Carousel (3 Slides for the 3 Capabilities) -->
+    <div class="max-w-6xl mx-auto terra-container hero-container-mobile pt-16 border-t border-stone-200/40">
       <!-- Left: Text Slides -->
       <div class="terra-w-half" style="max-width: 500px; min-h: 380px; display: flex; flex-direction: column; justify-content: space-between;">
         <div class="relative overflow-hidden flex-grow flex items-center" style="min-h: 280px;">
-          <!-- Slide Text 0: About Terra -->
+          <!-- Slide Text 0: Nature -->
           <div class="hero-slide-text active" id="slide-text-0">
-            <span class="text-xs font-bold uppercase tracking-widest text-[#68785B] mb-3 block">ABOUT TERRA</span>
-            <h1 class="text-3xl md:text-5xl font-extrabold text-[#0F2A1C] font-serif leading-tight mb-6">テラ学校</h1>
-            <p class="text-stone-600 text-sm md:text-base leading-relaxed">
-              <strong>テラ（Terra）</strong>とはラテン語で「地球」を意味し、人々が地球という母なる存在의胸に再び戻り、実際に体験し深く理解することを目指しています。<br><br>AIが知識の習得や働き方を急速に変える中、私たちは深く考えました。「この時代において、人々に最も必要な学びとは何か？」その答えとして誕生したのが、壁のない学校「テラ学校」です。私たちは人々を現場へ連れ出し、リアルな世界と問題に向き合わせます。
-            </p>
-          </div>
-          <!-- Slide Text 1: Nature -->
-          <div class="hero-slide-text" id="slide-text-1">
             <span class="text-xs font-bold uppercase tracking-widest text-[#68785B] mb-3 block">NATURE EXPERIENCE</span>
-            <h1 class="text-3xl md:text-5xl font-extrabold text-[#0F2A1C] font-serif leading-tight mb-6">自然を体験し、<br>地球と共生する</h1>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-[#0F2A1C] font-serif leading-tight mb-6">自然を体験し、<br>地球と共生する</h2>
             <p class="text-stone-600 text-sm md:text-base leading-relaxed">都市生活で凝り固まった五感を解放するため、田園、高山、そして海洋へ繰り出します。聴覚、視覚、触覚を通じて本物の自然の生息地を肌で感じ、母なる地球との共生のつながりを築きます。</p>
           </div>
-          <!-- Slide Text 2: Self -->
-          <div class="hero-slide-text" id="slide-text-2">
+          <!-- Slide Text 1: Self -->
+          <div class="hero-slide-text" id="slide-text-1">
             <span class="text-xs font-bold uppercase tracking-widest text-[#64748B] mb-3 block">INNER AWARENESS</span>
-            <h1 class="text-3xl md:text-5xl font-extrabold text-[#0F2A1C] font-serif leading-tight mb-6">自己を内省し、<br>心と対話する</h1>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-[#0F2A1C] font-serif leading-tight mb-6">自己を内省し、<br>心と対話する</h2>
             <p class="text-stone-600 text-sm md:text-base leading-relaxed">喧騒にあふれる時代に歩みを緩め、意識を外の世界から内側へと向けます。マインドフルネス、瞑想、深い自然観察を通じて、身体や感情の微細な変化に耳を傾け、本当の自分と対話します。</p>
           </div>
-          <!-- Slide Text 3: Creation -->
-          <div class="hero-slide-text" id="slide-text-3">
+          <!-- Slide Text 2: Creation -->
+          <div class="hero-slide-text" id="slide-text-2">
             <span class="text-xs font-bold uppercase tracking-widest text-[#C87952] mb-3 block">DESIGN & CREATION</span>
-            <h1 class="text-3xl md:text-5xl font-extrabold text-[#0F2A1C] font-serif leading-tight mb-6">理解と創造で、<br>行動を起こす</h1>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-[#0F2A1C] font-serif leading-tight mb-6">理解と創造で、<br>行動を起こす</h2>
             <p class="text-stone-600 text-sm md:text-base leading-relaxed">人間中心の文脈に立ち返り、深い共感を築きます。デザイン思考の4Dプロセス（Discover、Define、Develop、Deliver）と現代のテクノロジーを組み合わせ、アイデアを具体的かつ持続可能な行動へと轉換します。</p>
           </div>
         </div>
@@ -227,7 +233,6 @@
             <span onclick="setHeroSlide(0)" id="dot-0" class="w-2.5 h-2.5 rounded-full bg-[#68785B] cursor-pointer transition-colors"></span>
             <span onclick="setHeroSlide(1)" id="dot-1" class="w-2.5 h-2.5 rounded-full bg-stone-300 cursor-pointer transition-colors"></span>
             <span onclick="setHeroSlide(2)" id="dot-2" class="w-2.5 h-2.5 rounded-full bg-stone-300 cursor-pointer transition-colors"></span>
-            <span onclick="setHeroSlide(3)" id="dot-3" class="w-2.5 h-2.5 rounded-full bg-stone-300 cursor-pointer transition-colors"></span>
           </div>
         </div>
       </div>
@@ -235,10 +240,9 @@
       <!-- Right: Image Slider -->
       <div class="terra-w-half flex justify-center" style="max-width: 540px; flex-shrink: 0;">
         <div class="w-full aspect-video relative overflow-hidden rounded-3xl shadow-xl">
-          <img src="assets/terra-earth-school.jpg" alt="テラについて" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-100" id="slide-img-0" />
-          <img src="assets/yilan_field_1.jpg" alt="自然体験" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" id="slide-img-1" />
-          <img src="assets/yilan_field_2.jpg" alt="自己内省" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" id="slide-img-2" />
-          <img src="assets/yilan_field_3.jpg" alt="理解と創造" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" id="slide-img-3" />
+          <img src="assets/yilan_field_1.jpg" alt="自然体験" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-100" id="slide-img-0" />
+          <img src="assets/yilan_field_2.jpg" alt="自己内省" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" id="slide-img-1" />
+          <img src="assets/terra-earth-school.jpg" alt="理解と創造" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-1000 opacity-0" id="slide-img-2" />
         </div>
       </div>
     </div>
@@ -368,16 +372,16 @@
 
   <!-- Interactive JS -->
   <script>
-    // Hero Carousel Logic (4-Slide)
+    // Hero Carousel Logic (3-Slide)
     let currentHeroSlide = 0;
-    const totalHeroSlides = 4;
+    const totalHeroSlides = 3;
     let heroAutoplayTimer = setInterval(nextHeroSlide, 5000);
 
     function updateHeroCarousel() {
       for (let i = 0; i < totalHeroSlides; i++) {
-        const textEl = document.getElementById(`slide-text-${i}`);
-        const imgEl = document.getElementById(`slide-img-${i}`);
-        const dotEl = document.getElementById(`dot-${i}`);
+        const textEl = document.getElementById('slide-text-' + i);
+        const imgEl = document.getElementById('slide-img-' + i);
+        const dotEl = document.getElementById('dot-' + i);
         
         if (!textEl || !imgEl || !dotEl) continue;
 
@@ -396,10 +400,9 @@
     }
 
     function getDotColor(index) {
-      if (index === 0) return '#68785B'; // green (About)
-      if (index === 1) return '#68785B'; // green (Nature)
-      if (index === 2) return '#64748B'; // blue-grey (Self)
-      if (index === 3) return '#C87952'; // orange (Creation)
+      if (index === 0) return '#68785B'; // green (Nature)
+      if (index === 1) return '#64748B'; // blue-grey (Self)
+      if (index === 2) return '#C87952'; // orange (Creation)
       return '#68785B';
     }
 
@@ -425,24 +428,6 @@
       clearInterval(heroAutoplayTimer);
       heroAutoplayTimer = setInterval(nextHeroSlide, 5000);
     }
-
-    function prevHeroSlide() {
-      currentHeroSlide = (currentHeroSlide - 1 + totalHeroSlides) % totalHeroSlides;
-      updateHeroCarousel();
-      resetAutoplay();
-    }
-
-    function setHeroSlide(index) {
-      currentHeroSlide = index;
-      updateHeroCarousel();
-      resetAutoplay();
-    }
-
-    function resetAutoplay() {
-      clearInterval(heroAutoplayTimer);
-      heroAutoplayTimer = setInterval(nextHeroSlide, 5000);
-    }
-
-</script>
+  </script>
 </body>
 </html>
