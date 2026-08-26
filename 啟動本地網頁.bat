@@ -9,4 +9,4 @@ echo     直接以瀏覽器開本機檔案 (file://) 會導致影片出現「錯
 echo     透過此本地網頁伺服器 (http://localhost:8080) 啟動，即可正常播放影片！
 echo.
 cd /d "%~dp0"
-npx -y http-server -p 8080 -o
+npx -y http-server dist/client -p 8080 -o
