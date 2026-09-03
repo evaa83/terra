@@ -1,0 +1,624 @@
+﻿<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>從錯綜複雜資料中理出頭緒（Define 篇）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../../css/tailwind.css">
+  <link rel="stylesheet" href="../../../../css/methodology.css">
+</head>
+<body>
+
+
+  
+    <!-- Header -->
+    <div class="glass-header sticky top-0 z-50 transition-all duration-300">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+          <a href="../terra.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer">
+            <img src="https://i.ibb.co/ZzxC3BVn/icon.png" alt="TERRA Icon" style="height: 36px; width: auto; max-height: 40px;" class="h-8 md:h-10 w-auto shrink-0" />
+            <span class="font-extrabold text-xl tracking-tight text-[#0F2A1C]">泰拉學校 ｜ 地之校</span>
+          </a>
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-8 font-semibold text-[#1C2421] text-sm">
+          <!-- Dropdown 1 -->
+          <div class="relative group py-2">
+            <a href="../index.html#timeline" class="hover:text-[#B35C24] transition-colors flex items-center gap-1 cursor-pointer">
+              學習歷程
+              <svg class="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+            <div class="absolute left-0 mt-2 bg-white border border-stone-200/80 rounded-2xl shadow-xl py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50" style="width: 450px;">
+              
+    <a href="../index.html#day1" class="block px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold text-left">Day 1 | 政大國際論壇：台日青年相遇與跨國團隊啟程</a>
+    <a href="../index.html#day2" class="block px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold text-left">Day 2 | 走進南澳田野：原生園靜坐與甘蔗採收</a>
+    <a href="../index.html#day3" class="block px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold text-left">Day 3 | 水月農莊到慢島生活：蓮子採收與米食烘焙體驗</a>
+    <a href="../index.html#day4" class="block px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold text-left">Day 4 | 走進深溝「調」魚：半農半X深度訪談</a>
+    <a href="../index.html#day5" class="block px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold text-left">Day 5 | 佛光大學種下承諾：永續植樹與專案成果發表</a>
+  
+            </div>
+          </div>
+
+          <!-- Dropdown 2 -->
+          <div class="relative group py-2">
+            <a href="../index.html#methodology" class="text-[#B35C24] font-bold transition-colors flex items-center gap-1 cursor-pointer">
+              設計思考
+              <svg class="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+            <div class="absolute left-0 mt-2 w-56 bg-white border border-stone-200/80 rounded-2xl shadow-xl py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
+              
+    <a href="discover.html" class="block px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">01. Discover 脈絡探索</a>
+    <a href="define.html" class="block px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">02. Define 痛點定義</a>
+    <a href="develop.html" class="block px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">03. Develop 創意共創</a>
+    <a href="deliver.html" class="block px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">04. Deliver 落地驗證</a>
+  
+            </div>
+          </div>
+
+          <!-- Dropdown 3 -->
+          <div class="relative group py-2">
+            <a href="../index.html#quotes" class="hover:text-[#B35C24] transition-colors flex items-center gap-1 cursor-pointer">
+              行動者心聲
+              <svg class="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+            <div class="absolute left-0 mt-2 w-48 bg-white border border-stone-200/80 rounded-2xl shadow-xl py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 max-h-[300px] overflow-y-auto" style="scrollbar-width: thin;">
+              
+    <a href="../index.html#quote1" class="block px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">丁芯蕾</a>
+    <a href="../index.html#quote3" class="block px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">五十嵐悠月</a>
+    <a href="../index.html#quote4" class="block px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">刁元廷</a>
+    <a href="../index.html#quote5" class="block px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">招姍姍 / 呂珈安</a>
+    <a href="../index.html#quote2" class="block px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">上杉勇司</a>
+    <a href="../index.html#quote6" class="block px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">鄭伯弘</a>
+    <a href="../index.html#quote7" class="block px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">徐柏峯(Percy老師)</a>
+    <a href="../index.html#quote8" class="block px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">賴郁雯</a>
+  
+            </div>
+          </div>
+
+          <a href="../index.html#partners" class="hover:text-[#B35C24] transition-colors">合作夥伴</a>
+        </nav>
+
+        <!-- Right Side: Lang Switcher + Hamburger -->
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2 bg-[#FAF5F0] border border-orange-200/40 rounded-full p-0.5">
+            <a href="define.html" class="px-3 py-1 rounded-full text-xs font-black transition-all bg-[#B35C24] text-white shadow-sm">中</a>
+            <a href="define-en.html" class="px-3 py-1 rounded-full text-xs font-black transition-all text-stone-500 hover:text-stone-800">EN</a>
+            <a href="define-ja.html" class="px-3 py-1 rounded-full text-xs font-black transition-all text-stone-500 hover:text-stone-800">JA</a>
+          </div>
+          
+          <button id="mobile-menu-btn" class="md:hidden p-2 rounded-xl hover:bg-stone-100 text-[#0F2A1C] transition-colors" aria-label="Toggle Menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path class="menu-open-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 6h16M4 12h16M4 18h16" />
+              <path class="menu-close-icon hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+      
+      <!-- Mobile Drawer Menu -->
+      <div id="mobile-menu" class="fixed inset-0 z-40 bg-stone-900/50 backdrop-blur-sm opacity-0 invisible transition-all duration-300 md:hidden">
+        <div class="absolute right-0 top-0 bottom-0 w-80 bg-white shadow-2xl p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300 ease-out z-50">
+          <div class="flex flex-col gap-6 overflow-y-auto max-h-[85vh] pr-2" style="scrollbar-width: thin;">
+            <div class="flex justify-between items-center border-b border-stone-100 pb-4">
+              <span class="font-extrabold text-lg text-[#0F2A1C]">選單 Menu</span>
+            </div>
+            
+            <div class="flex flex-col gap-4">
+              <!-- Accordion 1 -->
+              <div class="flex flex-col border-b border-stone-50 pb-3">
+                <button onclick="toggleMobileAccordion('define-timeline-mobile')" class="flex justify-between items-center w-full font-bold text-stone-700 hover:text-[#B35C24] py-2">
+                  <span>學習歷程</span>
+                  <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div id="define-timeline-mobile" class="hidden flex-col pl-4 gap-2.5 mt-2">
+                  
+    <a href="../index.html#day1" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold text-left">Day 1 | 政大國際論壇：台日青年相遇與跨國團隊啟程</a>
+    <a href="../index.html#day2" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold text-left">Day 2 | 走進南澳田野：原生園靜坐與甘蔗採收</a>
+    <a href="../index.html#day3" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold text-left">Day 3 | 水月農莊到慢島生活：蓮子採收與米食烘焙體驗</a>
+    <a href="../index.html#day4" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold text-left">Day 4 | 走進深溝「調」魚：半農半X深度訪談</a>
+    <a href="../index.html#day5" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold text-left">Day 5 | 佛光大學種下承諾：永續植樹與專案成果發表</a>
+  
+                </div>
+              </div>
+              
+              <!-- Accordion 2 -->
+              <div class="flex flex-col border-b border-stone-50 pb-3">
+                <button onclick="toggleMobileAccordion('define-dt-mobile')" class="flex justify-between items-center w-full font-bold text-stone-700 hover:text-[#B35C24] py-2">
+                  <span>設計思考</span>
+                  <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div id="define-dt-mobile" class="hidden flex-col pl-4 gap-2.5 mt-2">
+                  
+    <a href="discover.html" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">01. Discover 脈絡探索</a>
+    <a href="define.html" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">02. Define 痛點定義</a>
+    <a href="develop.html" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">03. Develop 創意共創</a>
+    <a href="deliver.html" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">04. Deliver 落地驗證</a>
+  
+                </div>
+              </div>
+              
+              <!-- Accordion 3 -->
+              <div class="flex flex-col border-b border-stone-50 pb-3">
+                <button onclick="toggleMobileAccordion('define-quotes-mobile')" class="flex justify-between items-center w-full font-bold text-stone-700 hover:text-[#B35C24] py-2">
+                  <span>行動者心聲</span>
+                  <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div id="define-quotes-mobile" class="hidden flex-col pl-4 gap-2.5 mt-2 max-h-48 overflow-y-auto" style="scrollbar-width: thin;">
+                  
+    <a href="../index.html#quote1" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">丁芯蕾</a>
+    <a href="../index.html#quote3" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">五十嵐悠月</a>
+    <a href="../index.html#quote4" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">刁元廷</a>
+    <a href="../index.html#quote5" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">招姍姍 / 呂珈安</a>
+    <a href="../index.html#quote2" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">上杉勇司</a>
+    <a href="../index.html#quote6" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">鄭伯弘</a>
+    <a href="../index.html#quote7" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">徐柏峯(Percy老師)</a>
+    <a href="../index.html#quote8" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">賴郁雯</a>
+  
+                </div>
+              </div>
+              
+              <a href="../index.html#partners" class="font-bold text-stone-700 hover:text-[#B35C24] py-2 border-b border-stone-50">合作夥伴</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <script>
+        // Inline Mobile Menu Control Scripts
+        (function() {
+          const menuBtn = document.getElementById('mobile-menu-btn');
+          const mobileMenu = document.getElementById('mobile-menu');
+          if (menuBtn && mobileMenu) {
+            const drawer = mobileMenu.querySelector('div');
+            const openIcon = menuBtn.querySelector('.menu-open-icon');
+            const closeIcon = menuBtn.querySelector('.menu-close-icon');
+
+            function toggleMenu() {
+              const isClosed = mobileMenu.classList.contains('invisible');
+              if (isClosed) {
+                // Open
+                mobileMenu.classList.remove('invisible');
+                setTimeout(() => {
+                  mobileMenu.classList.remove('opacity-0');
+                  drawer.classList.remove('translate-x-full');
+                }, 10);
+                openIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+              } else {
+                // Close
+                drawer.classList.add('translate-x-full');
+                mobileMenu.classList.add('opacity-0');
+                setTimeout(() => {
+                  mobileMenu.classList.add('invisible');
+                }, 300);
+                openIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+              }
+            }
+
+            menuBtn.addEventListener('click', toggleMenu);
+            mobileMenu.addEventListener('click', (e) => {
+              if (e.target === mobileMenu) toggleMenu();
+            });
+
+            // Close on link click
+            mobileMenu.querySelectorAll('a').forEach(link => {
+              link.addEventListener('click', () => {
+                drawer.classList.add('translate-x-full');
+                mobileMenu.classList.add('opacity-0');
+                setTimeout(() => {
+                  mobileMenu.classList.add('invisible');
+                }, 300);
+                openIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+              });
+            });
+          }
+        })();
+
+        function toggleMobileAccordion(id) {
+          const target = document.getElementById(id);
+          if (target) {
+            const isHidden = target.classList.contains('hidden');
+            const btnSvg = target.previousElementSibling.querySelector('svg');
+            if (isHidden) {
+              target.classList.remove('hidden');
+              target.classList.add('flex');
+              if (btnSvg) btnSvg.classList.add('rotate-180');
+            } else {
+              target.classList.remove('flex');
+              target.classList.add('hidden');
+              if (btnSvg) btnSvg.classList.remove('rotate-180');
+            }
+          }
+        }
+      </script>
+    
+
+  <header class="subpage-header">
+    
+  <div class="header-content">
+    <span class="badge">Define 痛點定義</span>
+    <h1>從錯綜複雜資料中理出頭緒</h1>
+    </div>
+
+  </header>
+      
+
+<main>
+  <div class="intro-card">
+    <p class="intro-text">
+      面對複雜的社會與產業情境，引入設計思考作為探索解決方案的方法時，最容易犯的錯，就是急著拿零散的訪談片段去套解決方案。在 Discover 階段，我們對 19 場訪談進行了高密度的編碼（Coding），那是我們的「事實發散期」。進入 Define（定義階段），團隊的工作是收斂——將跨受訪者的數百個代碼進行親和圖（Affinity Diagram）歸納，理出多個主題（Themes）與洞察（Insights），隨後透過小組深度討論與排序，挑選出最具變革價值的特定問題，轉譯為 HMW（我們該如何）挑戰。以下就是我們從混亂的農村現場，理出的具體收斂軌跡。
+    </p>
+  </div>
+
+  <h2>一、 親和圖收斂</h2>
+  <p class="body-text">
+    單一關係人的言論，往往只代表局部的立場。例如，生產者在抱怨耕作成本時，移居者可能正在煩惱人際信任的建立，而體驗者則對農事流程的繁瑣感到困惑。如果我們只盯著其中一方，設計出來的方案必然會失衡。
+  </p>
+
+  <p class="body-text">
+    我們的親和圖收斂工作，是把 19 份訪談中帶有代碼的對話卡片平鋪開來，尋找跨越角色（如生產者與開拓者、移居者與推動者）之間的共通規律與日常張力。團隊透過反覆的比對與歸類，將數百個原子化代碼，有系統地聚合成多個主題：A組梳理出技術妥協、財務家庭風險、體驗經濟轉型等 7 大主題；B組聚焦農事體驗，提煉出在地素材轉化、強度與彈性調配、氣候風險共擔等 10 大主題；C組圍繞家庭關係，提煉出婚姻與移居交織、夫妻協作、子女就學安置與隔代照顧等 8 大主題；D組則針對青年入村，理出地緣網絡門檻、歷史創傷、兼職生計、原子化個人等 7 大主題。這項扎實的整理工作，為我們後續的洞察萃取提供了最穩固的事實支撐。
+  </p>
+
+  <!-- Interactive Tabs for 4 Groups -->
+  <div class="tabs-container">
+    <div class="tab-buttons">
+      <span class="tab-label">各分組洞察：</span>
+      <button class="tab-btn active" data-team="A" onclick="switchTab('A')" title="綠組 (Team A)">A</button>
+      <button class="tab-btn" data-team="B" onclick="switchTab('B')" title="藍組 (Team B)">B</button>
+      <button class="tab-btn" data-team="C" onclick="switchTab('C')" title="黃組 (Team C)">C</button>
+      <button class="tab-btn" data-team="D" onclick="switchTab('D')" title="紅組 (Team D)">D</button>
+    </div>
+
+    <!-- Tab A (Green) -->
+    <div id="tab-A" class="tab-content active">
+      <table class="team-table" data-team="A">
+        <thead>
+          <tr>
+            <th class="theme-col">收斂出的核心主題 (Theme)</th>
+            <th class="insight-col">轉化出的質化研究洞察 (Insight)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="theme-cell">#技術妥協與市場差異化</td>
+            <td class="insight-cell">小農堅持天然無添加（如無石灰熬糖）常受限於加工技術瓶頸。若盲目投入設備資金會帶來嚴重的財務與家庭風險，改推液態糖蜜能作為低成本技術妥協，但需對接消費者的日常料理習慣以創造市場差異。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#專業委託與勞動互助網</td>
+            <td class="insight-cell">農村高強度勞動與設備短缺。以委託、志工與代耕形成互助求生生態系，透過代工與專業分工來減輕財務壓力與勞力負荷。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#健康意識與食安教育行銷</td>
+            <td class="insight-cell">以反市場主流的「天然無化學添加」作為品牌定位，透過種植甘蔗與手作體驗教育，將農場轉化為原始食物體驗場域。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#在地資源的機會主義與適應性</td>
+            <td class="insight-cell">鄉村經營資源受限。最大化在地資源（如竹子、稻草）以降低採購成本與運輸負擔，並選擇耐候作物以穩定營運。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#農業資本投入的財務與家庭風險</td>
+            <td class="insight-cell">農業試錯成本高，過度多元化導致虧損與家庭支持崩解，應低成本小步快跑驗證。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#從產量向體驗經濟轉型的必然</td>
+            <td class="insight-cell">生鮮農產品利潤微薄且受氣候制約。將農事生產過程故事化、體驗化，是提升作物附加價值與農場存活率的必經路徑。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#勞動力波動與門檻的降級妥協</td>
+            <td class="insight-cell">國際換工熱潮消退後日常勞動力短缺，必須將換工門檻縮短、降低技術門檻，並改善餐食品質以維持基本口碑。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Tab B (Blue) -->
+    <div id="tab-B" class="tab-content">
+      <table class="team-table" data-team="B">
+        <thead>
+          <tr>
+            <th class="theme-col">收斂出的核心主題 (Theme)</th>
+            <th class="insight-col">轉化出的質化研究洞察 (Insight)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="theme-cell">#在地素材轉化為體驗設計</td>
+            <td class="insight-cell">農事體驗最有力的素材往往不是外部設計出來的，而是田裡、村裡、季節裡本來就存在的作物與材料；體驗設計的關鍵在於把「方便取得」轉譯成「可感知、可操作、可帶走的地方知識」。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#農事難度與身體門檻管理</td>
+            <td class="insight-cell">農事體驗的價值常來自真實勞動，但真實勞動也帶來氣候、體力與安全門檻；好的體驗不是降低真實性，而是建立觀察、切換與分級機制，讓不同參與者都能安全進入農事現場。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#季節人力與活動容量配置</td>
+            <td class="insight-cell">農事體驗不是單一活動產品，而是被季節、作物成熟期、人手與接待容量共同限制的服務系統；設計者必須先排農務，再排體驗，才能避免體驗與生產互相消耗。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#從觀光景點轉向深度農事體驗</td>
+            <td class="insight-cell">體驗者對農事活動的期待正在從「看景點」轉向「進入地方生活與生產現場」；但他們仍需要清楚的套裝、路線與主題包裝，才能把農事體驗放進旅行決策中。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#食物加工與產地教育鏈</td>
+            <td class="insight-cell">農事體驗若只停在採收，參與者容易把它視為一次活動；若能延伸到加工、健康、添加物、食物來源與味覺教育，就能把一次體驗轉化為消費選擇與生活觀念的改變。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#客源管道與預約接待旅程</td>
+            <td class="insight-cell">農事體驗的服務旅程仍混合了社群曝光、旅行社組團、學校合作與電話預約；痛點不只是有沒有活動，而是從知道、預約、抵達、調整、回訪之間缺少清楚可見的旅程設計。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#農事體驗作為生態與資料共學</td>
+            <td class="insight-cell">部分農事體驗的核心不只是「好玩」或「採收」，而是把參與者變成地方生態資料的共同建置者；當體驗流程能標準化觀察、記錄與後續辨識，農事現場就會成為公共知識生產場。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#長期實習與打工換宿沉浸</td>
+            <td class="insight-cell">農事體驗可分為「短時段活動」與「長時間沉浸」兩種深度；真正改變參與者理解的，往往不是一次採收，而是跟著農夫作息生活數天到數週，讓勞動節奏、土地關係與生活價值逐漸內化。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#慢島作為農事體驗的信任與公共平台</td>
+            <td class="insight-cell">慢島的農事體驗不是從觀光商品開始，而是從多年無農藥耕作、直銷、地主信任與社群治理累積而來；服務體驗的背後其實是一個維持地方信任、開放參與與公共對話的平台。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#土地連結與生活轉化</td>
+            <td class="insight-cell">農事體驗最深的轉化不只來自技能學習，而是參與者在照顧作物、承受勞動與面對土地時，重新理解自己的生活、家庭與夢想；土地因此成為身體、關係與人生方向的媒介。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Tab C (Yellow) -->
+    <div id="tab-C" class="tab-content">
+      <table class="team-table" data-team="C">
+        <thead>
+          <tr>
+            <th class="theme-col">收斂出的核心主題 (Theme)</th>
+            <th class="insight-col">轉化出的質化研究洞察 (Insight)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="theme-cell">#婚姻與移居的交織</td>
+            <td class="insight-cell">對許多受訪者而言，婚姻不僅是個人生命事件，更直接決定了移居的方向與落腳的家庭脈絡——無論是「因為結婚而遷居到伴侶的家鄉」，或是「歷經族群與家庭壓力後，選擇二十年後才返回妻子的原鄉」，婚姻與家庭系統始終是移居決策背後最深層的座標。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#夫妻協作與共同決策</td>
+            <td class="insight-cell">從開店到舉家遷徙，多數受訪家庭的重大決定並非單方拍板，而是經歷「一方先行、另一方觀望」到「共同承擔風險」的動態協商過程，夫妻雙方的角色常在陪伴者與決策者之間流動。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#家庭支持的沉默力量與風險承受</td>
+            <td class="insight-cell">家人對移居／創業決定的態度，往往不是明確表態贊成，而是「不阻擋」——這種沉默、隱忍的支持方式，本身即成為受訪者敢於承擔風險的重要底氣；然而一旦風險真實兌現（如虧損），沉默的支持也可能反轉為明確的反對。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#去菁英化的教育觀與孩子的自主選擇</td>
+            <td class="insight-cell">多位受訪者不約而同地掙脫「體制內成功＝學業成就」的框架，轉而強調興趣、熱情與自我探索的價值；教育的核心不再是把孩子送進特定學校或科系，而是陪伴孩子找到自己真心想走的路。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#城鄉資源拉扯下的子女安置</td>
+            <td class="insight-cell">當子女的專長發展（如運動競技）需要都市才能提供的資源與教練體系時，家庭往往必須做出「讓孩子回到城市」的艱難安排，形成鄉村生活作為童年成長階段、都市作為專業出口的雙軌結構。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#隔代照顧與跨地家庭安排</td>
+            <td class="insight-cell">偏鄉生活機能與高教資源的不足，使得「隔代照顧」與「跨地家庭安排」成為務農與移居者不得不面對的現實；這需要家族網絡在後方提供彈性支援（如阿公阿嬤帶孫子），以填補偏鄉基礎托育與陪伴的空缺。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#放養式育兒與童年獨立性</td>
+            <td class="insight-cell">鄉村開闊且人際關係緊密的物理環境，孕育出「放養式」的育兒實踐——大人不過度保護，孩子得以自主探索。這種環境支持下，孩子培養出了極強的自主生存能力與面對未知環境的冒險精神。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#家庭土地傳承與代間農業選擇</td>
+            <td class="insight-cell">家庭土地的取得與繼承，是年輕世代能否落腳農村的核心物質基礎；然而，這往往伴隨著與長輩「是否從事慣行農法」的理念摩擦，或長輩以「為子女未來著想」為由的深層擔憂與反對。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Tab D (Red) -->
+    <div id="tab-D" class="tab-content">
+      <table class="team-table" data-team="D">
+        <thead>
+          <tr>
+            <th class="theme-col">收斂出的核心主題 (Theme)</th>
+            <th class="insight-col">轉化出的質化研究洞察 (Insight)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="theme-cell">#城鄉移居門檻與人際地緣網絡</td>
+            <td class="insight-cell">鄉村土地與住宅租賃高度依賴非公式的地緣人際網絡與社會資本引介，主流數位工具在此處完全失靈，形成外來移居者的天然隱形門檻。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#歷史創傷與制度保障真空</td>
+            <td class="insight-cell">歷史土地改革（如耕者有其田）留下的集體政治創傷，導致老農排斥書面契約、堅持非正式口頭約定；這種防衛性生存機制卻使新農陷入政策法律保障的巨大真空，隨時面臨被收回的脆弱風險。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#推力驅動與生活方式選擇</td>
+            <td class="insight-cell">移居農村本質上是一場因都會生活壓迫、個人生命困頓或環境與安全覺醒所引發的「逃離與重組」過程，務農成為這群個體宣告奪回生活自主權的體現。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#兼職生計與低時間成本</td>
+            <td class="insight-cell">現代高度發達的代耕機械化體系大幅解放了農業的勞動時間，使「非產量導向」的半農半X型態在技術上成為可能；移居者必須依靠低認知負擔或非同步的專業本職與兼職來獲取主要穩定現金流，以交叉支持農村生活型態。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#原子化個人與社群支持系統</td>
+            <td class="insight-cell">抱持高度個體自主意願、「想做自己」的移居者群體在進入高強度勞動現實時，極易遭遇孤獨與浪漫幻滅；因此需要一個軟性的地緣中介社群提供共同話題與精神互助，但這同時考驗著強烈個人主義與集體規範間的微妙動態平衡。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#專業主體性與代際親密拉扯</td>
+            <td class="insight-cell">母親因深陷個人志業與社會實踐導致家庭陪伴實質缺失，在幼女心中留下主觀孤獨與放養記憶；然而長大後，子女透過高等教育與學術研究確立了與母輩不同的專業主體性，在保持個體獨立的基礎上達成了對母親志業的成熟受容與尊重。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#少數邊緣群體的安全庇護空間</td>
+            <td class="insight-cell">鄉村自然生態環境超越了都會區純粹物緣對象功能，轉化為社會性邊緣次群體（如特定年代的女同志）避開原生家庭摩擦與「不出櫃不點破」隱性社會壓力的實質地理安全庇護所，透過獨立生活的同質相吸建構出獨特的異質性次社群。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h2>二、 核心挑戰與優先排序</h2>
+  <p class="body-text">
+    面對多個主題與數十個洞察，小組刻意透過深度討論與優先順序篩選，鎖定核心挑戰。我們使用數位 HMW 看板，將問題區分為「克服障礙」、「創造正面成效」與「藉助優勢」三個設計維度。藉由團隊口頭投票與卡片拖曳排序，最終在眾多有價值的洞察中，挑選出最具槓桿效應的核心痛點，正式轉譯為 HMW 設計挑戰。
+  </p>
+
+  <div class="theme-section">
+    <!-- Theme 1 (A組) -->
+    <div class="theme-card">
+      <div class="theme-header">
+        <div class="theme-title-group">
+          <span class="theme-group-label">A 組篩選路徑</span>
+          <h3 class="theme-title">小農品牌與作物價值鏈轉型</h3>
+        </div>
+        <span class="theme-meta">聚焦主題：#技術妥協與市場差異化</span>
+      </div>
+      
+      <span class="block-label">小組討論與排序決策</span>
+      <p class="block-content">
+        A組在討論中面臨「技術妥協」與「財務家庭風險」等多個主題的拉扯。在比對阿聰夫妻與賴青松的經驗後，團隊發現盲目引進高階熬糖設備會帶來沉重的財務壓力，而改推液態糖蜜才是低成本且能創造市場差異的「技術妥協」路徑。因此，小組投票決定將精力聚焦於如何將天然加工理念轉譯為產品價值，排除直接購買重裝備的選項，鎖定品牌工具包作為突圍方案。
+      </p>
+      
+      <span class="block-label">挑選的核心洞察 (Insight)</span>
+      <p class="block-content">
+        堅持天然無添加理念的小農，常受困於熬糖等加工技術瓶頸，難以製成固體黑糖塊。若盲目投入設備資金會帶來嚴重的財務與家庭风险，而改推液態糖蜜雖具便利性，消費者卻缺乏使用心智模型。小農需要一套能協助他們進行作物資源盤點、顧客需求對接的品牌工具包，將技術妥協轉化為可驗證的市場差異化價值。
+      </p>
+      
+      <div class="hmw-box">
+        <span class="block-label">挑戰轉譯 (HMW)</span>
+        <p class="hmw-text">我們該如何為小農設計一套低門檻的品牌工具包，協助他們系統化盤點作物資源、對接顧客地圖，並快速驗證品牌價值的最簡可行產品（MVP）？</p>
+      </div>
+    </div>
+
+    <!-- Theme 2 (B組) -->
+    <div class="theme-card">
+      <div class="theme-header">
+        <div class="theme-title-group">
+          <span class="theme-group-label">B 組篩選路徑</span>
+          <h3 class="theme-title">農事體驗的預約分流與關係延續</h3>
+        </div>
+        <span class="theme-meta">聚焦主題：#長期實習與打工換宿沉浸</span>
+      </div>
+      
+      <span class="block-label">小組討論與排序決策</span>
+      <p class="block-content">
+        B組面對高達 10 個與體驗設計相關的主題。團隊在 HMW 看板上，反覆討論「人手接待負荷上限」與「單次體驗後關係斷裂」的嚴重程度。小組最終決定將 T6（客源管道與預約接待旅程）與 T8（長期實習與打工換宿沉浸）的痛點相結合，因為單次體驗造成的行銷浪費與黏著度不足才是制約農場永續的根本痛點。因此，團隊投票決定聚焦於如何以長短期體驗旅程的關係延續作為主攻方向。
+      </p>
+      
+      <span class="block-label">挑選的核心洞察 (Insight)</span>
+      <p class="block-content">
+        現行的農事體驗面臨嚴重的體驗鏈斷裂：體驗前的預約管道分散，消費者在預約後到抵達前的期待感無法維持；而單次體驗結束後，農場又缺乏能延續互動的媒介。這導致昂貴的行銷成本只能換來一次性遊客，無法將短期的體驗旅人有效轉化為對在地生態與生產模式具備長期忠誠度的社群支持者。
+      </p>
+      
+      <div class="hmw-box">
+        <span class="block-label">挑戰轉譯 (HMW)</span>
+        <p class="hmw-text">我們該如何整合零散的入口管道，並透過分級體驗旅程與集點挑戰，延續旅人對農村日常的期待感與體驗深度？</p>
+      </div>
+    </div>
+
+    <!-- Theme 3 (C組) -->
+    <div class="theme-card">
+      <div class="theme-header">
+        <div class="theme-title-group">
+          <span class="theme-group-label">C 組篩選路徑</span>
+          <h3 class="theme-title">農忙家庭的育兒支持與共學網絡</h3>
+        </div>
+        <span class="theme-meta">聚焦主題：#隔代照顧與跨地家庭安排</span>
+      </div>
+      
+      <span class="block-label">小組討論與排序決策</span>
+      <p class="block-content">
+        C組圍繞農村職人與移居家庭展開討論。小農家庭常面臨日常家務、作物加工與孩子教育的多重時間撕裂。在比對過「送往都市公托」與「在地鄰里托育」兩個方向後，團隊考量到農村地理位置分散與教育理念差異，排序出「低門檻的互助托育媒合」才是最符合在地社群資本的解法，進而將其定為小組核心攻堅的挑戰。
+      </p>
+      
+      <span class="block-label">挑選的核心洞察 (Insight)</span>
+      <p class="block-content">
+        偏鄉生活機能與高教資源的不足，使得「隔代照顧」與「跨地家庭安排」成為務農與移居者不得不面對的現實；這需要家族網絡在後方提供彈性支援（如阿公阿嬤帶孫子），以填補偏鄉基礎托育與陪伴的空缺。小農家庭面臨農忙工作與子女照顧的雙重時間撕裂，急需結合地理位置與共學理念的低門檻互助托育媒合機制。
+      </p>
+      
+      <div class="hmw-box">
+        <span class="block-label">挑戰轉譯 (HMW)</span>
+        <p class="hmw-text">我們該如何結合農忙家庭的地理位置與教育理念，建立低門檻的互助托育與共學平台，緩解家長在農忙期間的工作與育兒壓力？</p>
+      </div>
+    </div>
+
+    <!-- Theme 4 (D組) -->
+    <div class="theme-card">
+      <div class="theme-header">
+        <div class="theme-title-group">
+          <span class="theme-group-label">D 組篩選路徑</span>
+          <h3 class="theme-title">青年入村的社會融入與生活指南</h3>
+        </div>
+        <span class="theme-meta">聚焦主題：#城鄉移居門檻與人際地緣網絡</span>
+      </div>
+      
+      <span class="block-label">小組討論與排序決策</span>
+      <p class="block-content">
+        D組對地緣人際網絡、歷史契約恐懼、原子化個人支持系統等 7 大主題進行了激烈辯論。在比對周媽媽與林鴻文的深度訪談後，團隊意識到主流網路數位工具在農村完全失效，租地與定居極度依賴非正式的地緣人際引介。經小組排序投票，將「人際地緣門檻」定為最優先解決的瓶頸，決定以指南形式將隱性潛規則顯性化，降低社交信任門檻。
+      </p>
+      
+      <span class="block-label">挑選的核心洞察 (Insight)</span>
+      <p class="block-content">
+        青年返鄉或移居農村時，真正的門檻往往不是農業種植技術，而是人際信任與地方資源網絡的建立。租地潛規則、地方社交生活規則以及非正式的地方網絡缺乏透明的轉譯管道，容易使新人在初期產生嚴重的信任危機與社交挫折，最終導致移居行動提前夭折。
+      </p>
+      
+      <div class="hmw-box">
+        <span class="block-label">挑戰轉譯 (HMW)</span>
+        <p class="hmw-text">我們該如何將租地、收入策略與地方社交潛規則，轉譯為結構化的三階段入村指南，降低青年移居農村時的社會融入門檻？</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">下一步：踏向 Develop (開發與原型階段)</div>
+    <p class="callout-content">
+      核心問題精準定義（Define）後，設計方向已有了明確的事實基石。在接下來的 <strong>Develop (開發階段)</strong>，四組團隊將聚焦這四個經排序篩選出來的 HMW 挑戰展開頭腦風暴，動手打造能落地驗證的創新解決方案原型！
+    </p>
+  </div>
+
+  <!-- Article Pagination Navigation -->
+  <div class="article-navigation">
+    <a href="discover.html" class="nav-card prev">
+      <span class="nav-label">上一篇 (Prev)</span>
+      <span class="nav-title">← Discover 脈絡探索</span>
+    </a>
+    <a href="develop.html" class="nav-card next">
+      <span class="nav-label">下一篇 (Next)</span>
+      <span class="nav-title">Develop 創意共創 ➔</span>
+    </a>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Terra Earth School - Waseda & NTHU. All rights reserved.</p>
+  <span class="footer-badge">Design Thinking x Sustainable Food & Agriculture</span>
+</footer>
+
+<script>
+  function switchTab(team) {
+      // Deactivate all buttons
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+          btn.classList.remove('active');
+      });
+      // Deactivate all tab content
+      document.querySelectorAll('.tab-content').forEach(content => {
+          content.classList.remove('active');
+      });
+      // Activate selected button
+      document.querySelector(`.tab-btn[data-team="${team}"]`).classList.add('active');
+      // Activate selected content
+      document.getElementById(`tab-${team}`).classList.add('active');
+  }
+</script>
+
+</body>
+</html>

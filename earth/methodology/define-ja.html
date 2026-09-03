@@ -1,0 +1,616 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>複雑に入り組んだデータから手がかりを掴む（Define編） - 持続可能な食と農</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../../css/tailwind.css">
+  <link rel="stylesheet" href="../../../../css/methodology.css">
+</head>
+<body>
+
+
+  
+    <!-- Header -->
+    <div class="glass-header sticky top-0 z-50 transition-all duration-300">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+          <a href="../terra-ja.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity cursor-pointer">
+            <img src="https://i.ibb.co/ZzxC3BVn/icon.png" alt="TERRA Icon" style="height: 36px; width: auto; max-height: 40px;" class="h-8 md:h-10 w-auto shrink-0" />
+            <span class="font-extrabold text-xl tracking-tight text-[#0F2A1C]">テラ學校 ｜ 地の校</span>
+          </a>
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-8 font-semibold text-[#1C2421] text-sm">
+          <!-- Dropdown 1 -->
+          <div class="relative group py-2">
+            <a href="../index-ja.html#timeline" class="hover:text-[#B35C24] transition-colors flex items-center gap-1 cursor-pointer">
+              学習の旅
+              <svg class="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+            <div class="absolute left-0 mt-2 bg-white border border-stone-200/80 rounded-2xl shadow-xl py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50" style="width: 450px;">
+              
+    <a href="../index-ja.html#day1" class="block px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold text-left">Day 1 | 政大国際フォーラム：台日青年の出会いとグローバルチームの始動</a>
+    <a href="../index-ja.html#day2" class="block px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold text-left">Day 2 | 南澳のフィールドへ：原生園での静座とサトウキビ収穫</a>
+    <a href="../index-ja.html#day3" class="block px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold text-left">Day 3 | 水月農園からスローアイランドライフへ：蓮の実収穫と米食ベーキング体験</a>
+    <a href="../index-ja.html#day4" class="block px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold text-left">Day 4 | 深溝で「調」魚：半農半Xのディープインタビュー</a>
+    <a href="../index-ja.html#day5" class="block px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold text-left">Day 5 | 佛光大学での約束：持続可能な植樹とプロジェクト成果発表</a>
+  
+            </div>
+          </div>
+
+          <!-- Dropdown 2 -->
+          <div class="relative group py-2">
+            <a href="../index-ja.html#methodology" class="text-[#B35C24] font-bold transition-colors flex items-center gap-1 cursor-pointer">
+              デザイン思考
+              <svg class="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+            <div class="absolute left-0 mt-2 w-56 bg-white border border-stone-200/80 rounded-2xl shadow-xl py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
+              
+      <a href="discover-ja.html" class="block px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">01. Discover / 脈絡探索</a>
+      <a href="define-ja.html" class="block px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">02. Define / 課題定義</a>
+      <a href="develop-ja.html" class="block px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">03. Develop / 共創発想</a>
+      <a href="deliver-ja.html" class="block px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">04. Deliver / 現場検証</a>
+    
+            </div>
+          </div>
+
+          <!-- Dropdown 3 -->
+          <div class="relative group py-2">
+            <a href="../index-ja.html#quotes" class="hover:text-[#B35C24] transition-colors flex items-center gap-1 cursor-pointer">
+              参加者の声
+              <svg class="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+              </svg>
+            </a>
+            <div class="absolute left-0 mt-2 w-48 bg-white border border-stone-200/80 rounded-2xl shadow-xl py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50 max-h-[300px] overflow-y-auto" style="scrollbar-width: thin;">
+              
+      <a href="../index-ja.html#quote1" class="block px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">丁芯蕾</a>
+      <a href="../index-ja.html#quote3" class="block px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">五十嵐悠月</a>
+      <a href="../index-ja.html#quote4" class="block px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">刁元廷</a>
+      <a href="../index-ja.html#quote5" class="block px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">招姍姍 / 呂珈安</a>
+      <a href="../index-ja.html#quote2" class="block px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">上杉勇司</a>
+      <a href="../index-ja.html#quote6" class="block px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">鄭伯弘</a>
+      <a href="../index-ja.html#quote7" class="block px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">徐柏峯(Percy先生)</a>
+      <a href="../index-ja.html#quote8" class="block px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">賴郁雯</a>
+    
+            </div>
+          </div>
+
+          <a href="../index-ja.html#partners" class="hover:text-[#B35C24] transition-colors">パートナー</a>
+        </nav>
+
+        <!-- Right Side: Lang Switcher + Hamburger -->
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2 bg-[#FAF5F0] border border-orange-200/40 rounded-full p-0.5">
+            <a href="define.html" class="px-3 py-1 rounded-full text-xs font-black transition-all text-stone-500 hover:text-stone-800">中</a>
+            <a href="define-en.html" class="px-3 py-1 rounded-full text-xs font-black transition-all text-stone-500 hover:text-stone-800">EN</a>
+            <a href="define-ja.html" class="px-3 py-1 rounded-full text-xs font-black transition-all bg-[#B35C24] text-white shadow-sm">JA</a>
+          </div>
+          
+          <button id="mobile-menu-btn" class="md:hidden p-2 rounded-xl hover:bg-stone-100 text-[#0F2A1C] transition-colors" aria-label="Toggle Menu">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path class="menu-open-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 6h16M4 12h16M4 18h16" />
+              <path class="menu-close-icon hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+      
+      <!-- Mobile Drawer Menu -->
+      <div id="mobile-menu" class="fixed inset-0 z-40 bg-stone-900/50 backdrop-blur-sm opacity-0 invisible transition-all duration-300 md:hidden">
+        <div class="absolute right-0 top-0 bottom-0 w-80 bg-white shadow-2xl p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300 ease-out z-50">
+          <div class="flex flex-col gap-6 overflow-y-auto max-h-[85vh] pr-2" style="scrollbar-width: thin;">
+            <div class="flex justify-between items-center border-b border-stone-100 pb-4">
+              <span class="font-extrabold text-lg text-[#0F2A1C]">メニュー Menu</span>
+            </div>
+            
+            <div class="flex flex-col gap-4">
+              <!-- Accordion 1 -->
+              <div class="flex flex-col border-b border-stone-50 pb-3">
+                <button onclick="toggleMobileAccordion('define-timeline-mobile')" class="flex justify-between items-center w-full font-bold text-stone-700 hover:text-[#B35C24] py-2">
+                  <span>学習の旅</span>
+                  <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div id="define-timeline-mobile" class="hidden flex-col pl-4 gap-2.5 mt-2">
+                  
+    <a href="../index-ja.html#day1" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold text-left">Day 1 | 政大国際フォーラム：台日青年の出会いとグローバルチームの始動</a>
+    <a href="../index-ja.html#day2" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold text-left">Day 2 | 南澳のフィールドへ：原生園での静座とサトウキビ収穫</a>
+    <a href="../index-ja.html#day3" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold text-left">Day 3 | 水月農園からスローアイランドライフへ：蓮の実収穫と米食ベーキング体験</a>
+    <a href="../index-ja.html#day4" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold text-left">Day 4 | 深溝で「調」魚：半農半Xのディープインタビュー</a>
+    <a href="../index-ja.html#day5" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold text-left">Day 5 | 佛光大学での約束：持続可能な植樹とプロジェクト成果発表</a>
+  
+                </div>
+              </div>
+              
+              <!-- Accordion 2 -->
+              <div class="flex flex-col border-b border-stone-50 pb-3">
+                <button onclick="toggleMobileAccordion('define-dt-mobile')" class="flex justify-between items-center w-full font-bold text-stone-700 hover:text-[#B35C24] py-2">
+                  <span>デザイン思考</span>
+                  <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div id="define-dt-mobile" class="hidden flex-col pl-4 gap-2.5 mt-2">
+                  
+      <a href="discover-ja.html" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">01. Discover / 脈絡探索</a>
+      <a href="define-ja.html" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">02. Define / 課題定義</a>
+      <a href="develop-ja.html" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">03. Develop / 共創発想</a>
+      <a href="deliver-ja.html" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2.5 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">04. Deliver / 現場検証</a>
+    
+                </div>
+              </div>
+              
+              <!-- Accordion 3 -->
+              <div class="flex flex-col border-b border-stone-50 pb-3">
+                <button onclick="toggleMobileAccordion('define-quotes-mobile')" class="flex justify-between items-center w-full font-bold text-stone-700 hover:text-[#B35C24] py-2">
+                  <span>参加者の声</span>
+                  <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div id="define-quotes-mobile" class="hidden flex-col pl-4 gap-2.5 mt-2 max-h-48 overflow-y-auto" style="scrollbar-width: thin;">
+                  
+      <a href="../index-ja.html#quote1" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">丁芯蕾</a>
+      <a href="../index-ja.html#quote3" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">五十嵐悠月</a>
+      <a href="../index-ja.html#quote4" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">刁元廷</a>
+      <a href="../index-ja.html#quote5" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">招姍姍 / 呂珈安</a>
+      <a href="../index-ja.html#quote2" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">上杉勇司</a>
+      <a href="../index-ja.html#quote6" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">鄭伯弘</a>
+      <a href="../index-ja.html#quote7" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">徐柏峯(Percy先生)</a>
+      <a href="../index-ja.html#quote8" class="block text-sm text-stone-500 hover:text-[#B35C24] font-semibold px-4 py-2 text-xs text-stone-600 hover:text-[#B35C24] hover:bg-stone-50 transition-colors font-bold">賴郁雯</a>
+    
+                </div>
+              </div>
+              
+              <a href="../index-ja.html#partners" class="font-bold text-stone-700 hover:text-[#B35C24] py-2 border-b border-stone-50">パートナー</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <script>
+        // Inline Mobile Menu Control Scripts
+        (function() {
+          const menuBtn = document.getElementById('mobile-menu-btn');
+          const mobileMenu = document.getElementById('mobile-menu');
+          if (menuBtn && mobileMenu) {
+            const drawer = mobileMenu.querySelector('div');
+            const openIcon = menuBtn.querySelector('.menu-open-icon');
+            const closeIcon = menuBtn.querySelector('.menu-close-icon');
+
+            function toggleMenu() {
+              const isClosed = mobileMenu.classList.contains('invisible');
+              if (isClosed) {
+                // Open
+                mobileMenu.classList.remove('invisible');
+                setTimeout(() => {
+                  mobileMenu.classList.remove('opacity-0');
+                  drawer.classList.remove('translate-x-full');
+                }, 10);
+                openIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+              } else {
+                // Close
+                drawer.classList.add('translate-x-full');
+                mobileMenu.classList.add('opacity-0');
+                setTimeout(() => {
+                  mobileMenu.classList.add('invisible');
+                }, 300);
+                openIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+              }
+            }
+
+            menuBtn.addEventListener('click', toggleMenu);
+            mobileMenu.addEventListener('click', (e) => {
+              if (e.target === mobileMenu) toggleMenu();
+            });
+
+            // Close on link click
+            mobileMenu.querySelectorAll('a').forEach(link => {
+              link.addEventListener('click', () => {
+                drawer.classList.add('translate-x-full');
+                mobileMenu.classList.add('opacity-0');
+                setTimeout(() => {
+                  mobileMenu.classList.add('invisible');
+                }, 300);
+                openIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+              });
+            });
+          }
+        })();
+
+        function toggleMobileAccordion(id) {
+          const target = document.getElementById(id);
+          if (target) {
+            const isHidden = target.classList.contains('hidden');
+            const btnSvg = target.previousElementSibling.querySelector('svg');
+            if (isHidden) {
+              target.classList.remove('hidden');
+              target.classList.add('flex');
+              if (btnSvg) btnSvg.classList.add('rotate-180');
+            } else {
+              target.classList.remove('flex');
+              target.classList.add('hidden');
+              if (btnSvg) btnSvg.classList.remove('rotate-180');
+            }
+          }
+        }
+      </script>
+    
+
+  <header class="subpage-header">
+    
+  <div class="header-content">
+    <span class="badge">Define 課題定義</span>
+    <h1>複雑に入り組んだデータから手がかりを掴む</h1>
+  </div>
+
+  </header>
+      
+
+<main>
+  <div class="intro-card">
+    <p class="intro-text">
+      複雑な社会・産業情勢に直面し、解決策を模索するアプローチとしてデザイン思考を導入する際、最も犯しやすい間違いは、断片的なインタビューの一部だけを見て性急に解決策を当てはめようとすることです。Discover（探索）段階では、19件のインタビューに対して高密度のコーディング（Coding）を行いました。これは私たちの「事実の発散期」でした。Define（定義）段階に入り、チームの任務は収斂です。異なる対象者の何百ものコードを親和図（Affinity Diagram）にまとめ、複数のテーマ（Themes）と洞察（Insights）を整理し、その後、チーム内でのディープな議論と優先順位付けを通じて、最もレバレッジの高い特定の課題をHMW（私たちはどのようにすれば）チャレンジに翻訳しました。以下は、混沌とした農村の現場から整理した収斂の軌跡です。
+    </p>
+  </div>
+
+  <h2>一、 親和図の収斂</h2>
+  <p class="body-text">
+    単一の関係者の言葉は、往々にして局所的な立場しか表しません。例えば、生産者が栽培コストに不満を漏らしているとき、移住者は地域での信頼関係の構築に悩み、体験者は農作業の煩雑さに困惑しているかもしれません。一方だけに注目すると、提案する解決策は必ずバランスを欠いたものになります。私たちの親和図による収斂作業は、19件のインタビューから得られたコード付きカードを並べ、生産者と開拓者、移住者と推進者といった異なる役割の間に隠された共通の規則や日常の葛藤を探し出しました。比較と分類を繰り返し、何百もの原子化されたコードを系統的に複数のテーマにまとめました。
+  </p>
+
+  <!-- Interactive Tabs for 4 Groups -->
+  <div class="tabs-container">
+    <div class="tab-buttons">
+      <span class="tab-label">Team Insights:</span>
+      <button class="tab-btn active" data-team="A" onclick="switchTab('A')" title="Team A">A</button>
+      <button class="tab-btn" data-team="B" onclick="switchTab('B')" title="Team B">B</button>
+      <button class="tab-btn" data-team="C" onclick="switchTab('C')" title="Team C">C</button>
+      <button class="tab-btn" data-team="D" onclick="switchTab('D')" title="Team D">D</button>
+    </div>
+
+    <!-- Tab A (Green) -->
+    <div id="tab-A" class="tab-content active">
+      <table class="team-table" data-team="A">
+        <thead>
+          <tr>
+            <th class="theme-col">Clustered Core Theme</th>
+            <th class="insight-col">Qualitative Research Insight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="theme-cell">#技術的妥協と市場の差別化</td>
+            <td class="insight-cell">添加物なしの加工（石灰不使用の製糖など）は技術的なボトルネックに直面します。設備への盲目的な投資は財務と家庭の崩壊リスクを伴うため、低コストな妥協案として『液状糖蜜』を提案しますが、消費者の日常の料理習慣に合わせる必要があります。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#専門委託と労働相互扶助</td>
+            <td class="insight-cell">農村の過酷な労働と設備不足。ボランティアや代耕、専門分業による相互扶助で負担を軽減します。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#健康意識と食農体験教育マーケティング</td>
+            <td class="insight-cell">無添加コンセプトでブランドをポジショニングし、農場を食体験の場へと転換します。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#現地資源の活用と適応性</td>
+            <td class="insight-cell">現地の竹や藁を最大活用してコストと輸送負担を削減し、耐候性作物を選定します。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#農業資本投資の財務と家族リスク</td>
+            <td class="insight-cell">農業の試行錯誤コストは高い。過度な多様化は家族の崩壊を招くため、低コストなMVPで素早く検証します。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#体験経済への転換の必然性</td>
+            <td class="insight-cell">農産物の利益は薄く天候に左右されます。農作業のストーリー化と体験化で付加価値を向上します。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#労働力波動と参入障壁の緩和</td>
+            <td class="insight-cell">ワークエクスチェンジ熱の低下に伴い、短期で低スキルの受け入れ条件を整備し、食事などの質を高めて口コミを維持します。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Tab B (Blue) -->
+    <div id="tab-B" class="tab-content">
+      <table class="team-table" data-team="B">
+        <thead>
+          <tr>
+            <th class="theme-col">Clustered Core Theme</th>
+            <th class="insight-col">Qualitative Research Insight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="theme-cell">#現地素材の体験デザインへの転換</td>
+            <td class="insight-cell">体験素材は外部から持ち込むのではなく、田畑にあるものを使用します。手軽に手に入るものを地域知識に翻訳することが鍵です。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#農作業難易度と身体のハードル管理</td>
+            <td class="insight-cell">体験の価値は労働にありますが、体力や天候が壁になります。難易度別の分業制を確立し、安全に現場に入れるようにします。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#季節労働と体験受け入れ容量の配分</td>
+            <td class="insight-cell">体験は季節や人手に制限されます。生産を優先し、体験によって生産が阻害されないように設計します。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#観光地から深い農作業体験への転換</td>
+            <td class="insight-cell">単なる観光から現地の生活や生産現場への参画へ。旅行の選択肢に入りやすいようパッケージ化が必要です。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#食品加工と産地教育チェーン</td>
+            <td class="insight-cell">収穫体験だけで終わらせず、加工や食育まで広げることで、消費行動や生活習慣の変革を促します。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#予約受付システムと顧客体験ジャーニー</td>
+            <td class="insight-cell">SNS予約や電話予約などが混在しているため、認知から再訪までのジャーニー設計が不可欠です。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#データ共創としての食農体験</td>
+            <td class="insight-cell">体験者が生態系データを共同構築する仕組みを作り、農場を知識生産の場へと変えます。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#長期インターンシップと滞在型没入</td>
+            <td class="insight-cell">長期滞在こそが農家のライフスタイルや価値観の深い内面化をもたらします。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#信頼と公共プラットフォームとしての慢島生活</td>
+            <td class="insight-cell">慢島生活の体験は、有機栽培の実績や信頼関係に基づいています。サービス自体が信頼を維持するプラットフォームです。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#土地との繋がりと生活の転換</td>
+            <td class="insight-cell">労働や土地との対話を通じて、体験者が自身の生活や夢を再考する機会を提供します。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Tab C (Yellow) -->
+    <div id="tab-C" class="tab-content">
+      <table class="team-table" data-team="C">
+        <thead>
+          <tr>
+            <th class="theme-col">Clustered Core Theme</th>
+            <th class="insight-col">Qualitative Research Insight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="theme-cell">#結婚と移移の交錯</td>
+            <td class="insight-cell">結婚は移住の決定と深く結びついています。伴侶の故郷への移住や、親族の圧力からの回避など、家庭システムが移住決定の座標となります。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#夫婦の協働と共同意思決定</td>
+            <td class="insight-cell">移住や起業は一方が先行し、もう一方が見守るなどの動的交渉を経て、リスクを共同負担するプロセスです。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#家族サポートの沈黙の力とリスク許容度</td>
+            <td class="insight-cell">家族の態度は「反対しない」という形で現れ、それがリスク許容の基盤となりますが、失敗時は反対へ転じることもあります。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#脱エリート主義の教育觀と自主性</td>
+            <td class="insight-cell">学校の成績＝成功という枠組みから脱却し、子供が自身の興味や情熱を見つけるための自主性を重視します。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#都市と農村の拉致下での教育安置</td>
+            <td class="insight-cell">専門的なスキル向上のために都市の環境が必要な場合、子供を都市に戻すという二重構造を選択せざるを得ません。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#世代間介護と複数地域にまたがる家族計画</td>
+            <td class="insight-cell">農村の保育インフラ不足を補うため、祖父母による子育て支援など親族ネットワークの弾力的支援が必要です。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#放牧型子育てと童年の独立性</td>
+            <td class="insight-cell">農村の開拓された安全な環境が、過保護にしない子育てを可能にし、子供の独立心と冒険心を育てます。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#家庭の土地継承と世代間の農法対立</td>
+            <td class="insight-cell">若い世代が農村で自立する基盤としての土地ですが、慣行農法か有機農法かを巡る葛藤が生じます。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Tab D (Red) -->
+    <div id="tab-D" class="tab-content">
+      <table class="team-table" data-team="D">
+        <thead>
+          <tr>
+            <th class="theme-col">Clustered Core Theme</th>
+            <th class="insight-col">Qualitative Research Insight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="theme-cell">#都市農村移住の障壁と人間関係地縁ネットワーク</td>
+            <td class="insight-cell">農地の賃貸は地縁関係に依存しており、主流のネットツールは機能しません。これが移住者の見えない壁となります。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#歴史的トラウマと制度的保障の空白</td>
+            <td class="insight-cell">土地改革の歴史的トラウマから書面契約を避ける地主が多く、新規農家は法的保護がないリスクに直面します。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#生活様式の選択と都会からの脱出</td>
+            <td class="insight-cell">移住は都会の抑圧からの脱出であり、農業は生活の主導権を取り戻す手段となります。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#兼業と低時間コスト</td>
+            <td class="insight-cell">機械化による農業の労働時間削減が、半農半Xを可能にします。専門スキルを活かしたリモート業務などでキャッシュフローを確保します。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#原子化された個人とコミュニティ支援システム</td>
+            <td class="insight-cell">自己実現を目指す移住者が直面する孤独を補うため、精神的相互扶助を提供するソフトな地域コミュニティが必要です。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#專業的主体性と世代間の葛藤</td>
+            <td class="insight-cell">母親の活動への没頭が子供の孤独感を招くことがありますが、成長した子供は自身の専門性を通じて母親の活動を成熟して受け入れます。</td>
+          </tr>
+          <tr>
+            <td class="theme-cell">#少数者・マイノリティの安全避難スペース</td>
+            <td class="insight-cell">農村の自然環境が、都市の家庭葛藤から避難する安全な居場所（レズビアンなど）として機能することがあります。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h2>二、 核心的課題と優先順位付け</h2>
+  <p class="body-text">
+    多くの洞察に直面し、グループはデジタルHMWボードを活用し、課題を「障壁の克服」「ポジティブな成果の創出」「強みの活用」に分類しました。投票とカードソートを通じて、最もレバレッジの高いペインポイントをHMWチャレンジへと翻訳しました。
+  </p>
+
+  <div class="theme-section">
+    <!-- Theme 1 (A組) -->
+    <div class="theme-card">
+      <div class="theme-header">
+        <div class="theme-title-group">
+          <span class="theme-group-label">A組の抽出プロセス</span>
+          <h3 class="theme-title">小農ブランドと作物の価値チェーン転換</h3>
+        </div>
+        <span class="theme-meta">核心的テーマ：#技術的妥協と市場の差別化</span>
+      </div>
+      
+      <span class="block-label">小組でのディスカッションと優先順位決定</span>
+      <p class="block-content">
+        A組は「技術的妥協」と「財務・家族リスク」のテーマで議論しました。阿聰夫妻と賴青松先生の事例を比較し、複雑な製糖設備への多額の投資は財務リスクが大きい一方、液状糖蜜の推進が低コストで市場差別化できる「技術的妥協」であると判断。重設備投資を避け、ブランドツールキットに集中することを決定しました。
+      </p>
+      
+      <span class="block-label">抽出されたコア洞察 (Insight)</span>
+      <p class="block-content">
+        無添加コンセプトを堅持する小農は、固形黒糖の製造技術でボトルネックに直面します。設備への盲目的な投資は財務と家族の崩壊リスクを伴うため、低コストな妥協案として「液状糖蜜」を提案しますが、消費者の日常の料理習慣に合わせる必要があります。小農が作物を整理し検証するためのブランドツールキットが不可欠です。
+      </p>
+      
+      <div class="hmw-box">
+        <span class="block-label">HMWチャレンジへの翻訳</span>
+        <p class="hmw-text">私たちは、小農が作物の資源をシステム化して整理し、顧客マップと対話し、MVPの価値を迅速に検証できるような低障壁のブランドツールキットをどのように設計すればよいでしょうか？</p>
+      </div>
+    </div>
+
+    <!-- Theme 2 (B組) -->
+    <div class="theme-card">
+      <div class="theme-header">
+        <div class="theme-title-group">
+          <span class="theme-group-label">B組の抽出プロセス</span>
+          <h3 class="theme-title">予約受付ジャーニーと関係性の継続</h3>
+        </div>
+        <span class="theme-meta">核心的テーマ：#長期インターンシップと滞在型没入</span>
+      </div>
+      
+      <span class="block-label">小組でのディスカッションと優先順位決定</span>
+      <p class="block-content">
+        B組は体験設計に関する10テーマを議論しました。受入上限や訪問後の関係途絶の深刻さをHMWボードで検討。予約フローと滞在没入を統合し、単発訪問でのマーケティング浪費と低リテンションが根本的な課題であるとし、関係性継続に焦点を当てることを決定しました。
+      </p>
+      
+      <span class="block-label">抽出されたコア洞察 (Insight)</span>
+      <p class="block-content">
+        体験前後のジャーニーが断絶しています。予約チャネルは分散し、訪問前の期待感が維持されず、訪問後もフォローアップ媒体がありません。これは、生態農業への長期的なファンを育てることなく、単発の観光客を獲得するための高い広告費を支払い続ける結果を招いています。
+      </p>
+      
+      <div class="hmw-box">
+        <span class="block-label">HMWチャレンジへの翻訳</span>
+        <p class="hmw-text">私たちは、分散した予約チャネルを統合し、難易度別の体験ジャーニーとポイントチャレンジを通じて、旅行者の農村日常に対する期待感と体験の深さをどのように持続させればよいでしょうか？</p>
+      </div>
+    </div>
+
+    <!-- Theme 3 (C組) -->
+    <div class="theme-card">
+      <div class="theme-header">
+        <div class="theme-title-group">
+          <span class="theme-group-label">C組の抽出プロセス</span>
+          <h3 class="theme-title">農忙期の育児支援と共同学習ネットワーク</h3>
+        </div>
+        <span class="theme-meta">核心的テーマ：#世代間介護と複数地域にまたがる家族計画</span>
+      </div>
+      
+      <span class="block-label">小組でのディスカッションと優先順位決定</span>
+      <p class="block-content">
+        C組は農村家庭に焦点を当てました。小農の両親は労働と育児の深刻な時間対立に直面しています。都市の保育所と地域の相互保育を比較し、農村の地理的分散に適し、地域の社会関係資本を最大活用できる相互保育プラットフォームの優先順位を最も高く設定しました。
+      </p>
+      
+      <span class="block-label">抽出されたコア洞察 (Insight)</span>
+      <p class="block-content">
+        農村の保育資源不足により、親族ネットワークに依存せざるを得ません。小農の両親は忙しい時期に深刻な時間的制約を受けるため、地理的位置と価値観に適合した相互保育サポートが必要です。
+      </p>
+      
+      <div class="hmw-box">
+        <span class="block-label">HMWチャレンジへの翻訳</span>
+        <p class="hmw-text">私たちは、農忙期家庭の地理的位置と教育観を組み合わせ、親の仕事と育児のストレスを緩和するような低障壁の相互保育・共学プラットフォームをどのように構築すればよいでしょうか？</p>
+      </div>
+    </div>
+
+    <!-- Theme 4 (D組) -->
+    <div class="theme-card">
+      <div class="theme-header">
+        <div class="theme-title-group">
+          <span class="theme-group-label">D組の抽出プロセス</span>
+          <h3 class="theme-title">青年入村の社会融合と生活ガイド</h3>
+        </div>
+        <span class="theme-meta">核心的テーマ：#都市農村移住の障壁と人間関係地縁ネットワーク</span>
+      </div>
+      
+      <span class="block-label">小組でのディスカッションと優先順位決定</span>
+      <p class="block-content">
+        D組は地縁関係、土地契約への恐れ、個人の精神支援について議論。農地の賃貸は地縁関係に依存しており、主流のネットツールは機能しません。この地縁の障壁を緩和するため、明文化されていない暗黙のルールを顕在化するガイド作成を優先課題に設定しました。
+      </p>
+      
+      <span class="block-label">抽出されたコア洞察 (Insight)</span>
+      <p class="block-content">
+        都市青年が移住する際、障壁となるのは農業技術ではなく、信頼関係とローカルネットワークの構築です。土地の規則や地域社会の構造が明確に翻訳されておらず、初期の摩擦や移住の失敗を招く原因となっています。
+      </p>
+      
+      <div class="hmw-box">
+        <span class="block-label">HMWチャレンジへの翻訳</span>
+        <p class="hmw-text">私たちは、土地の賃貸、収入戦略、現地の社交ルールを構造化された三段階の入村ガイドに翻訳し、青年が農村へ移住する際の社会融合の障壁をどのように引き下げればよいでしょうか？</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">次へ：Develop (開発とプロトタイプ段階) へ進む</div>
+    <p class="callout-content">
+      核心的課題が定義されたことで、設計方針が明確になりました。次の <strong>Develop (開発段階)</strong> では、抽出された4つのHMWチャレンジに基づき、ブレインストーミングとプロトタイプ制作を行います！
+    </p>
+  </div>
+
+  <!-- Article Pagination Navigation -->
+  <div class="article-navigation">
+    <a href="discover-ja.html" class="nav-card prev">
+      <span class="nav-label">前へ</span>
+      <span class="nav-title">← Discover 脈絡探索</span>
+    </a>
+    <a href="develop-ja.html" class="nav-card next">
+      <span class="nav-label">次へ</span>
+      <span class="nav-title">Develop 創意共創 ➔</span>
+    </a>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Terra Earth School - Waseda & NTHU. All rights reserved.</p>
+  <span class="footer-badge">Design Thinking x Sustainable Food & Agriculture</span>
+</footer>
+
+<script>
+  function switchTab(team) {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+          btn.classList.remove('active');
+      });
+      document.querySelectorAll('.tab-content').forEach(content => {
+          content.classList.remove('active');
+      });
+      document.querySelector(`.tab-btn[data-team="${team}"]`).classList.add('active');
+      document.getElementById(`tab-${team}`).classList.add('active');
+  }
+</script>
+
+</body>
+</html>
