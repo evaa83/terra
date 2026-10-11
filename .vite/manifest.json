@@ -20,7 +20,7 @@
     "name": "rolldown-runtime"
   },
   "app/media/page.tsx": {
-    "file": "_next/static/chunks/page-DoWhwJiY-venn-v3.js",
+    "file": "_next/static/chunks/page-DoWhwJiY-registration-v1.js",
     "name": "page",
     "src": "app/media/page.tsx",
     "isDynamicEntry": true,
@@ -31,7 +31,7 @@
     ]
   },
   "app/page.tsx": {
-    "file": "_next/static/chunks/page-BF5_QoE--venn-v3.js",
+    "file": "_next/static/chunks/page-BF5_QoE--registration-v1.js",
     "name": "page",
     "src": "app/page.tsx",
     "isDynamicEntry": true,
@@ -53,7 +53,7 @@
     ]
   },
   "virtual:vinext-app-browser-entry": {
-    "file": "_next/static/chunks/index-D05r7Gqv-venn-v3.js",
+    "file": "_next/static/chunks/index-D05r7Gqv-registration-v1.js",
     "name": "index",
     "src": "virtual:vinext-app-browser-entry",
     "isEntry": true,
